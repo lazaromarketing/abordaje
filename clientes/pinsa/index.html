@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Propuesta Ejecutiva | Grupo PINSA</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <style>
+        /* --- 1. CONFIGURACIÓN BASE --- */
+        :root {
+            --primary: #CC0066;
+            --primary-dark: #99004d;
+            --primary-light: #fff0f5;
+            --dark: #111827;
+            --gray: #4B5563;
+            --bg: #F9FAFB;
+            --white: #ffffff;
+            --radius: 16px;
+            --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        
+        body {
+            /* REGLA DE ORO: Tipografía Arial para cuerpo */
+            font-family: Arial, Helvetica, sans-serif; 
+            background-color: var(--bg);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* REGLA DE ORO: Títulos en Rubik */
+        h1, h2, h3, h4, .btn, .badge, .price-tag {
+            font-family: 'Rubik', sans-serif;
+        }
+        
+        h1 { font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; }
+        h2 { font-weight: 700; line-height: 1.2; }
+
+        /* --- 2. UTILIDADES --- */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section { padding: 5rem 0; position: relative; }
+        .text-center { text-align: center; }
+
+        .text-gradient {
+            background: linear-gradient(to right, var(--dark), var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 14px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 1rem;
+        }
+
+        /* --- 3. BOTONES --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 14px 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 8px; /* Ligeramente menos redondeado para seriedad */
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(204, 0, 102, 0.2);
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            background: var(--primary-dark);
+            box-shadow: 0 10px 15px rgba(204, 0, 102, 0.3);
+        }
+
+        .btn-full { width: 100%; }
+        .btn-lg { font-size: 1.1rem; padding: 16px 32px; }
+        .btn-outline { background: transparent; border: 2px solid rgba(255,255,255,0.3); box-shadow: none; }
+        .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: white; }
+
+        /* --- 4. HEADER --- */
+        .header {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 12px 0;
+            z-index: 999;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo { height: 42px; width: auto; display: block; } /* Solo Logo */
+
+        /* --- 5. HERO SECTION --- */
+        .hero {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            background: linear-gradient(135deg, #FFF0F5 0%, #ffffff 100%);
+            overflow: hidden;
+            position: relative;
+        }
+        .hero h1 {
+            font-size: clamp(2.2rem, 5vw, 3.5rem);
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+        .hero p {
+            font-size: clamp(1.1rem, 2.5vw, 1.25rem);
+            color: var(--gray);
+            margin-bottom: 2.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* --- 6. CARDS & GRID --- */
+        .grid { display: grid; gap: 2rem; }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        .grid-4 { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-card);
+            border: 1px solid rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+        .card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); }
+
+        /* Iconos circulares */
+        .icon-box {
+            width: 50px; height: 50px;
+            background: var(--primary-light);
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Listas detalladas */
+        .detail-list { list-style: none; margin-top: 1rem; }
+        .detail-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 0.8rem;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+        .detail-list li i { color: var(--primary); margin-top: 4px; flex-shrink: 0; }
+        .detail-list.exclude li i { color: #9CA3AF; } /* Color gris para "no incluye" */
+
+        /* --- 7. PRICING --- */
+        .pricing-card {
+            background: var(--white);
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            border: 2px solid transparent;
+            box-shadow: var(--shadow-card);
+            display: flex; flex-direction: column; height: 100%;
+            position: relative;
+        }
+        .pricing-card.premium {
+            border-color: var(--primary);
+            background: linear-gradient(to bottom, #ffffff, #fff5f9);
+            transform: scale(1.02); z-index: 2;
+        }
+        .price-tag {
+            font-size: 3rem; font-weight: 800; color: var(--dark);
+            margin: 1rem 0; line-height: 1;
+        }
+        .price-tag span { font-size: 1rem; color: var(--gray); font-weight: 400; }
+        .price-tag.highlight { color: var(--primary); }
+
+        /* --- 8. SECCIONES NUEVAS (Legal, Pasos) --- */
+        .step-item { text-align: center; }
+        .step-number {
+            font-family: 'Rubik', sans-serif;
+            font-size: 3rem; font-weight: 800; color: rgba(204, 0, 102, 0.1);
+            line-height: 1; margin-bottom: -1rem; display: block;
+        }
+        
+        .legal-card {
+            background: #fff; border: 1px solid #e5e7eb; border-radius: 12px;
+            padding: 1.5rem; font-size: 0.85rem; color: var(--gray);
+            max-width: 800px; margin: 0 auto;
+        }
+
+        /* --- 9. FOOTER & EXTRAS --- */
+        .footer {
+            background: var(--dark); color: rgba(255,255,255,0.7);
+            padding: 3rem 1.5rem; text-align: center; font-size: 0.9rem;
+        }
+        
+        /* Floating WA */
+        .floating-wa {
+            position: fixed; bottom: 20px; right: 20px; z-index: 100;
+            background: #25D366; color: white; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero { padding-top: 110px; }
+            .hero h1 { font-size: 2.2rem; }
+            .grid-2 { grid-template-columns: 1fr; }
+            .pricing-card.premium { transform: scale(1); margin: 1.5rem 0; }
+            .header-btn-desktop { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-content">
+            <img src="logo.png" alt="Lázaro Marketing" class="logo" onerror="this.style.display='none';">
+            
+            <a href="#pricing" class="btn header-btn-desktop" style="padding: 10px 20px; font-size: 0.9rem;">
+                Ver Propuesta
+            </a>
+        </div>
+    </header>
+
+    <section class="hero text-center">
+        <div class="container" data-aos="fade-up">
+            <span class="badge">Propuesta Ejecutiva Confidencial</span>
+            <h1>Diseño Gráfico con <br><span class="text-gradient">Orden y Estrategia</span></h1>
+            <p>Diagnóstico, consistencia y control visual para las 4 marcas de Grupo PINSA. Eliminamos la improvisación y los retrabajos con un sistema escalable.</p>
+            
+            <div style="margin-top: 2rem;">
+                <a href="#pricing" class="btn btn-lg">
+                    Ver Opciones de Inversión <i data-feather="arrow-down"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 3rem;" data-aos="fade-up">
+                <h2>Diagnóstico Ejecutivo</h2>
+                <p style="color: var(--gray);">Análisis del estado actual de las marcas PINSA.</p>
+            </div>
+
+            <div class="card" style="margin-bottom: 2rem;" data-aos="fade-up">
+                <p style="font-size: 1.1rem; margin-bottom: 1rem;">
+                    El grupo PINSA presenta un nivel de madurez <strong>medio</strong> en su comunicación visual. Existe intención clara de profesionalismo, pero actualmente no hay una dirección creativa centralizada que garantice consistencia.
+                </p>
+                <p style="color: var(--gray);">Esto genera desgaste operativo, múltiples revisiones y dependencia de personas en lugar de procesos.</p>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card" style="padding: 1.5rem;" data-aos="fade-up" data-aos-delay="100">
+                    <div class="icon-box"><i data-feather="alert-triangle"></i></div>
+                    <h3>Falta de Lineamientos</h3>
+                    <p style="font-size: 0.95rem; color: var(--gray); margin-top: 0.5rem;">Cada marca desarrolla su comunicación de forma aislada sin un hilo conductor visual claro.</p>
+                </div>
+                <div class="card" style="padding: 1.5rem;" data-aos="fade-up" data-aos-delay="200">
+                    <div class="icon-box"><i data-feather="clock"></i></div>
+                    <h3>Planeación Reactiva</h3>
+                    <p style="font-size: 0.95rem; color: var(--gray); margin-top: 0.5rem;">La falta de calendario editorial genera urgencias innecesarias y estrés operativo.</p>
+                </div>
+                <div class="card" style="padding: 1.5rem;" data-aos="fade-up" data-aos-delay="300">
+                    <div class="icon-box"><i data-feather="refresh-cw"></i></div>
+                    <h3>Riesgo de Retrabajos</h3>
+                    <p style="font-size: 0.95rem; color: var(--gray); margin-top: 0.5rem;">Cambios constantes desde ventas afectan la consistencia y diluyen el impacto de marca.</p>
+                </div>
+                <div class="card" style="padding: 1.5rem;" data-aos="fade-up" data-aos-delay="400">
+                    <div class="icon-box"><i data-feather="layers"></i></div>
+                    <h3>Complejidad Operativa</h3>
+                    <p style="font-size: 0.95rem; color: var(--gray); margin-top: 0.5rem;">Gestionar 4 marcas requiere procesos industriales y escalables, no manuales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: white;">
+        <div class="container">
+            <div class="grid grid-2">
+                <div data-aos="fade-right">
+                    <h2 style="margin-bottom: 1.5rem;">Alcance: 4 Marcas</h2>
+                    <p style="color: var(--gray); margin-bottom: 2rem;">Marcas activas que requieren consistencia visual y control operativo.</p>
+                    <div class="grid grid-2" style="gap: 1rem;">
+                        <div style="background: var(--bg); padding: 1rem; border-radius: 8px; font-weight: 700;">C21 PINSA</div>
+                        <div style="background: var(--bg); padding: 1rem; border-radius: 8px; font-weight: 700;">PINSA Álica</div>
+                        <div style="background: var(--bg); padding: 1rem; border-radius: 8px; font-weight: 700;">Biosfera Residencial</div>
+                        <div style="background: var(--bg); padding: 1rem; border-radius: 8px; font-weight: 700;">Puerta Paraíso</div>
+                    </div>
+                </div>
+                
+                <div data-aos="fade-left">
+                    <h2 style="margin-bottom: 1.5rem;">Modelo de Trabajo</h2>
+                    <div class="card" style="border-left: 4px solid var(--primary);">
+                        <h3 style="margin-bottom: 1rem;">Equipo Externo Dedicado</h3>
+                        <p style="margin-bottom: 1rem; color: var(--gray);">Por el volumen de marcas y piezas, no trabajamos por diseño unitario. El modelo correcto es un sistema de flujo continuo.</p>
+                        <ul class="detail-list">
+                            <li><i data-feather="check"></i> Recurso especializado disponible</li>
+                            <li><i data-feather="check"></i> Procesos y revisiones limitadas</li>
+                            <li><i data-feather="check"></i> Planeación mensual y control</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header text-center" style="margin-bottom: 3rem;">
+                <h2>Detalle del Servicio</h2>
+                <p style="color: var(--gray);">Transparencia total en el alcance.</p>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card" data-aos="fade-up">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;">
+                        <i data-feather="check-circle" style="color: var(--primary);"></i>
+                        <h3>Qué incluye (Mensual)</h3>
+                    </div>
+                    <ul class="detail-list">
+                        <li><i data-feather="check"></i> <strong>48 Diseños para redes</strong> (12 por marca)</li>
+                        <li><i data-feather="check"></i> Adaptación a Historias incluida</li>
+                        <li><i data-feather="check"></i> <strong>8 Diseños editoriales</strong> (2 por marca)</li>
+                        <li><i data-feather="check"></i> Planeación visual mensual</li>
+                        <li><i data-feather="check"></i> Hasta 2 rondas de revisión por diseño</li>
+                        <li><i data-feather="check"></i> Gestión y organización de archivos</li>
+                        <li><i data-feather="check"></i> Comunicación por canal único</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="background: #f1f5f9; border: none;" data-aos="fade-up" data-aos-delay="100">
+                    <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 1.5rem;">
+                        <i data-feather="x-circle" style="color: #64748b;"></i>
+                        <h3 style="color: #64748b;">Qué no incluye (Cotizable aparte)</h3>
+                    </div>
+                    <p style="font-size: 0.9rem; color: var(--gray); margin-bottom: 1rem;">Estos servicios requieren propuesta específica:</p>
+                    <ul class="detail-list exclude">
+                        <li><i data-feather="x"></i> Estrategia de marketing profunda</li>
+                        <li><i data-feather="x"></i> Copywriting comercial avanzado</li>
+                        <li><i data-feather="x"></i> Producción de foto o video</li>
+                        <li><i data-feather="x"></i> Manejo de redes (Community Management)</li>
+                        <li><i data-feather="x"></i> Revisiones ilimitadas</li>
+                        <li><i data-feather="x"></i> Cambios urgentes fuera de calendario</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="pricing" style="background: white;">
+        <div class="container">
+            <div class="text-center" style="margin-bottom: 3rem;" data-aos="fade-up">
+                <h2>Opciones de Inversión</h2>
+                <p style="color: var(--gray);">Selecciona el nivel de compromiso estratégico.</p>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="pricing-card" data-aos="fade-up" data-aos-delay="100">
+                    <span class="badge">Plan Base</span>
+                    <h3>Diseño Estructurado</h3>
+                    <div class="price-tag">$35,000 <span>/mes</span></div>
+                    <p style="color: var(--gray); font-size: 0.9rem;">Ideal para mantener el orden y constancia.</p>
+                    
+                    <ul class="detail-list" style="margin: 2rem 0;">
+                        <li><i data-feather="check"></i> 48 Diseños Redes</li>
+                        <li><i data-feather="check"></i> 8 Diseños Editoriales</li>
+                        <li><i data-feather="check"></i> Hasta 4 Marcas</li>
+                        <li><i data-feather="check"></i> 2 Revisiones por pieza</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/523115111139?text=Hola%20Lázaro,%20confirmamos%20el%20Plan%20Base%20de%20$35,000%20para%20PINSA.%20¿Cuáles%20son%20los%20pasos?" class="btn" style="background: var(--dark);">
+                        Elegir Plan Base
+                    </a>
+                    <p style="text-align: center; font-size: 0.8rem; margin-top: 1rem; color: #94a3b8;">Contrato mínimo 3 meses</p>
+                </div>
+
+                <div class="pricing-card premium" data-aos="fade-up" data-aos-delay="200">
+                    <div style="position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase;">
+                        Recomendado PINSA
+                    </div>
+                    <span class="badge" style="background: rgba(204,0,102,0.1); color: var(--primary);">Solución Integral</span>
+                    <h3 style="color: var(--primary);">Equipo Externo</h3>
+                    <div class="price-tag highlight">$45,000 <span>/mes</span></div>
+                    <p style="color: var(--gray); font-size: 0.9rem;">Velocidad, prioridad y soporte especializado.</p>
+                    
+                    <ul class="detail-list" style="margin: 2rem 0;">
+                        <li><i data-feather="check-circle"></i> <strong>Todo el paquete anterior</strong></li>
+                        <li><i data-feather="check-circle"></i> Prioridad en agenda</li>
+                        <li><i data-feather="check-circle"></i> Ajustes de línea gráfica</li>
+                        <li><i data-feather="check-circle"></i> Respuesta &lt; 4 horas hábiles</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/523115111139?text=Hola,%20confirmamos%20el%20paquete%20Equipo%20Externo%20de%20Diseño%20por%20$45,000%20MXN%20mensuales%20para%20PINSA.%20¿Cuáles%20son%20los%20siguientes%20pasos?" class="btn btn-full">
+                        Elegir Recomendado
+                    </a>
+                    <p style="text-align: center; font-size: 0.8rem; margin-top: 1rem; color: #94a3b8;">Contrato sugerido 6 meses</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="card" style="background: var(--dark); color: white; border: none;" data-aos="zoom-in">
+                <div style="display: flex; flex-direction: column; md-flex-direction: row; gap: 1.5rem; align-items: center; text-align: center;">
+                    <div class="icon-box" style="background: rgba(255,255,255,0.1); color: #fbbf24; width: 70px; height: 70px;">
+                        <i data-feather="gift" style="width: 32px; height: 32px;"></i>
+                    </div>
+                    <div style="text-align: left;">
+                        <h3 style="margin-bottom: 0.5rem; color: white;">Bono de Activación Estratégica</h3>
+                        <p style="opacity: 0.8; font-size: 0.95rem; margin-bottom: 1rem;">Confirmando en 48 horas, incluimos sin costo:</p>
+                        <ul class="detail-list" style="display: flex; flex-wrap: wrap; gap: 1rem; margin: 0;">
+                            <li style="color: white; margin: 0;"><i data-feather="check" style="color: #4ade80;"></i> Guía de mensajes</li>
+                            <li style="color: white; margin: 0;"><i data-feather="check" style="color: #4ade80;"></i> Copys base</li>
+                            <li style="color: white; margin: 0;"><i data-feather="check" style="color: #4ade80;"></i> Definición de tono</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="padding-top: 0;">
+        <div class="container">
+            <h2 class="text-center" style="margin-bottom: 3rem;">Siguientes Pasos</h2>
+            <div class="grid grid-3 text-center">
+                <div data-aos="fade-up" data-aos-delay="100">
+                    <span class="step-number">1</span>
+                    <h4 style="margin-top: 1rem;">Confirmación</h4>
+                    <p style="font-size: 0.9rem; color: var(--gray);">Envía mensaje de WhatsApp con el paquete elegido.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="200">
+                    <span class="step-number">2</span>
+                    <h4 style="margin-top: 1rem;">Formalización</h4>
+                    <p style="font-size: 0.9rem; color: var(--gray);">Firma digital de contrato y primer pago.</p>
+                </div>
+                <div data-aos="fade-up" data-aos-delay="300">
+                    <span class="step-number">3</span>
+                    <h4 style="margin-top: 1rem;">Arranque</h4>
+                    <p style="font-size: 0.9rem; color: var(--gray);">Entrega de accesos e inicio de planeación.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: #f8fafc; padding: 3rem 0;">
+        <div class="container">
+            <div class="legal-card">
+                <h4 style="margin-bottom: 1rem; color: var(--dark);">Condiciones del Servicio</h4>
+                <ul class="detail-list">
+                    <li><i data-feather="info"></i> Entregables mensuales sujetos a planeación aprobada.</li>
+                    <li><i data-feather="info"></i> Máximo 2 rondas de revisión por pieza.</li>
+                    <li><i data-feather="info"></i> Cambios de concepto una vez aprobado se cotizan aparte.</li>
+                    <li><i data-feather="info"></i> Solicitudes urgentes fuera de calendario no están incluidas.</li>
+                    <li><i data-feather="info"></i> El servicio inicia una vez confirmado el contrato y primer pago.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <img src="logo.png" alt="Logo" style="height: 30px; margin: 0 auto 1rem; opacity: 0.5;">
+            <p style="margin-bottom: 1rem;">Sistemas de diseño, ventas y transformación digital.</p>
+            <p style="font-size: 0.8rem; opacity: 0.5;">Documento confidencial. Uso interno PINSA.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/523115111139?text=Hola,%20confirmamos%20el%20paquete%20Equipo%20Externo%20de%20Diseño%20por%20$45,000%20MXN%20mensuales%20para%20PINSA." class="floating-wa">
+        <i data-feather="message-circle" style="width: 28px; height: 28px;"></i>
+    </a>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        feather.replace();
+        AOS.init({ duration: 800, offset: 50, once: true });
+    </script>
+</body>
+</html>
