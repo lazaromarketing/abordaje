@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Marketing | Paneles Solares Tepic | Lázaro Marketing</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script src="https://unpkg.com/feather-icons"></script>
+    
+    <style>
+        /* --- ESTILOS MEJORADOS (UI/UX) --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --white: #FFFFFF;
+            --bg-light: #F3F4F6;
+            --text-primary: #111827;
+            --text-secondary: #4B5563;
+            --accent: #CC0066;
+            --accent-hover: #A30052;
+            --accent-light: #FDF2F8;
+            --border: #E5E7EB;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius: 12px;
+            --radius-lg: 16px;
+            --max-width: 1100px;
+            
+            /* Colores de Oferta */
+            --urgent-bg: #FFFBEB;
+            --urgent-text: #B45309;
+            --urgent-border: #FCD34D;
+        }
+        
+        body {
+            font-family: 'Rubik', sans-serif;
+            font-weight: 400;
+            color: var(--text-primary);
+            background-color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-top: 40px; /* Espacio para la barra de oferta */
+        }
+        
+        h1, h2, h3, h4 {
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        h1 { font-size: clamp(2rem, 5vw, 2.8rem); }
+        h2 { font-size: clamp(1.5rem, 4vw, 2rem); color: var(--text-primary); }
+        h3 { font-size: 1.25rem; font-weight: 700; }
+        
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 clamp(1rem, 3vw, 2rem);
+        }
+        
+        /* BARRA DE OFERTA */
+        .offer-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(90deg, #1F2937 0%, var(--accent) 100%);
+            color: white;
+            z-index: 1000;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .offer-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        
+        .countdown {
+            font-family: monospace;
+            font-weight: 700;
+            background: rgba(255,255,255,0.2);
+            padding: 2px 8px;
+            border-radius: 4px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius-lg);
+            padding: clamp(1.5rem, 4vw, 2.5rem);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.875rem 1.75rem;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: center;
+        }
+        
+        .btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(204, 0, 102, 0.3);
+        }
+        
+        .btn-lg { padding: 1rem 2.5rem; font-size: 1.125rem; }
+        .btn-full { width: 100%; }
+        
+        .badge {
+            display: inline-block;
+            background-color: var(--accent-light);
+            color: var(--accent);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        /* HEADER */
+        .header {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem 0;
+            margin-bottom: 0;
+        }
+        
+        .header-content { display: flex; justify-content: space-between; align-items: center; }
+        
+        .logo-text {
+            font-weight: 800;
+            font-size: 1.25rem;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        
+        /* HERO SECTION */
+        .hero {
+            padding: clamp(4rem, 8vw, 6rem) 0 clamp(3rem, 6vw, 4rem);
+            background: linear-gradient(135deg, #FFF0F7 0%, #F3F4F6 100%);
+        }
+        
+        .hero-content { max-width: 800px; margin: 0 auto; text-align: center; }
+        .hero-subtitle { font-size: 1.25rem; color: var(--text-secondary); margin-bottom: 2rem; }
+        
+        .hero-features {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        
+        .hero-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 500;
+        }
+        
+        /* SECTIONS & GRIDS */
+        .section { padding: clamp(3rem, 5vw, 4.5rem) 0; }
+        .bg-light { background-color: var(--bg-light); }
+        
+        .section-header { text-align: center; margin-bottom: 3rem; }
+        .section-header p { max-width: 700px; margin: 0.5rem auto 0; color: var(--text-secondary); }
+        
+        .grid { display: grid; gap: 2rem; }
+        .grid-2 { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); }
+        .grid-3 { grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
+        
+        /* PAQUETES & OFERTA */
+        .packages-grid {
+            display: grid;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        @media (min-width: 768px) { .packages-grid { grid-template-columns: repeat(2, 1fr); } }
+        
+        .package-card { position: relative; border: 1px solid var(--border); }
+        .package-card.featured { border: 2px solid var(--accent); transform: scale(1.02); z-index: 10; }
+        
+        .package-price {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--text-primary);
+            margin: 1rem 0 0.5rem 0;
+        }
+
+        .offer-highlight {
+            background-color: var(--urgent-bg);
+            border: 1px dashed var(--urgent-border);
+            color: var(--urgent-text);
+            padding: 0.75rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            display: flex;
+            gap: 0.5rem;
+            align-items: start;
+        }
+        
+        .package-features { list-style: none; margin: 1.5rem 0; }
+        .package-features li { display: flex; align-items: start; gap: 0.75rem; margin-bottom: 0.8rem; }
+        
+        /* BULLETS & NOTES */
+        .bullet-list { list-style: none; }
+        .bullet-list li { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 1rem; }
+        .bullet-icon { color: var(--accent); flex-shrink: 0; margin-top: 3px; }
+        
+        .note-box {
+            background-color: #EFF6FF;
+            border-left: 4px solid #3B82F6;
+            padding: 1.25rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin-top: 2rem;
+        }
+        
+        /* STICKY WHATSAPP */
+        .sticky-whatsapp {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 90;
+            display: none;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 640px) {
+            .header-btn { display: none; }
+            .sticky-whatsapp { display: flex; }
+            .sticky-whatsapp .btn { padding: 0; width: 60px; height: 60px; border-radius: 50%; }
+            .sticky-whatsapp span { display: none; }
+            .offer-bar { font-size: 0.75rem; flex-direction: column; gap: 4px; padding: 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="offer-bar">
+        <div class="container offer-content">
+            <span style="display: flex; align-items: center; gap: 6px; font-weight: 700;">
+                <i data-feather="clock" width="14" height="14"></i> OFERTA FLASH 24H
+            </span>
+            <span>Activa hoy y recibe <strong>1 MES EXTRA GRATIS</strong> en cualquier paquete.</span>
+            <span>Expira en: <span id="countdown" class="countdown">23:59:59</span></span>
+        </div>
+    </div>
+
+    <div class="sticky-whatsapp">
+        <a href="https://wa.me/5213115111139?text=Hola%2C%20quiero%20aprovechar%20la%20OFERTA%20FLASH%20antes%20de%20que%20termine." class="btn btn-lg">
+            <i data-feather="message-circle"></i>
+            <span>WhatsApp</span>
+        </a>
+    </div>
+
+    <header class="header">
+        <div class="container header-content">
+           <div class="logo-container" style="display: flex; align-items: center; gap: 12px;">
+                <img src="logo.png" alt="Lázaro Marketing" style="height: 40px; width: auto;" onerror="this.style.display='none'">
+                <div>
+                    <a href="#" class="logo-text">Somos Lázaro Marketing</a>
+                    <div style="font-size: 0.75rem; color: var(--text-secondary);">Sistema de ventas por anuncios</div>
+                </div>
+            </div>
+            <div class="header-btn">
+                <a href="https://wa.me/5213115111139?text=Hola%2C%20soy%20Alejandro.%20Quiero%20avanzar%20con%20la%20propuesta." class="btn">
+                    <i data-feather="message-circle"></i>
+                    Hablar por WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container hero-content">
+            <h1>Propuesta de Marketing para Paneles Solares en Tepic</h1>
+            <p class="hero-subtitle">Sistema de anuncios + contenido para generar cotizaciones reales y ventas (sin CRM, sin web, directo a WhatsApp).</p>
+            
+            <div class="hero-features">
+                <div class="hero-feature">
+                    <i data-feather="map-pin" style="color: var(--accent); width: 16px;"></i>
+                    Enfoque: Tepic + Tuxpan
+                </div>
+                <div class="hero-feature">
+                    <i data-feather="target" style="color: var(--accent); width: 16px;"></i>
+                    Meta: Cotizaciones + Cierres
+                </div>
+                <div class="hero-feature">
+                    <i data-feather="bar-chart-2" style="color: var(--accent); width: 16px;"></i>
+                    Reportes semanales
+                </div>
+            </div>
+            
+            <div style="margin: 2rem 0;">
+                <a href="#paquetes" class="btn btn-lg">
+                    <i data-feather="check-circle"></i>
+                    Ver Oferta Especial
+                </a>
+            </div>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; font-style: italic;">Propuesta diseñada para instalador certificado.</p>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Contexto del Cliente</h2>
+            </div>
+            <div class="card">
+                <ul class="bullet-list">
+                    <li>
+                        <i data-feather="user" class="bullet-icon"></i>
+                        <strong>Instalador certificado</strong> con experiencia real en campo
+                    </li>
+                    <li>
+                        <i data-feather="users" class="bullet-icon"></i>
+                        <strong>Equipo de 2 empleados</strong> para instalaciones
+                    </li>
+                    <li>
+                        <i data-feather="message-square" class="bullet-icon"></i>
+                        <strong>Venta actual por referidos</strong> - quiere crecimiento acelerado
+                    </li>
+                    <li>
+                        <i data-feather="target" class="bullet-icon"></i>
+                        <strong>Objetivo:</strong> dominar mercado residencial en Tepic y crecer a comercial
+                    </li>
+                    <li>
+                        <i data-feather="award" class="bullet-icon"></i>
+                        <strong>Diferenciador clave:</strong> instalación superior (estructura, impermeabilización, protecciones)
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Lo que encontramos en el mercado (Tepic / Tuxpan)</h2>
+                <p>Analizamos el mercado local de paneles solares para entender precios, competencia y oportunidades.</p>
+            </div>
+            
+            <div class="grid grid-3">
+                <div class="card">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent);">Competencia</h3>
+                    <ul class="bullet-list" style="font-size: 0.9rem;">
+                        <li>
+                            <i data-feather="alert-circle" class="bullet-icon"></i>
+                            <div><strong>Tepic:</strong> 14+ competidores identificados (mercado fragmentado)</div>
+                        </li>
+                        <li>
+                            <i data-feather="alert-circle" class="bullet-icon"></i>
+                            <div><strong>Tuxpan:</strong> 3–5 operadores visibles (menor presencia)</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent);">Rangos de precio</h3>
+                    <ul class="bullet-list" style="font-size: 0.9rem;">
+                        <li>
+                            <i data-feather="dollar-sign" class="bullet-icon"></i>
+                            <div><strong>Por panel instalado:</strong> $10,000 – $17,000 MXN</div>
+                        </li>
+                        <li>
+                            <i data-feather="dollar-sign" class="bullet-icon"></i>
+                            <div><strong>Sistemas típicos:</strong> $85,000 – $150,000 MXN</div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="card">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent);">Hallazgo crítico</h3>
+                    <ul class="bullet-list" style="font-size: 0.9rem;">
+                        <li>
+                            <i data-feather="alert-triangle" class="bullet-icon"></i>
+                            <div><strong>Objeción #1 NO es el precio:</strong> es miedo a mala instalación</div>
+                        </li>
+                        <li>
+                            <i data-feather="alert-triangle" class="bullet-icon"></i>
+                            <div><strong>Quejas:</strong> goteras, estructura floja, abandono post-venta</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Diagnóstico Ejecutivo</h2>
+            </div>
+            <div class="card">
+                <p style="margin-bottom: 1.5rem; font-size: 1.1rem;">
+                    El mercado está saturado por precio, no por calidad. La mayoría vende con mensajes genéricos, 
+                    pero no comunica ingeniería real. Esto abre una oportunidad clara: posicionar a Alejandro por instalación certificada y garantía honrada.
+                </p>
+                
+                <div class="grid grid-3" style="margin-top: 2rem;">
+                    <div style="text-align: center; padding: 1rem;">
+                        <i data-feather="trending-up" style="color: var(--accent); margin-bottom: 1rem; width: 32px; height: 32px;"></i>
+                        <h4>Oportunidad</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Diferenciar por calidad y seguridad (no por barato)</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 1rem;">
+                        <i data-feather="shield" style="color: var(--accent); margin-bottom: 1rem; width: 32px; height: 32px;"></i>
+                        <h4>Conversión</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Depende de confianza (evidencia + casos reales)</p>
+                    </div>
+                    
+                    <div style="text-align: center; padding: 1rem;">
+                        <i data-feather="filter" style="color: var(--accent); margin-bottom: 1rem; width: 32px; height: 32px;"></i>
+                        <h4>Filtrado</h4>
+                        <p style="color: var(--text-secondary); font-size: 0.9rem;">Sistema debe filtrar para evitar prospectos curiosos</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Objetivo del trabajo (30-90 días)</h2>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent);">Objetivo principal</h3>
+                    <p style="margin-bottom: 1.5rem;">
+                        Generar demanda constante en Tepic mediante anuncios y contenido, para lograr cotizaciones reales y cierres.
+                    </p>
+                    
+                    <div style="background-color: var(--accent-light); padding: 1.5rem; border-radius: var(--radius);">
+                        <h4 style="margin-bottom: 1rem;">📊 KPIs (Éxito)</h4>
+                        <ul class="bullet-list" style="font-size: 0.9rem;">
+                            <li><i data-feather="message-circle" class="bullet-icon"></i> Leads calificados (recibo CFE + zona)</li>
+                            <li><i data-feather="file-text" class="bullet-icon"></i> Cotizaciones generadas por semana</li>
+                            <li><i data-feather="dollar-sign" class="bullet-icon"></i> Costo por lead</li>
+                            <li><i data-feather="trending-up" class="bullet-icon"></i> Cierres reportados</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <h3 style="margin-bottom: 1rem; color: var(--accent);">Qué haremos (sin CRM, sin web)</h3>
+                    <ul class="bullet-list">
+                        <li><i data-feather="thumbs-up" class="bullet-icon"></i> Optimización de redes (Facebook + Instagram)</li>
+                        <li><i data-feather="image" class="bullet-icon"></i> Contenido de confianza (casos reales)</li>
+                        <li><i data-feather="target" class="bullet-icon"></i> Anuncios Meta para generar leads</li>
+                        <li><i data-feather="repeat" class="bullet-icon"></i> Remarketing</li>
+                        <li><i data-feather="message-square" class="bullet-icon"></i> Estructura de mensajes y guiones</li>
+                        <li><i data-feather="bar-chart-2" class="bullet-icon"></i> Reporte semanal con optimización</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Entregables del servicio</h2>
+                <p>Todo lo necesario para vender por redes sin complicarte con tecnología extra.</p>
+            </div>
+            
+            <div class="card">
+                <div class="grid grid-2">
+                    <ul class="bullet-list">
+                        <li><i data-feather="settings" class="bullet-icon"></i> Configuración de campañas (Meta Ads)</li>
+                        <li><i data-feather="layout" class="bullet-icon"></i> Creativos publicitarios (imágenes/carruseles)</li>
+                        <li><i data-feather="edit-3" class="bullet-icon"></i> Copies optimizados</li>
+                        <li><i data-feather="map-pin" class="bullet-icon"></i> Segmentación local (Tepic)</li>
+                    </ul>
+                    <ul class="bullet-list">
+                        <li><i data-feather="refresh-cw" class="bullet-icon"></i> Remarketing y públicos personalizados</li>
+                        <li><i data-feather="message-square" class="bullet-icon"></i> Guiones de atención WhatsApp</li>
+                        <li><i data-feather="file-text" class="bullet-icon"></i> Reporte semanal (KPIs + ajustes)</li>
+                        <li><i data-feather="zap" class="bullet-icon"></i> Optimización continua</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>No incluye (se cotiza por separado)</h2>
+            </div>
+            <div class="card">
+                <div class="grid grid-2">
+                    <ul class="bullet-list" style="color: var(--text-secondary);">
+                        <li><i data-feather="x" class="bullet-icon" style="color: #9CA3AF;"></i> CRM / automatizaciones</li>
+                        <li><i data-feather="x" class="bullet-icon" style="color: #9CA3AF;"></i> Página web / landing pages</li>
+                        <li><i data-feather="x" class="bullet-icon" style="color: #9CA3AF;"></i> Google Ads (opcional a futuro)</li>
+                    </ul>
+                    <ul class="bullet-list" style="color: var(--text-secondary);">
+                        <li><i data-feather="x" class="bullet-icon" style="color: #9CA3AF;"></i> Producción profesional de video/foto</li>
+                        <li><i data-feather="x" class="bullet-icon" style="color: #9CA3AF;"></i> Diseño de marca completo</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="paquetes">
+        <div class="container">
+            <div class="section-header">
+                <h2>Paquetes de trabajo</h2>
+                <p>2 opciones claras. Si activas en 24h, obtienes un <strong>Mes Extra Gratis</strong> en cualquiera de los dos.</p>
+            </div>
+            
+            <div class="packages-grid">
+                <div class="card package-card">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <h3>Plan Básico — Ventas</h3>
+                        <span class="badge">Contrato 3 meses</span>
+                    </div>
+                    
+                    <p style="color: var(--text-secondary); font-style: italic;">Ideal para arrancar en Tepic.</p>
+                    
+                    <div class="package-price">$37,000 MXN</div>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">($12,333 MXN/mes)</p>
+                    
+                    <div class="offer-highlight">
+                        <i data-feather="gift" style="flex-shrink:0;"></i>
+                        <div>
+                            <strong>¡OFERTA 24H!</strong><br>
+                            + 1 Mes GRATIS (Total 4 meses)<br>
+                            + El 1er mes incluye beneficios del Plan Recomendado (Más creativos y A/B).
+                        </div>
+                    </div>
+                    
+                    <ul class="package-features">
+                        <li><i data-feather="check" style="color: var(--accent);"></i> Meta Ads (FB/IG) campañas de leads</li>
+                        <li><i data-feather="check" style="color: var(--accent);"></i> 6-8 creativos básicos mensuales</li>
+                        <li><i data-feather="check" style="color: var(--accent);"></i> Reporte semanal KPIs</li>
+                        <li><i data-feather="shield" style="color: var(--accent);"></i> Garantía de resultados: 60 días</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/5213115111139?text=Hola%2C%20quiero%20el%20Plan%20B%C3%A1sico%20con%20la%20OFERTA%20de%201%20mes%20gratis%20y%20upgrade." class="btn btn-full">
+                        Elegir Básico + Oferta
+                    </a>
+                </div>
+                
+                <div class="card package-card featured">
+                    <div style="position: absolute; top: 0; right: 0; background: var(--accent); color: white; padding: 4px 12px; font-size: 0.75rem; font-weight: 700; border-bottom-left-radius: 12px;">RECOMENDADO</div>
+                    
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                        <h3>Plan Aceleración</h3>
+                        <span class="badge">Contrato 6 meses</span>
+                    </div>
+                    
+                    <p style="color: var(--text-secondary); font-style: italic;">Escalar rápido y construir autoridad.</p>
+                    
+                    <div class="package-price">$57,000 MXN</div>
+                    <p style="font-size: 0.85rem; color: var(--text-secondary);">($9,500 MXN/mes)</p>
+                    
+                    <div class="offer-highlight" style="background-color: #ECFDF5; border-color: #10B981; color: #047857;">
+                        <i data-feather="gift" style="flex-shrink:0;"></i>
+                        <div>
+                            <strong>¡OFERTA 24H!</strong><br>
+                            + 1 Mes GRATIS (Total 7 meses de servicio).
+                        </div>
+                    </div>
+                    
+                    <ul class="package-features">
+                        <li><i data-feather="check" style="color: var(--accent);"></i> <strong>Todo el plan básico incluido</strong></li>
+                        <li><i data-feather="check" style="color: var(--accent);"></i> 12-16 creativos (Volumen mayor)</li>
+                        <li><i data-feather="check" style="color: var(--accent);"></i> Pruebas A/B de anuncios</li>
+                        <li><i data-feather="check" style="color: var(--accent);"></i> Estrategia de contenido semanal</li>
+                        <li><i data-feather="shield" style="color: var(--accent);"></i> Garantía con reembolso*</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/5213115111139?text=Hola%2C%20quiero%20el%20Plan%20Recomendado%20con%20la%20OFERTA%20de%201%20mes%20extra%20gratis." class="btn btn-full">
+                        Elegir Recomendado + Oferta
+                    </a>
+                    
+                     <p style="font-size: 0.75rem; color: var(--text-secondary); margin-top: 0.5rem; text-align: center;">
+                        *Reembolso del 2do pago si no hay leads en 60 días
+                    </p>
+                </div>
+            </div>
+            
+            <div class="note-box">
+                <strong>📌 Condición de garantía:</strong> Si en 60 días no se ven resultados (ningún lead calificado), se cancela el trato y se reembolsa el dinero del segundo pago.
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Inversión sugerida en anuncios (Meta Ads)</h2>
+                <p>La inversión publicitaria se paga directo a Facebook/Instagram.</p>
+            </div>
+            
+            <div class="grid grid-2">
+                <div class="card" style="text-align: center;">
+                    <i data-feather="play-circle" style="color: var(--accent); margin-bottom: 1rem; width: 40px; height: 40px;"></i>
+                    <h3>Inicio recomendado</h3>
+                    <p style="font-size: 1.25rem; color: var(--accent); font-weight: 600;">$200–$500 MXN diarios</p>
+                    <p style="color: var(--text-secondary);">(Validar mercado)</p>
+                </div>
+                
+                <div class="card" style="text-align: center;">
+                    <i data-feather="trending-up" style="color: var(--accent); margin-bottom: 1rem; width: 40px; height: 40px;"></i>
+                    <h3>Escalamiento</h3>
+                    <p style="font-size: 1.25rem; color: var(--accent); font-weight: 600;">$500–$1,000 MXN diarios</p>
+                    <p style="color: var(--text-secondary);">(Según capacidad de instalación)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Siguiente paso para arrancar</h2>
+            </div>
+            
+            <div class="card">
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="background: var(--accent); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">1</div>
+                    <div><h4>Confirmación del paquete por WhatsApp</h4><p>Elige el plan y asegura la oferta de 24h.</p></div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="background: var(--accent); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">2</div>
+                    <div><h4>Pago de anticipo / primer mes</h4><p>Transferencia bancaria o depósito.</p></div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="background: var(--accent); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">3</div>
+                    <div><h4>Accesos a Facebook/Instagram</h4><p>Compartir acceso como "Socio Publicitario".</p></div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                    <div style="background: var(--accent); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">4</div>
+                    <div><h4>Levantamiento de material</h4><p>Fotos de trabajos, garantías, casos de éxito.</p></div>
+                </div>
+                
+                <div style="display: flex; gap: 1rem;">
+                    <div style="background: var(--accent); color: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-weight: bold;">5</div>
+                    <div><h4>Campañas activas en 7-10 días</h4><p>Configuración completa y primer reporte.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" style="background: linear-gradient(135deg, #fdf2f8 0%, #f3f4f6 100%); text-align: center;">
+        <div class="container">
+            <h2>¿Avanzamos?</h2>
+            <p style="margin-bottom: 2rem;">Si te hace sentido operar con un sistema simple y medible, confirma por WhatsApp y arrancamos.</p>
+            <a href="https://wa.me/5213115111139?text=Hola%2C%20quiero%20aprovechar%20la%20OFERTA%20y%20arrancar%20ya." class="btn btn-lg">
+                <i data-feather="message-circle"></i>
+                Confirmar Oferta por WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <footer class="footer" style="background: var(--text-primary); color: white; padding: 3rem 0; text-align: center;">
+        <div class="container">
+            <h3>Somos Lázaro Marketing</h3>
+            <p style="opacity: 0.8; margin-bottom: 1rem;">Sistemas de diseño, ventas y transformación digital.</p>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+        
+        // --- SCRIPT CONTADOR 24H (Persistente en navegador) ---
+        function startTimer(display) {
+            // Revisar si ya existe fecha final en localStorage
+            var savedEndTime = localStorage.getItem('offerEndTime');
+            var now = new Date().getTime();
+            
+            // Si no existe o ya pasó, crear nueva fecha (24 horas desde ahora)
+            if (!savedEndTime || now > savedEndTime) {
+                var endTime = new Date().getTime() + (24 * 60 * 60 * 1000); // 24 horas
+                localStorage.setItem('offerEndTime', endTime);
+                savedEndTime = endTime;
+            }
+
+            var interval = setInterval(function () {
+                var now = new Date().getTime();
+                var distance = savedEndTime - now;
+
+                if (distance < 0) {
+                    clearInterval(interval);
+                    display.textContent = "00:00:00";
+                    localStorage.removeItem('offerEndTime'); // Reinicia si expira (opcional)
+                    return;
+                }
+
+                var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                // Formato 00:00:00
+                hours = hours < 10 ? "0" + hours : hours;
+                minutes = minutes < 10 ? "0" + minutes : minutes;
+                seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                display.textContent = hours + ":" + minutes + ":" + seconds;
+            }, 1000);
+        }
+
+        window.onload = function () {
+            var display = document.querySelector('#countdown');
+            startTimer(display);
+            
+            // Lógica Sticky Button (aparece al scroll)
+            window.addEventListener('scroll', function() {
+                const stickyBtn = document.querySelector('.sticky-whatsapp');
+                if (window.innerWidth <= 768 && window.scrollY > 300) {
+                    stickyBtn.style.display = 'flex';
+                } else if (window.scrollY <= 300) {
+                    stickyBtn.style.display = 'none';
+                }
+            });
+        };
+    </script>
+</body>
+</html>
