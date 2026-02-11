@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lázaro Marketing | Infraestructura Digital High-Performance</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Rubik:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- BRAND SYSTEM LÁZARO (Original Respetado) --- */
+        :root {
+            --magenta: #CC0066; 
+            --magenta-dark: #a30052;
+            --magenta-glow: rgba(204, 0, 102, 0.25);
+            --dark-bg: #050505;      /* Negro más profundo y limpio */
+            --dark-card: #111111;    
+            --white: #FFFFFF;
+            --text-gray: #9CA3AF;
+            --light-bg: #F9FAFB;     /* Gris muy sutil para descanso visual */
+            
+            --success: #10B981;
+            --alert: #EF4444;
+        }
+
+        /* RESET */
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--white);
+            color: var(--dark-bg);
+            line-height: 1.6;
+            overflow-x: hidden;
+            padding-bottom: 80px; /* Espacio para la barra de WhatsApp */
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Rubik', sans-serif;
+            line-height: 1.1;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* --- UTILIDADES --- */
+        .text-magenta { color: var(--magenta); }
+        .text-center { text-align: center; }
+        
+        /* --- BOTONES MEJORADOS --- */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            border-radius: 6px;
+            font-family: 'Rubik', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-primary {
+            background-color: var(--magenta);
+            color: white;
+            box-shadow: 0 4px 15px var(--magenta-glow);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background-color: var(--magenta-dark);
+            box-shadow: 0 8px 25px var(--magenta-glow);
+        }
+
+        .btn-outline {
+            border: 2px solid var(--magenta);
+            color: var(--magenta);
+            background: transparent;
+        }
+        .btn-outline:hover {
+            background: var(--magenta);
+            color: white;
+        }
+        
+        .btn-outline-dark {
+            border: 1px solid rgba(255,255,255,0.2);
+            color: white;
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(5px);
+        }
+        .btn-outline-dark:hover {
+            border-color: white;
+            background: rgba(255,255,255,0.15);
+        }
+
+        /* Botón pequeño "CTA" para insertar en textos */
+        .btn-text-cta {
+            color: var(--magenta);
+            font-weight: 700;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+
+        /* --- NAVBAR --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(5, 5, 5, 0.9); 
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            padding: 15px 0;
+        }
+        .nav-content { display: flex; justify-content: space-between; align-items: center; }
+        .logo-img { height: 35px; width: auto; }
+
+        /* --- HERO (DARK MODE - High Tech) --- */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+            background-color: var(--dark-bg);
+            /* Degradado sutil magenta solo arriba */
+            background-image: radial-gradient(circle at 50% -20%, rgba(204, 0, 102, 0.15), transparent 50%);
+            color: white;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 24px;
+            letter-spacing: -1px;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-gray);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-img-box {
+            margin-top: 50px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 0 0 50px rgba(204, 0, 102, 0.1); /* Glow muy sutil magenta */
+        }
+
+        /* --- MITO (LIGHT MODE - Limpio) --- */
+        .myth-section { padding: 100px 0; background-color: var(--white); }
+        .myth-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px; margin-top: 50px;
+        }
+        .myth-card { 
+            padding: 30px; 
+            border-radius: 12px; 
+            background: white; 
+            border: 1px solid #F3F4F6;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+        .myth-card:hover { transform: translateY(-5px); border-color: var(--magenta); }
+
+        /* --- COMPARATIVA (LIGHT GRAY - Educativo) --- */
+        .tech-section { padding: 100px 0; background: var(--light-bg); }
+        .vs-container {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 50px;
+            align-items: center;
+        }
+        
+        .card-bad {
+            padding: 40px; border-radius: 16px;
+            background: #FFF;
+            border: 1px solid #E5E7EB;
+            opacity: 0.8;
+            filter: grayscale(1); /* Lo malo se ve apagado */
+            transition: 0.3s;
+        }
+        .card-bad:hover { filter: grayscale(0); opacity: 1; }
+        
+        .card-good {
+            padding: 40px; border-radius: 16px;
+            border: 2px solid var(--magenta);
+            background: white;
+            box-shadow: 0 20px 40px rgba(204,0,102,0.08);
+            transform: scale(1.02);
+            position: relative;
+            z-index: 10;
+        }
+
+        .tech-list li { margin-bottom: 15px; display: flex; gap: 10px; align-items: center; font-weight: 500; }
+
+        /* --- MAPAS (DARK MODE - Contraste fuerte) --- */
+        .maps-section { padding: 100px 0; background: var(--dark-bg); color: white; }
+        .maps-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+
+        /* --- OFERTA (BRUNSON STACK) --- */
+        .offer-section { padding: 100px 0; background: var(--white); }
+        .stack-box {
+            max-width: 900px; margin: 0 auto;
+            border: 2px dashed var(--magenta); /* Borde punteado estilo cupón */
+            padding: 50px; border-radius: 20px;
+            background: #FAFAFA;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .stack-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 0; border-bottom: 1px solid #E5E7EB;
+        }
+        .stack-price { color: #9CA3AF; text-decoration: line-through; font-weight: 600; font-size: 1.1rem; }
+        
+        .final-price-box {
+            background: var(--dark-bg); color: white;
+            padding: 40px; border-radius: 12px;
+            text-align: center; margin-top: 40px;
+            border: 1px solid var(--magenta); /* Toque Lázaro */
+        }
+
+        /* --- BIO --- */
+        .bio-section { padding: 80px 0; background: var(--light-bg); border-top: 1px solid #E5E7EB; }
+        .bio-flex { display: flex; gap: 30px; align-items: center; max-width: 800px; margin: 0 auto; }
+        .avatar { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid var(--magenta); }
+
+        /* FOOTER */
+        footer { padding: 60px 0 100px; text-align: center; font-size: 0.9rem; color: #666; background: #FFF; border-top: 1px solid #E5E7EB; }
+
+        /* --- NUEVO: BARRA FLOTANTE DE WHATSAPP (ESTILO APP/DOCK) --- */
+        /* Reemplaza la burbuja genérica por esto */
+        .whatsapp-dock {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 450px;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 10px 10px 10px 20px;
+            border-radius: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 9999;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: transform 0.3s ease;
+            text-decoration: none;
+        }
+        .whatsapp-dock:hover {
+            transform: translateX(-50%) translateY(-5px);
+            border-color: var(--magenta);
+        }
+        
+        .wa-info {
+            display: flex; flex-direction: column;
+        }
+        .wa-title { color: white; font-weight: 700; font-size: 0.95rem; font-family: 'Rubik', sans-serif;}
+        .wa-subtitle { color: var(--success); font-size: 0.75rem; display: flex; align-items: center; gap: 5px; }
+        .wa-dot { width: 6px; height: 6px; background-color: var(--success); border-radius: 50%; animation: pulse 2s infinite; }
+        
+        .wa-icon-box {
+            background: var(--success); /* Verde WhatsApp reconocible */
+            width: 45px; height: 45px;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .wa-icon-box svg { width: 24px; fill: white; }
+
+        @keyframes pulse { 0% { opacity: 1; } 50% { opacity: 0.4; } 100% { opacity: 1; } }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .vs-container, .maps-grid { grid-template-columns: 1fr; }
+            .stack-item { flex-direction: column; align-items: flex-start; gap: 5px; }
+            .stack-price { align-self: flex-end; }
+            .bio-flex { flex-direction: column; text-align: center; }
+            .maps-grid { gap: 30px; }
+            .hero-img-box { margin-top: 30px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <a href="#">
+                <img src="images/logo.png" alt="Lázaro Marketing" class="logo-img">
+            </a>
+            <a href="#oferta" class="btn btn-primary" style="padding: 10px 20px; font-size: 0.8rem;">
+                VER OFERTA
+            </a>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="container">
+            <div style="margin-bottom: 24px;">
+                <span style="border: 1px solid var(--magenta); color: var(--magenta); padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; background: rgba(204,0,102,0.05);">
+                    ⚠️ MÉTODO PROBADO EN TEPIC
+                </span>
+            </div>
+            
+            <h1>
+                Tu negocio es invisible para<br>
+                <span class="text-magenta">quien tiene dinero en mano.</span>
+            </h1>
+            
+            <p>
+                Deja de tirar dinero en "Likes". Instalamos tecnología web de alto rendimiento (Next.js) y dominación en Google Maps para que vendas más.
+            </p>
+            
+            <div style="display: flex; gap: 15px; justify-content: center; margin-top: 30px; flex-wrap: wrap;">
+                <a href="#oferta" class="btn btn-primary">QUIERO VENDER MÁS</a>
+                <a href="#tecnologia" class="btn btn-outline-dark">VER TECNOLOGÍA</a>
+            </div>
+
+            <div class="hero-img-box">
+                <img src="images/hero-visual.jpg" alt="Sistema Lázaro Marketing" style="width: 100%; display: block;">
+            </div>
+        </div>
+    </section>
+
+    <section class="myth-section">
+        <div class="container">
+            <h2 class="text-center" style="font-size: 2.5rem; color: var(--dark-bg);">El Problema: "Solo tengo Face"</h2>
+            <p class="text-center" style="color: #6B7280; margin-bottom: 40px;">Facebook es para ver memes. Google es para comprar.</p>
+            
+            <div class="myth-grid">
+                <div class="myth-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">📉</div>
+                    <h3 style="margin-bottom: 10px;">El Alcance Murió</h3>
+                    <p style="color: #6B7280; font-size: 0.9rem;">En Facebook, solo el 2% de tus seguidores ven tus posts si no pagas. <br><br> <a href="#oferta" class="btn-text-cta">Necesitas tu propio sistema &rarr;</a></p>
+                </div>
+                <div class="myth-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🔍</div>
+                    <h3 style="margin-bottom: 10px;">Intención de Compra</h3>
+                    <p style="color: #6B7280; font-size: 0.9rem;">Nadie entra a Instagram a buscar "Plomero urgente". Entran a Google. Si no estás ahí, no existes.</p>
+                </div>
+                <div class="myth-card">
+                    <div style="font-size: 2.5rem; margin-bottom: 15px;">🏚️</div>
+                    <h3 style="margin-bottom: 10px;">No es tu casa</h3>
+                    <p style="color: #6B7280; font-size: 0.9rem;">Si Facebook cierra tu cuenta mañana, pierdes todo. Una Web propia es tu único activo real.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="tech-section" id="tecnologia">
+        <div class="container">
+            <div class="text-center">
+                <h2 style="font-size: 2.5rem; color: var(--dark-bg);">Por qué NO usamos <span style="text-decoration: underline; text-decoration-color: var(--alert);">GoDaddy ni WordPress</span></h2>
+                <p style="color: #6B7280; max-width: 700px; margin: 20px auto;">
+                    Las agencias tradicionales te venden plantillas baratas que son lentas y se rompen. Nosotros programamos con <strong>Next.js</strong> (la tecnología de Netflix y Uber).
+                </p>
+            </div>
+
+            <div class="vs-container">
+                <div class="card-bad">
+                    <h3 style="color: var(--alert); margin-bottom: 20px;">❌ Lo Tradicional (WordPress)</h3>
+                    <img src="images/comparativa-wp.jpg" alt="WordPress Lento" style="width: 100%; border-radius: 8px; margin-bottom: 20px; opacity: 0.7;">
+                    
+                    <ul class="tech-list" style="list-style: none; color: #6B7280;">
+                        <li>🚫 Lento (Carga en 4-6 segundos)</li>
+                        <li>🚫 Se cae si no actualizas "Plugins"</li>
+                        <li>🚫 Diseño genérico de plantilla</li>
+                    </ul>
+                </div>
+
+                <div class="card-good">
+                    <div style="position: absolute; top: -15px; right: 20px; background: var(--magenta); color: white; padding: 5px 15px; border-radius: 50px; font-weight: 700; font-size: 0.8rem;">LÁZARO STACK</div>
+                    <h3 style="color: var(--dark-bg); margin-bottom: 20px;">⚡ El Estándar Lázaro (Next.js)</h3>
+                    
+                    <ul class="tech-list" style="list-style: none; color: var(--dark-bg);">
+                        <li><span class="text-magenta">✅</span> <strong>Velocidad Instantánea</strong> (0.5s)</li>
+                        <li><span class="text-magenta">✅</span> <strong>Código Puro:</strong> Sin plugins basura</li>
+                        <li><span class="text-magenta">✅</span> <strong>SEO Nativo:</strong> Google ama este código</li>
+                    </ul>
+                    <div style="margin-top: 30px; text-align: center;">
+                        <a href="https://wa.me/523114831656?text=Lups,%20quiero%20una%20web%20rapida" class="btn btn-primary" style="width: 100%;">COTIZAR MI WEB RÁPIDA</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="maps-section">
+        <div class="container maps-grid">
+            <div>
+                <h2 style="font-size: 3rem; line-height: 1;">Google Maps es tu<br><span class="text-magenta">Mina de Oro</span>.</h2>
+                <p style="margin-top: 20px; font-size: 1.1rem; color: #D1D5DB; margin-bottom: 30px;">
+                    El 80% de las ventas locales ocurren porque alguien buscó "Cerca de mí". 
+                    <br><br>
+                    Si tu ficha no tiene las palabras clave correctas, le estás regalando el cliente al vecino. Nosotros corregimos eso.
+                </p>
+                <a href="https://wa.me/523114831656?text=Lups,%20revisa%20mi%20mapa" class="btn btn-outline" style="border-color: white; color: white;">AUDITAMOS TU MAPA GRATIS</a>
+            </div>
+            <div>
+                <img src="images/mapa-exito.jpg" alt="Estrategia Maps Exito" style="width: 100%; border-radius: 12px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); border: 1px solid #333;">
+            </div>
+        </div>
+    </section>
+
+    <section class="offer-section" id="oferta">
+        <div class="container">
+            <div class="stack-box">
+                
+                <h2 class="text-center" style="font-size: 2.5rem; margin-bottom: 10px; color: var(--dark-bg);">Tu Nuevo Sistema Operativo</h2>
+                <p class="text-center" style="color: #6B7280; margin-bottom: 40px;">No compres "intentos". Compra resultados.</p>
+
+                <div class="stack-item">
+                    <div>
+                        <h3 style="font-size: 1.2rem; color: var(--dark-bg);">📍 Optimización Maps Premium</h3>
+                        <p style="font-size: 0.95rem; color: #6B7280;">SEO Local, Palabras Clave, Corrección de Horarios.</p>
+                    </div>
+                    <div class="stack-price">$4,000</div>
+                </div>
+
+                <div class="stack-item">
+                    <div>
+                        <h3 style="font-size: 1.2rem; color: var(--dark-bg);">⚡ Web High-Performance (Next.js)</h3>
+                        <p style="font-size: 0.95rem; color: #6B7280;">Desarrollo a medida. Cero plantillas lentas.</p>
+                    </div>
+                    <div class="stack-price">$8,000</div>
+                </div>
+
+                <div class="stack-item">
+                    <div>
+                        <h3 style="font-size: 1.2rem; color: var(--dark-bg);">📸 Producción Fotográfica (10 Fotos)</h3>
+                        <p style="font-size: 0.95rem; color: #6B7280;">Fotos comerciales de alta gama que venden solas.</p>
+                    </div>
+                    <div class="stack-price">$3,500</div>
+                </div>
+
+                <div class="stack-item" style="background: #FFF5F7; border-color: #FBCFE8; padding-left: 15px; padding-right: 15px; border-radius: 8px;">
+                    <div>
+                        <h3 style="font-size: 1.2rem; color: var(--magenta);">🎁 BONUS: WhatsApp Automation</h3>
+                        <p style="font-size: 0.95rem; color: #6B7280;">Enlaces de cierre rápido configurados.</p>
+                    </div>
+                    <div class="stack-price">$1,500</div>
+                </div>
+
+                <div class="final-price-box">
+                    <p style="color: #9CA3AF; margin-bottom: 10px;">Valor Total Real: <span style="text-decoration: line-through;">$17,000 MXN</span></p>
+                    
+                    <div style="margin: 20px 0;">
+                        <span style="font-size: 4rem; font-weight: 900; line-height: 1;">$5,000</span>
+                        <span style="font-size: 1.5rem; font-weight: 700; color: var(--magenta);">MXN</span>
+                    </div>
+                    
+                    <p style="font-weight: 700; margin-bottom: 30px; font-size: 0.9rem; letter-spacing: 1px;">PAGO ÚNICO • DE POR VIDA</p>
+                    
+                    <a href="https://wa.me/523114831656?text=Hola%20Lups,%20quiero%20apartar%20mi%20lugar%20para%20el%20paquete%20de%20$5,000" class="btn btn-primary" style="width: 100%; font-size: 1.2rem; padding: 20px;">
+                        APARTAR MI LUGAR AHORA
+                    </a>
+
+                    <div style="margin-top: 20px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 8px; color: #FCA5A5; font-size: 0.9rem;">
+                        ⚠️ DISPONIBILIDAD: Solo acepto 3 proyectos por semana. Queda 1 lugar.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bio-section">
+        <div class="container">
+            <div class="bio-flex">
+                <img src="images/lups-profile.jpg" alt="Lups - Lázaro Marketing" class="avatar">
+                <div>
+                    <h3 style="font-size: 1.5rem; margin-bottom: 10px; color: var(--dark-bg);">Soy Lups, tu Socio Digital</h3>
+                    <p style="color: #4B5563;">
+                        No soy una agencia gigante que te trata como un número. Soy desarrollador y estratega.
+                        Mi obsesión es eliminar la fricción tecnológica. Yo no te entrego "dibujitos", te entrego infraestructura comercial para que factures más.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <img src="images/logo.png" alt="Logo Lázaro" style="height: 30px; opacity: 0.5; margin-bottom: 20px;">
+            <p>&copy; 2026 Lázaro Marketing. Tepic, Nayarit.</p>
+        </div>
+    </footer>
+
+    <a href="https://wa.me/523114831656?text=Hola%20Lups,%20tengo%20una%20duda%20sobre%20el%20paquete" class="whatsapp-dock" target="_blank">
+        <div class="wa-info">
+            <span class="wa-title">¿Tienes dudas?</span>
+            <span class="wa-subtitle"><div class="wa-dot"></div> Lups está en línea</span>
+        </div>
+        <div class="wa-icon-box">
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.272-.099-.47-.149-.67.15-.197.297-.767.967-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.146-.174.195-.298.296-.497.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.67-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.148.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004c-1.367 0-2.693-.371-3.848-1.071l-.275-.163-2.853.749.762-2.783-.18-.284c-1.019-1.64-1.559-3.53-1.559-5.493C3.763 7.792 7.815 3.74 12.815 3.74c2.188 0 4.276.856 5.837 2.417 1.56 1.562 2.418 3.649 2.418 5.837 0 4.999-4.052 9.051-9.051 9.051"/></svg>
+        </div>
+    </a>
+
+</body>
+</html>
