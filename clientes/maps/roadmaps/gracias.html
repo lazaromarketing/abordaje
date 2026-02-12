@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>¡Datos Recibidos! | Lázaro Marketing</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Rubik:wght@700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- BRAND SYSTEM 2.0 --- */
+        :root {
+            --magenta: #CC0066; 
+            --bg-dark-premium: #050505; 
+            --bg-light: #F8FAFC;     
+            --card-white: #FFFFFF;
+            --text-dark: #0F172A;
+            --text-gray: #64748B;
+            --success: #10B981;
+            --border-light: #E2E8F0;
+            --shadow-premium: 0 20px 40px -5px rgba(0,0,0,0.06);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex; flex-direction: column; min-height: 100vh;
+        }
+
+        h1, h2, h3 { font-family: 'Rubik', sans-serif; letter-spacing: -0.5px; }
+        
+        .container { max-width: 600px; margin: 0 auto; padding: 0 20px; position: relative; z-index: 2; width: 100%; }
+
+        /* --- ANIMACIONES --- */
+        @keyframes popIn {
+            0% { opacity: 0; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .pop-in { animation: popIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards; }
+        .slide-up { animation: slideUp 0.8s ease forwards; opacity: 0; animation-delay: 0.3s; }
+
+        /* --- NAVBAR BLANCO --- */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 15px 0;
+        }
+        .nav-logo { display: block; text-align: center; }
+        .logo-img { height: 28px; width: auto; display: block; margin: 0 auto; }
+
+        /* --- HEADER OSCURO (FONDO) --- */
+        .header-bg {
+            background-color: var(--bg-dark-premium);
+            color: white;
+            padding-top: 120px;
+            padding-bottom: 150px; /* Espacio para la tarjeta flotante */
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            position: relative;
+            text-align: center;
+        }
+
+        .header-bg::before {
+            content: ''; position: absolute; top: -50%; left: 50%; transform: translateX(-50%);
+            width: 500px; height: 500px; 
+            background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, transparent 70%); /* Luz Verde Éxito */
+            z-index: 0; pointer-events: none;
+        }
+
+        /* ICONO DE ÉXITO ANIMADO */
+        .success-icon {
+            width: 80px; height: 80px; background: var(--success);
+            border-radius: 50%; margin: 0 auto 20px;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 0 0 10px rgba(16, 185, 129, 0.2);
+        }
+        .success-icon svg { width: 40px; height: 40px; fill: white; }
+
+        .header-bg h1 { font-size: 2.5rem; margin-bottom: 10px; position: relative; z-index: 2; }
+        .header-bg p { color: rgba(255,255,255,0.7); font-size: 1.1rem; position: relative; z-index: 2; }
+
+        /* --- TARJETA DE ACCIÓN (CLARA) --- */
+        .card-wrapper { margin-top: -100px; padding-bottom: 60px; position: relative; z-index: 3; }
+
+        .action-card {
+            background: var(--card-white);
+            border-radius: 24px;
+            padding: 40px 30px;
+            box-shadow: var(--shadow-premium);
+            text-align: center;
+            border: 1px solid var(--border-light);
+        }
+
+        .step-label {
+            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px;
+            color: var(--text-gray); font-weight: 700; display: block; margin-bottom: 20px;
+        }
+
+        .info-text { font-size: 1rem; color: var(--text-dark); margin-bottom: 30px; line-height: 1.6; }
+
+        /* BOTÓN WHATSAPP GRANDE */
+        .btn-wa {
+            background-color: #25D366; color: white;
+            text-decoration: none; font-weight: 700; font-family: 'Rubik';
+            padding: 18px 30px; border-radius: 12px;
+            display: inline-flex; align-items: center; gap: 10px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.3);
+            transition: transform 0.2s; width: 100%; justify-content: center;
+            font-size: 1.1rem;
+        }
+        .btn-wa:hover { transform: translateY(-3px); background-color: #1ebc57; }
+        .btn-wa svg { width: 24px; fill: white; }
+
+        /* FOOTER */
+        footer { margin-top: auto; padding: 40px 0; text-align: center; color: var(--text-gray); font-size: 0.85rem; }
+
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="index.html" class="nav-logo">
+                <img src="images/logo.png" alt="Lázaro Marketing" class="logo-img">
+            </a>
+        </div>
+    </nav>
+
+    <header class="header-bg">
+        <div class="container pop-in">
+            <div class="success-icon">
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+            </div>
+            <h1>¡Todo Listo!</h1>
+            <p>Hemos recibido tu información correctamente.</p>
+        </div>
+    </header>
+
+    <div class="container card-wrapper slide-up">
+        <div class="action-card">
+            <span class="step-label">ÚLTIMO PASO</span>
+            
+            <p class="info-text">
+                El sistema ya está procesando tus datos. <br>
+                <strong>Avísame por WhatsApp</strong> para confirmar que te llegó el acceso al Grupo de Trabajo y comenzar la ingeniería.
+            </p>
+
+            <a href="https://wa.me/523114831656?text=Listo%20Lups,%20ya%20llen%C3%A9%20el%20formulario%20de%20inicio." class="btn-wa">
+                <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.272-.099-.47-.149-.67.15-.197.297-.767.967-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.521.146-.174.195-.298.296-.497.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.5-.67-.51l-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.148.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004c-1.367 0-2.693-.371-3.848-1.071l-.275-.163-2.853.749.762-2.783-.18-.284c-1.019-1.64-1.559-3.53-1.559-5.493C3.763 7.792 7.815 3.74 12.815 3.74c2.188 0 4.276.856 5.837 2.417 1.56 1.562 2.418 3.649 2.418 5.837 0 4.999-4.052 9.051-9.051 9.051"/></svg>
+                Confirmar Envío
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Lázaro Marketing.
+    </footer>
+
+</body>
+</html>
