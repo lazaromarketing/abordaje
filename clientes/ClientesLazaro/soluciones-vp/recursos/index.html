@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soluciones VP · Recursos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    /* Mejoras específicas para recursos */
+    .recursos-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 2rem 0 1.5rem;
+    }
+    .badge-recurso {
+      background: #CC0066;
+      color: white;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    /* Tarjetas de recursos */
+    .card-recurso {
+      background: white;
+      border: 1px solid #F3F4F6;
+      border-radius: 28px;
+      padding: 1.75rem;
+      box-shadow: 0 10px 25px -10px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-recurso:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 30px 35px -15px rgba(204, 0, 102, 0.15);
+      border-color: #CC0066;
+    }
+    .card-recurso h2 {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: #111827;
+    }
+    .card-recurso h2 .icono-titulo {
+      font-size: 2rem;
+    }
+
+    /* Enlaces tipo carpeta mejorados */
+    .carpeta-link {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.25rem;
+      background: #F9FAFB;
+      border-radius: 20px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      border: 1px solid #E5E7EB;
+      margin-bottom: 1rem;
+    }
+    .carpeta-link:hover {
+      background: #FFFFFF;
+      border-color: #CC0066;
+      transform: translateX(4px);
+      box-shadow: 0 8px 15px -8px rgba(204, 0, 102, 0.2);
+    }
+    .carpeta-icono {
+      font-size: 2rem;
+      min-width: 48px;
+      text-align: center;
+    }
+    .carpeta-info {
+      flex: 1;
+    }
+    .carpeta-titulo {
+      font-weight: 700;
+      font-size: 1.1rem;
+      margin-bottom: 0.25rem;
+      color: #111827;
+    }
+    .carpeta-desc {
+      font-size: 0.85rem;
+      color: #6B7280;
+    }
+    .carpeta-flecha {
+      color: #CC0066;
+      font-size: 1.3rem;
+      opacity: 0.7;
+      transition: opacity 0.2s;
+    }
+    .carpeta-link:hover .carpeta-flecha {
+      opacity: 1;
+      transform: translateX(2px);
+    }
+
+    /* Badges de archivos */
+    .badge-archivo {
+      background: #F3F4F6;
+      padding: 0.3rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      color: #4B5563;
+    }
+
+    /* Enlaces útiles */
+    .enlace-util {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1rem;
+      background: #F9FAFB;
+      border-radius: 18px;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+      border: 1px solid transparent;
+    }
+    .enlace-util:hover {
+      background: #FFFFFF;
+      border-color: #CC0066;
+      transform: translateX(4px);
+    }
+    .enlace-icono {
+      font-size: 1.8rem;
+    }
+    .enlace-contenido {
+      flex: 1;
+    }
+    .enlace-titulo {
+      font-weight: 600;
+      color: #111827;
+    }
+    .enlace-desc {
+      font-size: 0.8rem;
+      color: #6B7280;
+    }
+
+    /* Notas importantes */
+    .notas-card {
+      background: #F9FAFB;
+      border-radius: 24px;
+      padding: 1.5rem;
+      border-left: 4px solid #CC0066;
+      margin: 2rem 0;
+    }
+    .notas-list {
+      list-style: none;
+      padding: 0;
+    }
+    .notas-list li {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      color: #374151;
+    }
+    .notas-list li::before {
+      content: "📌";
+      color: #CC0066;
+    }
+
+    /* Resumen rápido */
+    .resumen-recursos {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: space-around;
+      background: linear-gradient(145deg, #CC0066, #a0004d);
+      color: white;
+      border-radius: 32px;
+      padding: 2rem 1.5rem;
+      margin: 2.5rem 0;
+      text-align: center;
+    }
+    .resumen-item {
+      flex: 1;
+      min-width: 140px;
+    }
+    .resumen-valor {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    .resumen-etiqueta {
+      font-size: 0.9rem;
+      opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="logo">Soluciones <span>VP</span></a>
+      <div class="nav-links">
+        <a href="../index.html">Dashboard</a>
+        <a href="../estrategia/index.html">Estrategia</a>
+        <a href="../contenido/index.html">Contenido</a>
+        <a href="../anuncios/index.html">Anuncios</a>
+        <a href="../resultados/index.html">Resultados</a>
+        <a href="../historial/index.html">Historial</a>
+        <a href="index.html" style="color: #CC0066; font-weight: bold;">Recursos</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Encabezado -->
+    <div class="recursos-header">
+      <h1 style="font-size: 2rem; margin: 0;">Recursos y materiales</h1>
+      <span class="badge-recurso">Actualizado · Marzo 2026</span>
+    </div>
+
+    <!-- Grid principal de recursos (2 columnas) -->
+    <div class="grid-2" style="margin-bottom: 2rem;">
+      
+      <!-- Columna 1: Avatar Marcos / Armando -->
+      <div class="card-recurso">
+        <h2>
+          <span class="icono-titulo">🎭</span> Avatar "Armando" (Marcos)
+        </h2>
+        <p style="color: #4B5563; margin-bottom: 1.5rem;">Todas las tomas y variantes del avatar para los videos y contenido visual.</p>
+        
+        <a href="https://drive.google.com/drive/folders/1qYa3up2Tw_sFPT4Uf15n3jgZ8Ef0oAV2?usp=sharing" target="_blank" class="carpeta-link">
+          <span class="carpeta-icono">📸</span>
+          <div class="carpeta-info">
+            <div class="carpeta-titulo">Carpeta completa de Marcos</div>
+            <div class="carpeta-desc">armando dedo.png, armando explicando.png, avatar_master_front.png ...</div>
+          </div>
+          <span class="carpeta-flecha">↗</span>
+        </a>
+        
+        <div style="display: flex; gap: 0.75rem; margin-top: 1rem;">
+          <span class="badge-archivo"><span>📁</span> 9 archivos</span>
+          <span class="badge-archivo"><span>🖼️</span> PNG</span>
+        </div>
+      </div>
+
+      <!-- Columna 2: B-Roll / Videos de apoyo -->
+      <div class="card-recurso">
+        <h2>
+          <span class="icono-titulo">🎬</span> B-Roll · Videos de apoyo
+        </h2>
+        <p style="color: #4B5563; margin-bottom: 1.5rem;">Material audiovisual para edición: tomas de taller, productos, instalaciones.</p>
+        
+        <a href="https://drive.google.com/drive/folders/1gRGfPZGTkC9ZS-fRp8fa5KPZZKImiKMX?usp=sharing" target="_blank" class="carpeta-link">
+          <span class="carpeta-icono">🎥</span>
+          <div class="carpeta-info">
+            <div class="carpeta-titulo">B-Roll · Soluciones VP</div>
+            <div class="carpeta-desc">Videos crudos para edición</div>
+          </div>
+          <span class="carpeta-flecha">↗</span>
+        </a>
+        
+        <p style="font-size: 0.9rem; color: #059669; margin-top: 1rem; display: flex; align-items: center; gap: 0.3rem;">
+          <span>✅</span> Aquí se deben colocar todos los videos que pidamos para las ediciones.
+        </p>
+      </div>
+    </div>
+
+    <!-- Segunda fila: Contenido por mes y Enlaces útiles -->
+    <div class="grid-2" style="margin-bottom: 2rem;">
+      
+      <!-- Contenido organizado por mes -->
+      <div class="card-recurso">
+        <h2>
+          <span class="icono-titulo">📅</span> Contenido por mes
+        </h2>
+        <p style="color: #4B5563; margin-bottom: 1.5rem;">Archivo maestro de todas las piezas organizadas por período.</p>
+        
+        <a href="https://drive.google.com/drive/folders/1S62xQSh0JgjKdUa_qJ94FkMwMTZmp-5l?usp=sharing" target="_blank" class="carpeta-link">
+          <span class="carpeta-icono">📂</span>
+          <div class="carpeta-info">
+            <div class="carpeta-titulo">Contenido general · Meses</div>
+            <div class="carpeta-desc">Marzo 2026, Abril 2026, etc.</div>
+          </div>
+          <span class="carpeta-flecha">↗</span>
+        </a>
+        
+        <div style="margin-top: 1rem; display: flex; gap: 0.5rem;">
+          <span class="badge-archivo">Marzo 2026</span>
+          <span class="badge-archivo">11 piezas</span>
+        </div>
+      </div>
+
+      <!-- Enlaces útiles -->
+      <div class="card-recurso">
+        <h2>
+          <span class="icono-titulo">🔗</span> Enlaces útiles
+        </h2>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          
+          <a href="https://share.google/gWPmAx3h9TmSsp4TO" target="_blank" class="enlace-util">
+            <span class="enlace-icono">📍</span>
+            <div class="enlace-contenido">
+              <div class="enlace-titulo">Google Maps · Ficha de empresa</div>
+              <div class="enlace-desc">Ver reseñas, horarios y ubicación</div>
+            </div>
+            <span style="color: #CC0066;">↗</span>
+          </a>
+          
+          <a href="https://wa.me/523111227119?text=Hola%20Soluciones%20VP,%20vi%20su%20perfil%20y%20me%20gustaría%20información." target="_blank" class="enlace-util">
+            <span class="enlace-icono">📞</span>
+            <div class="enlace-contenido">
+              <div class="enlace-titulo">WhatsApp directo</div>
+              <div class="enlace-desc">311 122 7119 · Mensaje predeterminado</div>
+            </div>
+            <span style="color: #CC0066;">↗</span>
+          </a>
+          
+          <div class="enlace-util" style="cursor: default; background: #F3F4F6;">
+            <span class="enlace-icono">🌐</span>
+            <div class="enlace-contenido">
+              <div class="enlace-titulo">Sitio web</div>
+              <div class="enlace-desc">solucionesvp.com (en desarrollo)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Notas importantes -->
+    <div class="notas-card">
+      <h2 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <span>📌</span> Notas importantes
+      </h2>
+      <ul class="notas-list">
+        <li><strong>Avatar:</strong> Las tomas de "Armando" están listas en la carpeta de Marcos.</li>
+        <li><strong>B-Roll:</strong> Por favor subir aquí todos los videos de apoyo (taller, productos, instalaciones) que se necesiten para las ediciones.</li>
+        <li><strong>Google Maps:</strong> La ficha ya está activa y verificada. Cualquier cambio en horarios debe notificarse.</li>
+        <li><strong>Próximamente:</strong> Manual de marca y logos vectoriales se agregarán cuando estén disponibles.</li>
+      </ul>
+    </div>
+
+    <!-- Resumen visual rápido mejorado -->
+    <div class="resumen-recursos">
+      <div class="resumen-item">
+        <div class="resumen-valor">9</div>
+        <div class="resumen-etiqueta">Tomas de Avatar</div>
+      </div>
+      <div class="resumen-item">
+        <div class="resumen-valor">🎬</div>
+        <div class="resumen-etiqueta">B-Roll activo</div>
+      </div>
+      <div class="resumen-item">
+        <div class="resumen-valor">📅</div>
+        <div class="resumen-etiqueta">Marzo 2026</div>
+      </div>
+      <div class="resumen-item">
+        <div class="resumen-valor">📍</div>
+        <div class="resumen-etiqueta">Maps verificado</div>
+      </div>
+    </div>
+
+    <!-- Botones de navegación interna (opcional) -->
+    <div style="display: flex; gap: 1rem; justify-content: center; margin: 2rem 0;">
+      <a href="../contenido/index.html" class="btn btn-outline" style="display: flex; align-items: center; gap: 0.5rem;">🎬 Ver contenido</a>
+      <a href="../estrategia/index.html" class="btn btn-outline" style="display: flex; align-items: center; gap: 0.5rem;">📋 Ver estrategia</a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Lázaro Marketing · Marzo 2026</div>
+  </footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

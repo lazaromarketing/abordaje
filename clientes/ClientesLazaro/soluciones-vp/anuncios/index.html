@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Soluciones VP · Anuncios</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    /* VARIABLES Y RESET */
+    :root {
+      --primary: #CC0066;
+      --text-main: #111827;
+      --text-gray: #4B5563;
+      --bg-light: #F9FAFB;
+      --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      background-color: #f3f4f6;
+      margin: 0;
+      color: var(--text-main);
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* NAVBAR RESPONSIVE */
+    .navbar {
+      background: #fff;
+      padding: 1rem 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar .container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .logo span { color: var(--primary); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* HEADER */
+    .anuncios-header {
+      text-align: center;
+      margin: 3rem 0;
+    }
+    .icono-flotante {
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    .anuncios-header h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin: 0 0 1rem;
+      line-height: 1.1;
+    }
+    .subtitulo {
+      font-size: 1.1rem;
+      color: var(--text-gray);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* GRID DE ANUNCIOS */
+    .grid-ads {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .card-red {
+      background: white;
+      border-radius: 24px;
+      padding: 2rem;
+      box-shadow: var(--shadow);
+      border: 1px solid #f1f5f9;
+      display: flex;
+      flex-direction: column;
+    }
+    .card-red .icono { font-size: 2.5rem; margin-bottom: 1rem; }
+    .card-red h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .card-red h3 span { 
+      display: block; 
+      font-size: 0.85rem; 
+      color: var(--text-gray); 
+      font-weight: 400;
+      margin-top: 0.25rem;
+    }
+    
+    .card-red ul { list-style: none; padding: 0; margin: 1.5rem 0; }
+    .card-red li {
+      padding-left: 1.75rem;
+      position: relative;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+    }
+    .card-red li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      color: var(--primary);
+      font-weight: 900;
+    }
+
+    .badge-planeada {
+      background: #FEF3C7;
+      color: #92400E;
+      padding: 0.4rem 1rem;
+      border-radius: 50px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    /* EMBUDO RESPONSIVE */
+    .embudo-container {
+      background: white;
+      border-radius: 32px;
+      padding: 2.5rem 1.5rem;
+      margin: 4rem 0;
+      box-shadow: var(--shadow);
+    }
+    .embudo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .paso {
+      width: 100%;
+      max-width: 300px;
+      text-align: center;
+      background: var(--bg-light);
+      padding: 1.5rem;
+      border-radius: 24px;
+      border: 1px solid #edf2f7;
+    }
+    .paso .numero {
+      background: var(--primary);
+      color: white;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .flecha { font-size: 1.5rem; color: var(--primary); transform: rotate(90deg); }
+
+    /* PRESUPUESTO */
+    .presupuesto-box {
+      background: linear-gradient(135deg, #CC0066 0%, #a30052 100%);
+      color: white;
+      border-radius: 32px;
+      padding: 2.5rem 1.5rem;
+      text-align: center;
+      margin: 4rem 0;
+    }
+    .tabla-precios {
+      background: white;
+      color: var(--text-main);
+      border-radius: 20px;
+      padding: 1.5rem;
+      max-width: 500px;
+      margin: 2rem auto 0;
+    }
+    .fila {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      border-bottom: 1px dotted #e2e8f0;
+    }
+    .fila:last-of-type { border-bottom: none; }
+    .fila.total { border-top: 2px solid var(--primary); margin-top: 0.5rem; padding-top: 1.5rem; }
+
+    /* MEDIA QUERIES */
+    @media (min-width: 768px) {
+      .navbar .container { flex-direction: row; justify-content: space-between; }
+      .nav-links { overflow: visible; padding-bottom: 0; }
+      .grid-ads { grid-template-columns: 1fr 1fr; }
+      .embudo { flex-direction: row; justify-content: space-between; }
+      .paso { flex: 1; }
+      .flecha { transform: rotate(0deg); }
+      .anuncios-header h1 { font-size: 2.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="logo">Soluciones <span>VP</span></a>
+      <div class="nav-links">
+        <a href="../index.html">Dashboard</a>
+        <a href="../estrategia/index.html">Estrategia</a>
+        <a href="../contenido/index.html">Contenido</a>
+        <a href="index.html" style="color: #CC0066; font-weight: bold;">Anuncios</a>
+        <a href="../resultados/index.html">Resultados</a>
+        <a href="../historial/index.html">Historial</a>
+        <a href="../recursos/index.html">Recursos</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    
+    <header class="anuncios-header">
+      <div class="icono-flotante">🎯</div>
+      <h1>Estrategia de Pauta Digital</h1>
+      <p class="subtitulo">Convirtiendo contenido en una máquina de prospectos diarios directo a WhatsApp.</p>
+      <div style="margin-top: 1.5rem; display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+        <span class="badge-planeada">B2B · Red VP</span>
+        <span class="badge-planeada" style="background: #DBEAFE; color: #1E40AF;">B2C · Cliente final</span>
+      </div>
+    </header>
+
+    <div class="grid-ads">
+      <div class="card-red">
+        <div class="icono">📱</div>
+        <h3>Meta Ads <span>Facebook & Instagram</span></h3>
+        <p style="font-size: 0.95rem; color: var(--text-gray);">Buscamos al cliente ideal mientras navega, usando los videos de "Armando" y flyers de alto impacto.</p>
+        <ul>
+          <li><strong>Campaña B2B:</strong> Reclutamiento de ferreterías y fontaneros en Nayarit.</li>
+          <li><strong>Campaña B2C:</strong> Venta directa de hidroneumáticos y taller en Tepic/Xalisco.</li>
+        </ul>
+        <div style="margin-top: auto; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9;">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-gray);">SEMANA 3</span>
+          <span style="color: var(--primary); font-weight: 800;">$6,000 MXN / mes</span>
+        </div>
+      </div>
+
+      <div class="card-red">
+        <div class="icono">🔍</div>
+        <h3>Google Ads <span>Búsqueda y Maps</span></h3>
+        <p style="font-size: 0.95rem; color: var(--text-gray);">Atrapamos la urgencia: aparecemos cuando alguien en Nayarit busca una solución técnica inmediata.</p>
+        <ul>
+          <li><strong>Intención:</strong> "Mayorista Evans Nayarit", "Comprar hidroneumático".</li>
+          <li><strong>Urgencia:</strong> "Reparación de bomba Tepic", "Taller de compresores".</li>
+        </ul>
+        <div style="margin-top: auto; padding-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #f1f5f9;">
+          <span style="font-size: 0.8rem; font-weight: 700; color: var(--text-gray);">SEMANA 3</span>
+          <span style="color: var(--primary); font-weight: 800;">$4,000 MXN / mes</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="embudo-container">
+      <h2 style="text-align: center; margin-bottom: 2.5rem; font-size: 1.5rem;">Embudo de Conversión Real</h2>
+      <div class="embudo">
+        <div class="paso">
+          <div class="numero">1</div>
+          <p><strong>El Anuncio</strong><br><small>Video o Búsqueda</small></p>
+        </div>
+        <div class="flecha">➔</div>
+        <div class="paso">
+          <div class="numero">2</div>
+          <p><strong>Clic Directo</strong><br><small>Sin fricción</small></p>
+        </div>
+        <div class="flecha">➔</div>
+        <div class="paso">
+          <div class="numero">3</div>
+          <p><strong>Captura</strong><br><small>WhatsApp Directo</small></p>
+        </div>
+        <div class="flecha">➔</div>
+        <div class="paso">
+          <div class="numero">4</div>
+          <p><strong>Cierre</strong><br><small>Venta o Afiliación</small></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="presupuesto-box">
+      <h2 style="font-size: 1.8rem; margin: 0;">Presupuesto Mensual Sugerido</h2>
+      <p style="opacity: 0.9; margin-top: 0.5rem;">Inversión pagada directamente a las plataformas</p>
+      
+      <div class="tabla-precios">
+        <div class="fila">
+          <span>Meta Ads</span>
+          <span style="font-weight: 700;">$6,000 MXN</span>
+        </div>
+        <div class="fila">
+          <span>Google Ads</span>
+          <span style="font-weight: 700;">$4,000 MXN</span>
+        </div>
+        <div class="fila total">
+          <span style="font-weight: 800; color: var(--primary);">TOTAL SUGERIDO</span>
+          <span style="font-weight: 800; font-size: 1.5rem; color: var(--primary);">$10,000 MXN</span>
+        </div>
+        <p style="font-size: 0.75rem; color: var(--text-gray); margin-top: 1rem; font-style: italic;">
+          * Presupuesto escalable según resultados del primer mes.
+        </p>
+      </div>
+    </div>
+
+    <div style="background: white; border-radius: 20px; padding: 1.5rem; margin-bottom: 4rem; border-left: 5px solid var(--primary); box-shadow: var(--shadow);">
+      <p style="margin: 0; font-size: 0.95rem;">
+        📌 <strong>Nota Importante:</strong> Las campañas iniciarán el <strong>23 de marzo</strong> (Semana 3), una vez que el contenido orgánico haya generado tracción inicial.
+      </p>
+    </div>
+
+    <div style="display: flex; gap: 1rem; justify-content: center; margin-bottom: 4rem; flex-wrap: wrap;">
+      <a href="../contenido/index.html" class="btn btn-outline" style="text-decoration: none; padding: 1rem 2rem; border-radius: 12px; font-weight: 700;">📹 Ver Contenido</a>
+      <a href="../resultados/index.html" class="btn btn-outline" style="text-decoration: none; padding: 1rem 2rem; border-radius: 12px; font-weight: 700;">📊 Ver Resultados</a>
+    </div>
+
+  </main>
+
+  <footer class="footer" style="padding: 3rem 0; text-align: center; color: var(--text-gray); font-size: 0.85rem;">
+    <div class="container">
+      Lázaro Marketing · Marzo 2026
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

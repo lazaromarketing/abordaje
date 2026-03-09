@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Soluciones VP · Historial</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    :root {
+      --primary: #CC0066;
+      --text-main: #111827;
+      --text-gray: #4B5563;
+      --bg-light: #f3f4f6;
+      --white: #ffffff;
+      --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-main);
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    /* NAVBAR RESPONSIVE */
+    .navbar {
+      background: var(--white);
+      padding: 1rem 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar .container {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--text-main);
+    }
+    .logo span { color: var(--primary); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      padding-bottom: 8px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-gray);
+      font-size: 0.9rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+
+    /* HEADER */
+    .historial-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin: 2.5rem 0 1.5rem;
+    }
+    .badge-historial {
+      background: var(--primary);
+      color: white;
+      padding: 0.4rem 1.2rem;
+      border-radius: 50px;
+      font-size: 0.8rem;
+      font-weight: 700;
+    }
+
+    /* MENSAJE VACÍO */
+    .mensaje-vacio {
+      background: var(--white);
+      border-radius: 32px;
+      padding: 3.5rem 1.5rem;
+      text-align: center;
+      border: 2px dashed #e5e7eb;
+      margin-bottom: 3rem;
+      box-shadow: var(--shadow);
+    }
+    .icono-vacio {
+      font-size: 4rem;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
+    }
+    .mensaje-vacio h2 { font-size: 1.75rem; margin-bottom: 1rem; }
+    .mensaje-vacio p { color: var(--text-gray); max-width: 550px; margin: 0 auto 2rem; }
+
+    /* BOTONES */
+    .btn-group {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      justify-content: center;
+    }
+    .btn {
+      padding: 1rem 1.5rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      transition: 0.2s;
+    }
+    .btn-primary { background: var(--primary); color: white; }
+    .btn-outline { border: 2px solid var(--primary); color: var(--primary); }
+
+    /* PREVIEW MESES */
+    .preview-meses {
+      background: var(--white);
+      border-radius: 24px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+    }
+    .preview-titulo {
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .meses-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 1rem;
+    }
+    .mes-placeholder {
+      background: #f8fafc;
+      padding: 1rem;
+      border-radius: 16px;
+      text-align: center;
+      font-weight: 600;
+      color: var(--text-gray);
+      border: 1px solid #e2e8f0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    /* TIMELINE */
+    .timeline-container {
+      margin: 4rem 0;
+      text-align: center;
+    }
+    .timeline-bar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      max-width: 600px;
+      margin: 0 auto 1rem;
+    }
+    .timeline-line { height: 4px; flex: 1; background: #e2e8f0; border-radius: 2px; position: relative; }
+    .timeline-line::after {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; height: 100%; width: 50%;
+      background: var(--primary);
+    }
+    .timeline-marker {
+      background: var(--primary);
+      color: white;
+      padding: 0.5rem 1.25rem;
+      border-radius: 50px;
+      font-weight: 800;
+      box-shadow: 0 4px 10px rgba(204, 0, 102, 0.2);
+    }
+
+    /* NOTA INFORMATIVA */
+    .nota-info {
+      background: #fff9fc;
+      border-left: 5px solid var(--primary);
+      padding: 1.5rem;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      margin-bottom: 4rem;
+    }
+
+    /* MEDIA QUERIES */
+    @media (min-width: 768px) {
+      .navbar .container { flex-direction: row; justify-content: space-between; align-items: center; }
+      .nav-links { overflow: visible; padding-bottom: 0; }
+      .btn-group { flex-direction: row; }
+      .mensaje-vacio { padding: 5rem 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="logo">Soluciones <span>VP</span></a>
+      <div class="nav-links">
+        <a href="../index.html">Dashboard</a>
+        <a href="../estrategia/index.html">Estrategia</a>
+        <a href="../contenido/index.html">Contenido</a>
+        <a href="../anuncios/index.html">Anuncios</a>
+        <a href="../resultados/index.html">Resultados</a>
+        <a href="index.html" style="color: #CC0066; font-weight: bold;">Historial</a>
+        <a href="../recursos/index.html">Recursos</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    
+    <header class="historial-header">
+      <h1 style="font-size: 1.75rem; margin: 0;">Historial de Meses</h1>
+      <span class="badge-historial">Archivo General</span>
+    </header>
+
+    <div class="mensaje-vacio">
+      <div class="icono-vacio">📆</div>
+      <h2>Aún no hay meses cerrados</h2>
+      <p>El primer período <strong>(Marzo 2026)</strong> está actualmente en curso. Al finalizar el ciclo el 9 de abril, el resumen ejecutivo y los KPIs se archivarán aquí automáticamente.</p>
+      
+      <div class="btn-group">
+        <a href="../resultados/index.html" class="btn btn-primary">
+          <span>📊</span> Ver Resultados Actuales
+        </a>
+        <a href="../contenido/index.html" class="btn btn-outline">
+          <span>🎬</span> Ver Contenido Programado
+        </a>
+      </div>
+    </div>
+
+    <section class="preview-meses">
+      <div class="preview-titulo">
+        <span>📂</span> Próximos meses en el historial
+      </div>
+      <div class="meses-grid">
+        <div class="mes-placeholder">
+          <span style="font-size: 1.5rem;">📁</span>
+          <span>Marzo 2026</span>
+        </div>
+        <div class="mes-placeholder">
+          <span style="font-size: 1.5rem;">📁</span>
+          <span>Abril 2026</span>
+        </div>
+        <div class="mes-placeholder" style="opacity: 0.5;">
+          <span style="font-size: 1.5rem;">📁</span>
+          <span>Mayo 2026</span>
+        </div>
+      </div>
+      <p style="text-align: center; color: var(--text-gray); font-size: 0.85rem; margin-top: 1.5rem;">
+        Cada mes contará con su propia auditoría de resultados y aprendizajes.
+      </p>
+    </section>
+
+    <div class="timeline-container">
+      <div class="timeline-bar">
+        <span class="timeline-line"></span>
+        <span class="timeline-marker">MARZO 2026</span>
+        <span class="timeline-line"></span>
+      </div>
+      <p style="font-size: 0.9rem; color: var(--text-gray); font-weight: 500;">
+        Fase actual: Ejecución de estrategia. Cierre: 9 de Abril.
+      </p>
+    </div>
+
+    <div class="nota-info">
+      <p style="margin: 0; display: flex; align-items: center; gap: 0.5rem;">
+        <span>💡</span>
+        <span>El historial se actualizará de forma automática al término de cada período. Puedes seguir el avance diario en la sección de <strong><a href="../resultados/index.html" style="color: var(--primary); text-decoration: none;">Resultados</a></strong>.</span>
+      </p>
+    </div>
+
+  </main>
+
+  <footer style="padding: 3rem 0; text-align: center; color: var(--text-gray); font-size: 0.85rem;">
+    <div class="container">
+      Lázaro Marketing · Marzo 2026
+    </div>
+  </footer>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

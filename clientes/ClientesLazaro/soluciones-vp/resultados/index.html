@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soluciones VP · Resultados</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    /* Estilos específicos para resultados */
+    .resultados-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 2rem 0 1.5rem;
+    }
+    .badge-periodo {
+      background: #CC0066;
+      color: white;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .lectura-card {
+      background: linear-gradient(145deg, #F9FAFB, #FFFFFF);
+      border-left: 4px solid #CC0066;
+      border-radius: 24px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .kpis-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .kpi-placeholder {
+      background: white;
+      border: 1px solid #E5E7EB;
+      border-radius: 28px;
+      padding: 2rem 1rem;
+      text-align: center;
+      box-shadow: 0 8px 15px -8px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+    .kpi-placeholder:hover {
+      transform: translateY(-4px);
+      border-color: #CC0066;
+    }
+    .kpi-placeholder .icono {
+      font-size: 2.5rem;
+      color: #CC0066;
+      margin-bottom: 0.5rem;
+    }
+    .kpi-placeholder .texto {
+      color: #6B7280;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    .proximamente-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 1.5rem;
+      background: #F9FAFB;
+      border-radius: 32px;
+      border: 2px dashed #CC0066;
+      text-align: center;
+      height: 100%;
+    }
+    .proximamente-icono {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+      color: #CC0066;
+    }
+    .proximamente-titulo {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #111827;
+      margin-bottom: 0.5rem;
+    }
+    .proximamente-desc {
+      color: #6B7280;
+      font-size: 0.9rem;
+      max-width: 250px;
+      margin: 0 auto;
+    }
+    .acciones-tomadas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin: 1rem 0;
+    }
+    .badge-accion {
+      background: #F3F4F6;
+      border-radius: 40px;
+      padding: 0.6rem 1.2rem;
+      font-size: 0.9rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+    .pasos-grid {
+      display: grid;
+      gap: 0.75rem;
+    }
+    .paso-item {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      background: white;
+      padding: 1rem;
+      border-radius: 16px;
+      border: 1px solid #F3F4F6;
+    }
+    .paso-numero {
+      background: #CC0066;
+      color: white;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="logo">Soluciones <span>VP</span></a>
+      <div class="nav-links">
+        <a href="../index.html">Dashboard</a>
+        <a href="../estrategia/index.html">Estrategia</a>
+        <a href="../contenido/index.html">Contenido</a>
+        <a href="../anuncios/index.html">Anuncios</a>
+        <a href="index.html" style="color: #CC0066; font-weight: bold;">Resultados</a>
+        <a href="../historial/index.html">Historial</a>
+        <a href="../recursos/index.html">Recursos</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Header del mes mejorado -->
+    <div class="resultados-header">
+      <h1 style="font-size: 2rem;">Resultados · Marzo 2026</h1>
+      <span class="badge-periodo">9 mar - 9 abr</span>
+    </div>
+
+    <!-- Lectura ejecutiva con estilo -->
+    <div class="lectura-card">
+      <h2 style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+        <span>📋</span> Lectura ejecutiva
+      </h2>
+      <p style="margin-bottom: 0.75rem;">Durante la primera quincena nos enfocamos en la producción y programación de contenido. Las campañas de pago arrancan en semana 3, por lo que los resultados comenzarán a reflejarse a partir del 23 de marzo.</p>
+      <p style="color: #CC0066; font-weight: 500;">⏳ Próximamente: leads, conversiones, alcance y métricas clave en tiempo real.</p>
+    </div>
+
+    <!-- KPIs destacados - Placeholders con diseño mejorado -->
+    <h2 style="margin: 2rem 0 1rem;">KPIs del período</h2>
+    <div class="kpis-grid">
+      <div class="kpi-placeholder">
+        <div class="icono">📊</div>
+        <div class="texto">Próximamente</div>
+      </div>
+      <div class="kpi-placeholder">
+        <div class="icono">📈</div>
+        <div class="texto">Próximamente</div>
+      </div>
+      <div class="kpi-placeholder">
+        <div class="icono">💬</div>
+        <div class="texto">Próximamente</div>
+      </div>
+      <div class="kpi-placeholder">
+        <div class="icono">💰</div>
+        <div class="texto">Próximamente</div>
+      </div>
+    </div>
+
+    <!-- Comparativos en grid -->
+    <div class="grid-2" style="margin: 2rem 0;">
+      <!-- Objetivo vs Resultado -->
+      <div class="card">
+        <h2 class="card-title">🎯 Objetivo vs Resultado</h2>
+        <div class="proximamente-box">
+          <div class="proximamente-icono">⏳</div>
+          <div class="proximamente-titulo">Métricas en tiempo real</div>
+          <div class="proximamente-desc">Los datos se actualizarán cuando las campañas estén activas.</div>
+        </div>
+      </div>
+
+      <!-- Comparativo campañas -->
+      <div class="card">
+        <h2 class="card-title">📱 Comparativo por campaña</h2>
+        <div class="proximamente-box">
+          <div class="proximamente-icono">📊</div>
+          <div class="proximamente-titulo">Meta Ads · Google Ads</div>
+          <div class="proximamente-desc">Resultados disponibles a partir del 23 de marzo.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Acciones tomadas -->
+    <div class="card">
+      <h2 class="card-title">✅ Acciones tomadas</h2>
+      <div class="acciones-tomadas">
+        <span class="badge-accion">✅ Contenido programado (13 piezas)</span>
+        <span class="badge-accion">✅ Anuncios listos para activar</span>
+        <span class="badge-accion">✅ Landing pages en desarrollo</span>
+      </div>
+    </div>
+
+    <!-- Próximos pasos numerados -->
+    <div class="card" style="background: #F3F4F6; border: none;">
+      <h2 class="card-title">⏭️ Próximos pasos</h2>
+      <div class="pasos-grid">
+        <div class="paso-item">
+          <span class="paso-numero">1</span>
+          <span>Activar campañas de pago (semana 3)</span>
+        </div>
+        <div class="paso-item">
+          <span class="paso-numero">2</span>
+          <span>Monitorear diariamente leads por WhatsApp</span>
+        </div>
+        <div class="paso-item">
+          <span class="paso-numero">3</span>
+          <span>Ajustar creativos según respuesta (flyers con mejor CTR)</span>
+        </div>
+        <div class="paso-item">
+          <span class="paso-numero">4</span>
+          <span>Primer reporte consolidado: 10 de abril</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner principal de próximamente -->
+    <div class="proximamente-box" style="margin: 2rem 0;">
+      <div class="proximamente-icono">🚀</div>
+      <div class="proximamente-titulo">Resultados en tiempo real</div>
+      <div class="proximamente-desc">Esta sección se actualizará automáticamente con datos de campañas, leads y conversiones.</div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Lázaro Marketing · Marzo 2026</div>
+  </footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

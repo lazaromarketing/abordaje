@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Soluciones VP · Facturación</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    /* Estilos específicos para facturación */
+    .factura-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 2rem 0 1.5rem;
+    }
+    .badge-pagado {
+      background: #D1FAE5;
+      color: #065F46;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .badge-pendiente {
+      background: #FEF3C7;
+      color: #92400E;
+      padding: 0.3rem 1.2rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+    .tabla-saldos {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0;
+    }
+    .tabla-saldos td {
+      padding: 0.9rem 0.5rem;
+      border-bottom: 1px solid #E5E7EB;
+    }
+    .tabla-saldos tr:last-child td {
+      border-bottom: none;
+    }
+    .saldo-verde {
+      color: #059669;
+      font-weight: 600;
+    }
+    .mes-card {
+      background: #F9FAFB;
+      border-radius: 20px;
+      padding: 1.5rem;
+      height: 100%;
+    }
+    .mes-titulo {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #111827;
+    }
+    .fila-precio {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.5rem 0;
+    }
+    .total-mes {
+      border-top: 2px dashed #9CA3AF;
+      margin-top: 0.5rem;
+      padding-top: 0.8rem;
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .fondo-pauta {
+      background: #EFF6FF;
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="../index.html" class="logo">Soluciones <span>VP</span></a>
+      <div class="nav-links">
+        <a href="../index.html">Dashboard</a>
+        <a href="../estrategia/index.html">Estrategia</a>
+        <a href="../contenido/index.html">Contenido</a>
+        <a href="../anuncios/index.html">Anuncios</a>
+        <a href="../resultados/index.html">Resultados</a>
+        <a href="../historial/index.html">Historial</a>
+        <a href="../recursos/index.html">Recursos</a>
+        <a href="index.html" style="color: #CC0066; font-weight: bold;">Facturación</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="factura-header">
+      <h1 style="font-size: 2rem;">Estado de Cuenta</h1>
+      <span class="badge-pendiente">Pendiente de pago (reactiva 9 mar)</span>
+    </div>
+
+    <!-- Bloque 1: Estatus General de Proyectos -->
+    <div class="card">
+      <h2 class="card-title">📌 Estatus General de Proyectos</h2>
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <div>
+          <span style="font-size: 1.2rem;">🌐</span>
+          <strong>Desarrollo Web y Automatización:</strong>
+          <span class="badge-pagado" style="margin-left: 0.5rem;">PAGADO</span>
+          <p style="color: #4B5563; margin-top: 0.3rem;">Inversión: $25,000 MXN cubierta en septiembre 2023. Entregables en fase de finalización: Selector de soluciones, artículos SEO y 4 Landing Pages.</p>
+        </div>
+        <div>
+          <span style="font-size: 1.2rem;">📄</span>
+          <strong>Documento de Resumen:</strong>
+          <a href="https://drive.google.com/file/d/1CofVYFL7mV4iMXPCG5easrSn5LI7HphM/view?usp=sharing" target="_blank" style="color: #CC0066; text-decoration: none; margin-left: 0.5rem;">Descargar PDF de Acuerdos ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bloque 2: Iguala de Marketing -->
+    <div class="card">
+      <h2 class="card-title">💰 Iguala de Marketing (Activa)</h2>
+      <p style="margin-bottom: 0.5rem;">Ejecución de los 2 meses restantes del contrato de estrategia de Redes Sociales, Producción y Campañas.</p>
+      <p><strong>Costo de Iguala Mensual:</strong> $14,177.00 MXN + IVA</p>
+    </div>
+
+    <!-- Bloque 3: Saldos a favor -->
+    <div class="card">
+      <h2 class="card-title">🎁 Saldos a favor de Soluciones VP</h2>
+      <table class="tabla-saldos">
+        <tr>
+          <td>Error de facturación pasada</td>
+          <td style="text-align: right;" class="saldo-verde">+ $2,157.60</td>
+        </tr>
+        <tr>
+          <td>Pendiente administrativo (Alejandro)</td>
+          <td style="text-align: right;" class="saldo-verde">+ $3,900.00</td>
+        </tr>
+        <tr style="border-top: 2px solid #E5E7EB;">
+          <td><strong>Total a bonificar</strong> (se divide en 2 meses)</td>
+          <td style="text-align: right;"><strong class="saldo-verde">$6,057.60 MXN</strong></td>
+        </tr>
+      </table>
+    </div>
+
+    <!-- Bloque 4: Amortización por mes (dos columnas) -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0;">
+      <!-- Mes 1 -->
+      <div class="mes-card">
+        <div class="mes-titulo">💳 Mes 1 · 9 Mar - 9 Abr 2026</div>
+        <div class="fila-precio"><span>Mensualidad</span><span>$14,177.00</span></div>
+        <div class="fila-precio" style="color: #059669;"><span>Descuento (50% saldo)</span><span>-$3,028.80</span></div>
+        <div class="total-mes fila-precio"><span>Subtotal</span><span>$11,148.20 + IVA</span></div>
+      </div>
+      <!-- Mes 2 -->
+      <div class="mes-card">
+        <div class="mes-titulo">💳 Mes 2 · 9 Abr - 9 May 2026</div>
+        <div class="fila-precio"><span>Mensualidad</span><span>$14,177.00</span></div>
+        <div class="fila-precio" style="color: #059669;"><span>Descuento (50% saldo)</span><span>-$3,028.80</span></div>
+        <div class="total-mes fila-precio"><span>Subtotal</span><span>$11,148.20 + IVA</span></div>
+      </div>
+    </div>
+
+    <!-- Bloque 5: Fondos Publicitarios -->
+    <div class="fondo-pauta">
+      <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.5rem;">
+        <span style="font-size: 1.5rem;">📢</span>
+        <h3 style="margin: 0;">Fondos Publicitarios (Pauta)</h3>
+      </div>
+      <p><strong>Fondo disponible actual:</strong> <span style="color: #059669; font-weight: 700;">$700.00 MXN</span> — Saldo intacto y listo para inyectarse directamente a las nuevas campañas de Meta/Google Ads de este mes.</p>
+      <p style="font-size: 0.9rem; color: #4B5563; margin-top: 0.5rem;">📌 Para cumplir estrictamente con los tiempos de estas 2 mensualidades, es indispensable la aprobación puntual de los contenidos y la grabación de los videos de apoyo (B-Roll) por parte del equipo VP.</p>
+    </div>
+
+    <!-- Nota legal opcional -->
+    <div style="background: #F3F4F6; border-radius: 16px; padding: 1rem; text-align: center; color: #4B5563; font-size: 0.85rem;">
+      Los montos mostrados son en pesos mexicanos (MXN) e incluyen el desglose de saldos a favor acordados.
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Lázaro Marketing · Marzo 2026</div>
+  </footer>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>Soluciones VP · Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* ===== SISTEMA LÁZARO MARKETING ===== */
+    :root {
+      --magenta: #CC0066;
+      --negro: #111827;
+      --blanco: #FFFFFF;
+      --gris-claro: #F3F4F6;
+      --gris-borde: #E5E7EB;
+      --sombra: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Rubik', sans-serif;
+      background-color: #f3f4f6;
+      color: var(--negro);
+      line-height: 1.5;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Rubik', sans-serif;
+      font-weight: 700;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: #fff;
+      padding: 1rem 0;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 800;
+      text-decoration: none;
+      color: var(--negro);
+    }
+    .logo span { color: var(--magenta); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.25rem;
+      overflow-x: auto;
+      padding-bottom: 5px;
+      -webkit-overflow-scrolling: touch;
+    }
+    .nav-links::-webkit-scrollbar { display: none; }
+    .nav-links a {
+      text-decoration: none;
+      color: #4B5563;
+      font-size: 0.9rem;
+      font-weight: 500;
+      white-space: nowrap;
+    }
+    .nav-links a:hover {
+      color: var(--magenta);
+    }
+
+    /* Cards */
+    .card {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: var(--sombra);
+      border: 1px solid var(--gris-borde);
+    }
+
+    .badge-programado {
+      background: #D1FAE5;
+      color: #065F46;
+      font-weight: 600;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      display: inline-block;
+    }
+
+    /* KPIs */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin: 2rem 0;
+    }
+    .kpi-destacado {
+      background: #fff;
+      border-radius: 20px;
+      padding: 1.25rem;
+      text-align: center;
+      box-shadow: var(--sombra);
+      border: 1px solid var(--gris-borde);
+      transition: transform 0.2s;
+    }
+    .kpi-destacado:hover {
+      transform: translateY(-3px);
+    }
+    .kpi-destacado .numero {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--magenta);
+      line-height: 1.2;
+    }
+    .kpi-destacado .etiqueta {
+      font-size: 0.75rem;
+      color: #4B5563;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* Lista pendientes */
+    .lista-pendientes {
+      list-style: none;
+      padding: 0;
+    }
+    .lista-pendientes li {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid var(--gris-borde);
+    }
+    .lista-pendientes li:last-child {
+      border-bottom: none;
+    }
+    .indicador-pendiente {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .indicador-rojo { background: #EF4444; box-shadow: 0 0 0 3px #FEE2E2; }
+    .indicador-amarillo { background: #F59E0B; box-shadow: 0 0 0 3px #FEF3C7; }
+    .indicador-verde { background: #10B981; box-shadow: 0 0 0 3px #D1FAE5; }
+
+    /* Grid de dos columnas */
+    .grid-sections {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    /* Botones */
+    .btn-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 0.75rem;
+    }
+    .btn {
+      text-align: center;
+      padding: 0.75rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--magenta);
+      color: #fff;
+    }
+    .btn-primary:hover {
+      opacity: 0.9;
+    }
+    .btn-outline {
+      border: 1.5px solid var(--magenta);
+      color: var(--magenta);
+    }
+    .btn-outline:hover {
+      background: var(--magenta);
+      color: #fff;
+    }
+
+    /* Estilo para resumen financiero */
+    .resumen-financiero {
+      background: linear-gradient(145deg, #F9FAFB, #FFFFFF);
+      border-radius: 20px;
+      padding: 1.25rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      border: 1px solid #E5E7EB;
+    }
+
+    /* Footer */
+    .footer {
+      padding: 2rem 0;
+      text-align: center;
+      color: #4B5563;
+      font-size: 0.8rem;
+    }
+
+    /* Media queries */
+    @media (min-width: 768px) {
+      .grid-sections {
+        grid-template-columns: 1.2fr 0.8fr;
+      }
+      .nav-links {
+        overflow: visible;
+        width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <a href="index.html" class="logo">Soluciones <span>VP</span></a>
+      <div class="nav-links">
+        <a href="index.html" style="color: #CC0066; font-weight: bold;">Dashboard</a>
+        <a href="estrategia/index.html">Estrategia</a>
+        <a href="contenido/index.html">Contenido</a>
+        <a href="anuncios/index.html">Anuncios</a>
+        <a href="resultados/index.html">Resultados</a>
+        <a href="historial/index.html">Historial</a>
+        <a href="recursos/index.html">Recursos</a>
+        <a href="facturacion/index.html">Facturación</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Header ejecutivo -->
+    <div class="card" style="margin-top: 2rem;">
+      <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+        <div>
+          <h1 style="font-size: 1.8rem; margin: 0;">Equipos y Soluciones VP</h1>
+          <p style="color: #4B5563; display: flex; align-items: center; gap: 0.5rem; margin-top: 0.5rem;">
+            <span style="background: #CC0066; width: 8px; height: 8px; border-radius: 50%; display: inline-block;"></span>
+            Centro de Servicio Autorizado EVANS · Tepic
+          </p>
+        </div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem;">
+          <div>
+            <div style="font-size: 0.7rem; color: #6B7280; text-transform: uppercase;">Periodo</div>
+            <div style="font-weight: 700;">9 Mar – 9 Abr 2026</div>
+          </div>
+          <div>
+            <div style="font-size: 0.7rem; color: #6B7280; text-transform: uppercase;">Estado</div>
+            <span class="badge-programado">✅ Programado</span>
+          </div>
+          <div>
+            <div style="font-size: 0.7rem; color: #6B7280; text-transform: uppercase;">Objetivo</div>
+            <div style="font-weight: 700;">Leads WhatsApp</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- NUEVO: Resumen financiero rápido -->
+    <div class="card">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+        <div>
+          <h2 style="font-size: 1.2rem;">💰 Resumen de cuenta</h2>
+          <p style="color: #4B5563;">Mensualidades pendientes con saldo a favor aplicado.</p>
+        </div>
+        <a href="facturacion/index.html" class="btn btn-outline" style="padding: 0.5rem 1.5rem;">Ver detalle →</a>
+      </div>
+      <div class="resumen-financiero" style="margin-top: 1rem;">
+        <div>
+          <span style="font-size: 0.8rem; color: #6B7280;">Mes 1 (Mar-Abr)</span>
+          <div style="font-weight: 700;">$11,148.20 + IVA</div>
+        </div>
+        <div>
+          <span style="font-size: 0.8rem; color: #6B7280;">Mes 2 (Abr-May)</span>
+          <div style="font-weight: 700;">$11,148.20 + IVA</div>
+        </div>
+        <div>
+          <span style="font-size: 0.8rem; color: #6B7280;">Fondo pauta</span>
+          <div style="font-weight: 700; color: #059669;">$700 MXN</div>
+        </div>
+        <div>
+          <span style="font-size: 0.8rem; color: #6B7280;">Saldos a favor</span>
+          <div style="font-weight: 700; color: #059669;">$6,057.60</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resumen ejecutivo -->
+    <div class="card">
+      <h2 style="font-size: 1.2rem; margin-bottom: 1rem;">📋 Resumen ejecutivo</h2>
+      <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;">
+        <span style="background: #F3F4F6; padding: 0.3rem 0.8rem; border-radius: 30px; font-size: 0.75rem;">🎯 Red VP (B2B)</span>
+        <span style="background: #F3F4F6; padding: 0.3rem 0.8rem; border-radius: 30px; font-size: 0.75rem;">🏠 Cliente B2C</span>
+        <span style="background: #F3F4F6; padding: 0.3rem 0.8rem; border-radius: 30px; font-size: 0.75rem;">📹 5 videos Armando</span>
+      </div>
+      <p style="margin-bottom: 1rem; line-height: 1.6;">Este mes ejecutamos una estrategia híbrida para consolidar a Soluciones VP en Nayarit. <strong style="color: #CC0066;">1) Reclutar ferreterías (B2B)</strong> y <strong style="color: #CC0066;">2) Captar clientes finales (B2C)</strong>.</p>
+      <div style="background: #CC0066; color: white; padding: 0.8rem 1.2rem; border-radius: 12px; display: inline-block; font-weight: 600; font-size: 0.9rem;">
+        🟢 Fase: Contenido 100% programado
+      </div>
+    </div>
+
+    <!-- KPIs -->
+    <div class="kpi-grid">
+      <div class="kpi-destacado">
+        <div class="numero">40+</div>
+        <div class="etiqueta">Leads esperados</div>
+      </div>
+      <div class="kpi-destacado">
+        <div class="numero">60+</div>
+        <div class="etiqueta">Conversaciones</div>
+      </div>
+      <div class="kpi-destacado">
+        <div class="numero">15k</div>
+        <div class="etiqueta">Alcance orgánico</div>
+      </div>
+      <div class="kpi-destacado">
+        <div class="numero">13</div>
+        <div class="etiqueta">Piezas producidas</div>
+      </div>
+    </div>
+
+    <!-- Secciones de dos columnas -->
+    <div class="grid-sections">
+      <!-- Próximos pasos / Pendientes -->
+      <div class="card">
+        <h2 style="font-size: 1.1rem; margin-bottom: 1rem;">⏳ Próximos pasos</h2>
+        <ul class="lista-pendientes">
+          <li>
+            <span class="indicador-pendiente indicador-rojo"></span>
+            <div><strong>Activar campañas de pago</strong><br><small style="color: #6B7280;">Meta y Google Ads · Semana 3</small></div>
+          </li>
+          <li>
+            <span class="indicador-pendiente indicador-amarillo"></span>
+            <div><strong>Landing pages</strong><br><small style="color: #6B7280;">"Selector de Soluciones" en desarrollo</small></div>
+          </li>
+          <li>
+            <span class="indicador-pendiente indicador-verde"></span>
+            <div><strong>Contenido programado</strong><br><small style="color: #6B7280;">Listo para publicarse</small></div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Calendario -->
+      <div class="card">
+        <h2 style="font-size: 1.1rem; margin-bottom: 1rem;">📅 Calendario</h2>
+        <div style="background: #F3F4F6; border-radius: 16px; padding: 1rem; display: flex; align-items: center; gap: 1rem;">
+          <div style="font-size: 2.2rem; font-weight: 800; color: #CC0066;">10</div>
+          <div>
+            <div style="font-weight: 600;">Inicio de contenido</div>
+            <div style="font-size: 0.8rem; color: #6B7280;">Reel: Presentación Armando</div>
+          </div>
+        </div>
+        <a href="contenido/index.html" style="display: block; text-align: center; margin-top: 1.2rem; color: #CC0066; text-decoration: none; font-weight: 600;">Ver calendario completo →</a>
+      </div>
+    </div>
+
+    <!-- Accesos rápidos -->
+    <div class="card" style="background: #F3F4F6; border: none;">
+      <h2 style="font-size: 1.1rem; margin-bottom: 1.2rem; text-align: center;">🚀 Accesos rápidos</h2>
+      <div class="btn-container">
+        <a href="contenido/index.html" class="btn btn-primary">🎬 Contenido</a>
+        <a href="estrategia/index.html" class="btn btn-outline">📋 Estrategia</a>
+        <a href="anuncios/index.html" class="btn btn-outline">📊 Anuncios</a>
+        <a href="recursos/index.html" class="btn btn-outline">📁 Recursos</a>
+      </div>
+      <div style="display: flex; justify-content: center; gap: 1.5rem; margin-top: 2rem; flex-wrap: wrap; font-size: 0.9rem;">
+        <a href="https://wa.me/523111227119?text=Hola%20Soluciones%20VP,%20vi%20su%20perfil%20y%20me%20gustaría%20información." target="_blank" style="text-decoration: none; color: #111827;">📞 311 122 7119</a>
+        <span style="color: #6B7280;">🌐 solucionesvp.com</span>
+        <a href="https://share.google/gWPmAx3h9TmSsp4TO" target="_blank" style="text-decoration: none; color: #111827;">📍 Google Maps</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      Portal de cliente · Lázaro Marketing · Marzo 2026
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
