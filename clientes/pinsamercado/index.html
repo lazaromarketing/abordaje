@@ -126,6 +126,46 @@
     .metodo-img { margin: 1rem -1.7rem -1.7rem; height: 110px; overflow: hidden; border-radius: 0 0 1.25rem 1.25rem; }
     .metodo-img img { width: 100%; height: 100%; object-fit: cover; filter: saturate(0.4) brightness(0.7); opacity: 0.55; }
 
+    /* MUESTRA BLOCK — NUEVO */
+    .muestra-block { margin-top: 3rem; }
+    .muestra-block-header { margin-bottom: 1.6rem; }
+    .muestra-block-title { font-family: 'Rubik', sans-serif; font-weight: 800; font-size: 1.35rem; color: var(--dark); margin-bottom: 0.4rem; }
+    .muestra-block-subtitle { font-size: 0.92rem; color: var(--gray-700); line-height: 1.55; max-width: 780px; padding-left: 1rem; border-left: 3px solid var(--magenta); }
+
+    .version-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    .version-card { border-radius: 1.25rem; overflow: hidden; border: 1px solid var(--gray-200); box-shadow: var(--shadow-md); transition: transform .22s, box-shadow .22s, border-color .22s; background: var(--white); }
+    .version-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); border-color: rgba(204,0,102,0.28); }
+
+    .version-card-top { padding: 1.4rem 1.6rem 1.1rem; border-bottom: 1px solid var(--gray-200); }
+    .version-badge { display: inline-block; font-family: 'Rubik', sans-serif; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 4px; margin-bottom: 0.65rem; }
+    .version-badge-base { background: var(--magenta-light); color: var(--magenta); border: 1px solid rgba(204,0,102,0.25); }
+    .version-badge-integral { background: var(--dark); color: var(--white); border: 1px solid rgba(255,255,255,0.1); }
+    .version-card-top h3 { font-family: 'Rubik', sans-serif; font-weight: 800; font-size: 1rem; color: var(--dark); margin-bottom: 0.45rem; line-height: 1.3; }
+    .version-card-top p { font-size: 0.86rem; color: var(--gray-700); line-height: 1.55; }
+
+    .version-card-body { padding: 1.3rem 1.6rem; }
+    .version-subsection { margin-bottom: 1.1rem; }
+    .version-subsection:last-child { margin-bottom: 0; }
+    .version-sublabel { font-family: 'Rubik', sans-serif; font-size: 0.67rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--magenta); margin-bottom: 0.55rem; display: flex; align-items: center; gap: 0.4rem; }
+    .version-sublabel::before { content: ''; display: inline-block; width: 16px; height: 2px; background: var(--magenta); border-radius: 2px; }
+
+    .muestra-items { list-style: none; display: flex; flex-direction: column; gap: 0.3rem; }
+    .muestra-items li { font-size: 0.88rem; color: var(--gray-700); display: flex; align-items: center; justify-content: space-between; padding: 0.35rem 0.6rem; border-radius: 6px; background: var(--off-white); border: 1px solid var(--gray-200); }
+    .muestra-items li .zona-name { font-weight: 500; color: var(--dark); }
+    .muestra-items li .zona-num { font-family: 'Rubik', sans-serif; font-weight: 800; color: var(--magenta); font-size: 0.95rem; }
+    .muestra-total { margin-top: 0.6rem; display: flex; align-items: center; justify-content: space-between; background: var(--dark); border-radius: 8px; padding: 0.6rem 0.8rem; }
+    .muestra-total span { font-size: 0.76rem; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .muestra-total strong { font-family: 'Rubik', sans-serif; font-weight: 900; font-size: 1.3rem; color: var(--white); }
+    .muestra-total strong em { color: var(--magenta); font-style: normal; }
+
+    .version-note { font-size: 0.83rem; color: var(--gray-700); line-height: 1.55; background: var(--magenta-light); border-left: 3px solid var(--magenta); border-radius: 0 6px 6px 0; padding: 0.65rem 0.9rem; }
+    .version-adjust { font-size: 0.83rem; color: var(--gray-500); line-height: 1.55; background: var(--off-white); border: 1px solid var(--gray-200); border-radius: 6px; padding: 0.55rem 0.8rem; font-style: italic; }
+
+    .capas-note { background: var(--dark); border-radius: 1rem; padding: 1.4rem 1.8rem; border: 1px solid rgba(204,0,102,0.18); }
+    .capas-note-title { font-family: 'Rubik', sans-serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--magenta); margin-bottom: 0.6rem; display: flex; align-items: center; gap: 0.5rem; }
+    .capas-note-title::before { content: ''; display: inline-block; width: 20px; height: 2px; background: var(--magenta); border-radius: 2px; }
+    .capas-note p { font-size: 0.88rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
     /* IA */
     .ia-wrapper { background: var(--dark-card); border-radius: 1.5rem; border: 1px solid rgba(204,0,102,0.22); overflow: hidden; box-shadow: 0 30px 60px rgba(0,0,0,0.22); }
     .ia-top { background: linear-gradient(135deg,#1a2535 0%,#0f1a25 100%); padding: 2.5rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
@@ -163,25 +203,45 @@
     .tl-wk { font-family: 'Rubik', sans-serif; font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; color: var(--magenta); text-transform: uppercase; margin-bottom: 0.4rem; }
     .tl-cell h4 { font-family: 'Rubik', sans-serif; font-weight: 700; font-size: 0.9rem; color: var(--dark); margin-bottom: 0.45rem; }
     .tl-cell p { font-size: 0.82rem; color: var(--gray-500); line-height: 1.5; }
+    .tl-cell p em { display: block; font-style: normal; font-size: 0.79rem; color: var(--magenta); margin-top: 0.4rem; font-weight: 500; }
     .tl-dot { position: absolute; top: 1.5rem; right: 1.2rem; width: 26px; height: 26px; border-radius: 50%; background: var(--magenta-light); border: 2px solid rgba(204,0,102,0.18); display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; color: var(--magenta); }
 
-    /* INVERSIÓN */
-    .inv-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-bottom: 1.4rem; }
-    .inv-main { background: var(--dark); border-radius: 1.4rem; padding: 2.3rem; position: relative; overflow: hidden; border: 1px solid rgba(204,0,102,0.25); }
-    .inv-main::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle,rgba(204,0,102,0.22),transparent 70%); }
+    .inv-versions { display: grid; grid-template-columns: 1fr 1fr; gap: 1.4rem; margin-bottom: 1rem; }
+    .inv-version-card { border-radius: 1.4rem; overflow: hidden; border: 1px solid rgba(204,0,102,0.22); position: relative; }
+    .inv-version-card.base { background: var(--dark); }
+    .inv-version-card.integral { background: #0d1520; border-color: rgba(204,0,102,0.45); }
+    .inv-version-card::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: radial-gradient(circle,rgba(204,0,102,0.22),transparent 70%); pointer-events: none; }
+    .inv-version-inner { padding: 2rem 2.2rem; position: relative; z-index: 1; }
+    .inv-version-tag { display: inline-block; font-family: 'Rubik', sans-serif; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.2rem 0.75rem; border-radius: 4px; margin-bottom: 0.7rem; }
+    .inv-version-tag.tag-base { background: var(--magenta-light); color: var(--magenta); border: 1px solid rgba(204,0,102,0.3); }
+    .inv-version-tag.tag-integral { background: var(--magenta); color: white; }
     .inv-lbl { font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.38); margin-bottom: 0.5rem; }
-    .inv-price { font-family: 'Rubik', sans-serif; font-weight: 900; font-size: clamp(2.1rem,5vw,2.8rem); color: var(--white); line-height: 1; margin-bottom: 0.3rem; }
+    .inv-price { font-family: 'Rubik', sans-serif; font-weight: 900; font-size: clamp(2rem,4.5vw,2.6rem); color: var(--white); line-height: 1; margin-bottom: 0.3rem; }
     .inv-price span { color: var(--magenta); }
     .inv-sub { font-size: 0.8rem; color: rgba(255,255,255,0.32); margin-bottom: 1.3rem; }
-    .inv-split { display: flex; gap: 0.8rem; flex-wrap: wrap; }
+    .inv-split { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
     .inv-si { flex: 1; background: rgba(255,255,255,0.05); border-radius: 0.7rem; padding: 0.8rem; border: 1px solid rgba(255,255,255,0.06); }
     .inv-si strong { display: block; font-family: 'Rubik', sans-serif; font-size: 1.2rem; font-weight: 800; color: var(--magenta); margin-bottom: 0.15rem; }
     .inv-si span { font-size: 0.74rem; color: rgba(255,255,255,0.36); }
+    .inv-version-sub { font-size: 0.83rem; color: rgba(255,255,255,0.45); line-height: 1.55; border-top: 1px solid rgba(255,255,255,0.07); padding-top: 0.9rem; }
+
+    .inv-diff-note { background: var(--magenta-light); border: 1px solid rgba(204,0,102,0.2); border-radius: 0.85rem; padding: 0.9rem 1.2rem; margin-bottom: 1.4rem; text-align: center; }
+    .inv-diff-note p { font-size: 0.88rem; color: var(--gray-700); line-height: 1.5; }
+    .inv-diff-note strong { color: var(--magenta); }
+
     .inv-details { display: flex; flex-direction: column; gap: 0.85rem; }
     .detail-card { background: var(--white); border: 1px solid var(--gray-200); border-radius: 1rem; padding: 1.15rem 1.35rem; box-shadow: var(--shadow-sm); }
     .detail-card h4 { font-family: 'Rubik', sans-serif; font-weight: 700; font-size: 0.76rem; color: var(--magenta); text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.35rem; }
     .detail-card p { font-size: 0.88rem; color: var(--gray-700); line-height: 1.5; }
     .detail-card ul { font-size: 0.87rem; color: var(--gray-700); padding-left: 1.1rem; line-height: 1.65; }
+
+    .incluye-split { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .incluye-block { background: var(--white); border: 1px solid var(--gray-200); border-radius: 1rem; padding: 1.15rem 1.35rem; box-shadow: var(--shadow-sm); }
+    .incluye-block h4 { font-family: 'Rubik', sans-serif; font-weight: 700; font-size: 0.74rem; color: var(--magenta); text-transform: uppercase; letter-spacing: 0.09em; margin-bottom: 0.6rem; }
+    .incluye-block ul { list-style: none; display: flex; flex-direction: column; gap: 0.32rem; }
+    .incluye-block ul li { font-size: 0.84rem; color: var(--gray-700); display: flex; align-items: flex-start; gap: 0.5rem; line-height: 1.4; }
+    .incluye-block ul li::before { content: '✓'; color: var(--magenta); font-weight: 700; font-size: 0.78rem; flex-shrink: 0; margin-top: 0.05rem; }
+
     .via-card { background: var(--dark); border-radius: 1rem; padding: 1.1rem 1.5rem; display: flex; align-items: center; gap: 0.85rem; border: 1px solid rgba(204,0,102,0.18); }
     .via-card p { font-size: 0.87rem; color: rgba(255,255,255,0.55); line-height: 1.5; }
     .via-card strong { color: var(--white); }
@@ -208,10 +268,12 @@
       .alert-inner { grid-template-columns: 1fr; }
       .ia-grid { grid-template-columns: 1fr; }
       .ia-top,.ia-mock,.ia-feat-panel { padding: 1.4rem; }
-      .inv-wrap { grid-template-columns: 1fr; }
+      .inv-versions { grid-template-columns: 1fr; }
       .tl-row { grid-template-columns: repeat(2,1fr); }
       .exec-summary { grid-template-columns: 1fr 1fr; }
       .cierre { padding: 1.8rem 1.4rem; }
+      .version-grid { grid-template-columns: 1fr; }
+      .incluye-split { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -231,7 +293,7 @@
 
       <div class="hero-eyebrow reveal" data-delay="0">
         <div class="hero-badge">Inteligencia Inmobiliaria 2026</div>
-        <div class="hero-cities">⏤ Tepic &nbsp;·&nbsp; Xalisco &nbsp;·&nbsp; Compostela (radar) ⏤</div>
+        <div class="hero-cities">⏤ Tepic &nbsp;·&nbsp; Xalisco &nbsp;·&nbsp; Corredor Compostela–Bahía ⏤</div>
       </div>
 
       <h1 class="reveal" data-delay="80">Precisión de Expansión 2026 para Ganar Market Share en Nayarit.</h1>
@@ -279,11 +341,13 @@
       <div class="section-header reveal">
         <div class="section-label">Sección 2 · Diagnóstico</div>
         <h2 class="section-title">El Nuevo Mapa de Valor en Nayarit:<br>Oportunidades Críticas 2026.</h2>
-        <p class="section-desc">Tres fuerzas están redefiniendo la absorción inmobiliaria en la región.<br>Cada una exige una decisión estratégica clara en producto, precio y territorio.</p>
+        
+        <p class="section-desc">Tres fuerzas están redefiniendo la absorción inmobiliaria en la región.<br>Cada una exige una decisión estratégica clara en producto, precio y territorio.<br>El estudio parte de <strong>Tepic y Xalisco como núcleo operativo</strong>, incorpora <strong>Compostela como corredor activo de expansión</strong> y considera la presión inmobiliaria de las zonas de mayor crecimiento estatal como referencia ampliada para entender hacia dónde se desplaza la demanda en Nayarit.</p>
       </div>
 
       <div class="cards-grid">
 
+        
         <div class="fuerza-card reveal" data-delay="0">
           <img class="fuerza-card-img" src="./assets/img/corredor.webp" alt="Corredor Compostela" />
           <div class="fuerza-card-body">
@@ -294,7 +358,8 @@
             <span class="pill" style="margin-bottom:0.85rem;">Nuevo Corredor</span>
             <p class="fuerza-meta">La conectividad Tepic–Compostela y la ampliación aeroportuaria están desplazando el eje de inversión hacia nuevos corredores.</p>
             <p class="fuerza-impl">Implicación: La plusvalía se captura antes del lanzamiento formal de proyectos.</p>
-            <div class="fuerza-dec"><strong>Decisión PINSA:</strong> Posicionarse en el corredor Tepic–Xalisco–Compostela con timing calibrado por datos reales de absorción.</div>
+            
+            <div class="fuerza-dec"><strong>Decisión PINSA:</strong> Posicionarse en el corredor Tepic–Xalisco–Compostela con timing calibrado por datos reales de absorción, lectura territorial activa y referencias comparativas del crecimiento regional.</div>
           </div>
         </div>
 
@@ -355,11 +420,12 @@
           <p>Benchmark a 8 desarrolladores clave: precio/m², amenidades, estrategia comercial y descuentos. Validación con minería de datos registrales y notarías estratégicas.</p>
         </div>
 
+        
         <div class="metodo-card reveal" data-delay="160">
           <div class="metodo-bg"></div>
           <div class="metodo-num">03</div>
           <h3>¿Quién compra, por qué y con qué financiamiento?</h3>
-          <p>Perfilamiento por NSE, tipo de financiamiento, motivación de compra y amenidades decisivas.<br>El producto se diseña para quien paga, no para quien opina.</p>
+          <p>Perfilamiento del Usuario Final por NSE, tipo de financiamiento, motivación de compra y amenidades decisivas.<br>La lectura se concentra en compradores potenciales y demanda real, para entender qué tipo de producto puede absorber mejor cada zona y con qué capacidad financiera.</p>
         </div>
 
         <div class="metodo-card reveal" data-delay="240">
@@ -370,6 +436,111 @@
         </div>
 
       </div>
+
+      ════════════════════════════════════════════════════════════════ -->
+      <div class="muestra-block reveal" data-delay="60">
+        <div class="muestra-block-header">
+          <div class="section-label" style="margin-top:0.5rem;">Diseño de Muestra y Cobertura Territorial</div>
+          <div class="muestra-block-subtitle">
+            La muestra de encuestas se construye <strong>exclusivamente sobre Usuario Final y compradores potenciales</strong>. No se mezcla con validación competitiva, notarías, brokers ni otras fuentes del estudio.
+          </div>
+        </div>
+
+        <div class="version-grid">
+
+          <div class="version-card reveal" data-delay="80">
+            <div class="version-card-top">
+              <div class="version-badge version-badge-base">Versión Base</div>
+              <h3>Lectura cuantitativa de Usuario Final</h3>
+              <p>Diseñada para construir una lectura clara del comportamiento de compra en las zonas núcleo del estudio, con enfoque exclusivo en demanda real, capacidad financiera y preferencias de producto del Usuario Final.</p>
+            </div>
+            <div class="version-card-body">
+
+              <div class="version-subsection">
+                <div class="version-sublabel">A · Muestra cuantitativa exclusiva</div>
+                <ul class="muestra-items">
+                  <li><span class="zona-name">Tepic</span><span class="zona-num">350 encuestas</span></li>
+                  <li><span class="zona-name">Xalisco</span><span class="zona-num">200 encuestas</span></li>
+                  <li><span class="zona-name">Compostela / corredor de expansión</span><span class="zona-num">150 encuestas</span></li>
+                </ul>
+                <div class="muestra-total">
+                  <span>Total</span>
+                  <strong><em>700</em> encuestas</strong>
+                </div>
+              </div>
+
+              <div class="version-subsection">
+                <div class="version-sublabel">B · Aclaración obligatoria</div>
+                <div class="version-note">
+                  Estas encuestas corresponden únicamente a <strong>compradores potenciales / Usuario Final</strong>.<br>
+                  No incluyen competidores, notarías, fuerza comercial, brokers ni validación transaccional.
+                </div>
+              </div>
+
+              <div class="version-subsection">
+                <div class="version-sublabel">C · Regla de ajuste</div>
+                <div class="version-adjust">
+                  Si en alguna zona la señal de mercado resulta ambigua o insuficiente, la muestra se amplía de forma puntual para sostener precisión estratégica.
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <div class="version-card reveal" data-delay="160" style="border-color:rgba(204,0,102,0.3);">
+            <div class="version-card-top" style="background:var(--dark);border-bottom-color:rgba(255,255,255,0.08);">
+              <div class="version-badge version-badge-integral">Versión Integral Ampliada</div>
+              <h3 style="color:var(--white);">Profundidad territorial de Usuario Final</h3>
+              <p style="color:rgba(255,255,255,0.5);">Diseñada para Dirección cuando se requiere una lectura más robusta por zona, con mayor profundidad cuantitativa del Usuario Final y una comprensión más sólida del comportamiento de compra en el corredor de expansión.</p>
+            </div>
+            <div class="version-card-body" style="background:var(--dark-card);">
+
+              <div class="version-subsection">
+                <div class="version-sublabel" style="color:rgba(204,0,102,0.85);">A · Muestra cuantitativa exclusiva</div>
+                <ul class="muestra-items" style="--item-bg:#1e2d3e;--item-border:rgba(255,255,255,0.07);">
+                  <li style="background:#1e2d3e;border-color:rgba(255,255,255,0.07);color:rgba(255,255,255,0.7);">
+                    <span class="zona-name" style="color:rgba(255,255,255,0.9);">Tepic</span><span class="zona-num">500 encuestas</span>
+                  </li>
+                  <li style="background:#1e2d3e;border-color:rgba(255,255,255,0.07);color:rgba(255,255,255,0.7);">
+                    <span class="zona-name" style="color:rgba(255,255,255,0.9);">Xalisco</span><span class="zona-num">300 encuestas</span>
+                  </li>
+                  <li style="background:#1e2d3e;border-color:rgba(255,255,255,0.07);color:rgba(255,255,255,0.7);">
+                    <span class="zona-name" style="color:rgba(255,255,255,0.9);">Compostela / corredor de expansión</span><span class="zona-num">350 encuestas</span>
+                  </li>
+                </ul>
+                <div class="muestra-total" style="background:rgba(204,0,102,0.15);border:1px solid rgba(204,0,102,0.3);">
+                  <span style="color:rgba(255,255,255,0.45);">Total</span>
+                  <strong style="font-size:1.45rem;"><em>1,150</em> encuestas</strong>
+                </div>
+              </div>
+
+              <div class="version-subsection">
+                <div class="version-sublabel" style="color:rgba(204,0,102,0.85);">B · Aclaración obligatoria</div>
+                <div class="version-note" style="background:rgba(204,0,102,0.1);border-left-color:var(--magenta);">
+                  <span style="color:rgba(255,255,255,0.75);">Estas encuestas corresponden <strong style="color:white;">exclusivamente a compradores potenciales / Usuario Final</strong>.<br>
+                  No incluyen competidores, notarías, fuerza comercial, brokers ni validación transaccional.</span>
+                </div>
+              </div>
+
+              <div class="version-subsection">
+                <div class="version-sublabel" style="color:rgba(204,0,102,0.85);">C · Regla de ajuste</div>
+                <div class="version-adjust" style="background:rgba(255,255,255,0.04);border-color:rgba(255,255,255,0.08);color:rgba(255,255,255,0.45);">
+                  Si alguna zona presenta respuestas ambiguas, sesgo o señal insuficiente, la muestra se expande de manera puntual para no comprometer la calidad de la decisión estratégica.
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+        <div class="capas-note reveal" data-delay="200">
+          <div class="capas-note-title">Capas complementarias del estudio</div>
+          <p>La muestra cuantitativa de Usuario Final no sustituye las demás capas del estudio.<br>
+          La lectura competitiva, el benchmark, la validación transaccional y el análisis del mercado continúan desarrollándose de forma independiente dentro de la metodología general, pero <strong style="color:rgba(255,255,255,0.75);">no forman parte del conteo de encuestas</strong>.</p>
+        </div>
+
+      </div><!-- /muestra-block -->
+
     </div>
   </section>
 
@@ -443,41 +614,117 @@
       </div>
 
       <div class="tl-row reveal">
-        <div class="tl-cell"><div class="tl-dot">1</div><div class="tl-wk">Semana 1</div><h4>Diseño del Estudio</h4><p>Instrumentos de medición: Mystery Shopper y Encuestas.</p></div>
-        <div class="tl-cell"><div class="tl-dot">2</div><div class="tl-wk">Semanas 2–3</div><h4>Campo Intensivo</h4><p>Recolección de datos: Tepic, Xalisco y Compostela.</p></div>
-        <div class="tl-cell"><div class="tl-dot">3</div><div class="tl-wk">Semanas 4–5</div><h4>Análisis Estratégico</h4><p>Absorción, Market Share y estrategias de posicionamiento.</p></div>
-        <div class="tl-cell"><div class="tl-dot">4</div><div class="tl-wk">Semana 6</div><h4>Entrega y Activación IA</h4><p>Informe ejecutivo, presentación y habilitación del Asistente.</p></div>
+        <div class="tl-cell">
+          <div class="tl-dot">1</div>
+          <div class="tl-wk">Semana 1</div>
+          <h4>Diseño del Estudio</h4>
+          <p>Instrumentos de medición: Mystery Shopper y Encuestas.</p>
+        </div>
+        <div class="tl-cell">
+          <div class="tl-dot">2</div>
+          <div class="tl-wk">Semanas 2–3</div>
+          <h4>Campo Intensivo</h4>
+          <p>Levantamiento cuantitativo segmentado por zona con enfoque exclusivo en Usuario Final: Tepic, Xalisco y Compostela / corredor de expansión.<br>La muestra se trabaja por territorio para evitar mezclar comportamientos distintos de mercado.<em>En la versión integral, la profundidad de muestra por zona aumenta para fortalecer precisión y lectura comparativa del corredor de expansión.</em></p>
+        </div>
+        <div class="tl-cell">
+          <div class="tl-dot">3</div>
+          <div class="tl-wk">Semanas 4–5</div>
+          <h4>Análisis Estratégico</h4>
+          <p>Absorción, Market Share y estrategias de posicionamiento.</p>
+        </div>
+        <div class="tl-cell">
+          <div class="tl-dot">4</div>
+          <div class="tl-wk">Semana 6</div>
+          <h4>Entrega y Activación IA</h4>
+          <p>Informe ejecutivo, presentación y habilitación del Asistente.</p>
+        </div>
       </div>
 
-      <div class="inv-wrap">
-        <div class="inv-main reveal">
-          <p class="inv-lbl">Inversión Total del Proyecto</p>
-          <div class="inv-price">$160,000 <span>MXN</span></div>
-          <p class="inv-sub">+ IVA · Todo incluido</p>
-          <div class="inv-split">
-            <div class="inv-si"><strong>50%</strong><span>Anticipo al arranque</span></div>
-            <div class="inv-si"><strong>50%</strong><span>Contra-entrega de resultados</span></div>
+      ════════════════════════════════════════════════════════════════ -->
+      <div class="inv-versions reveal">
+
+        <div class="inv-version-card base">
+          <div class="inv-version-inner">
+            <div class="inv-version-tag tag-base">Versión Base</div>
+            <p class="inv-lbl">Inversión del Proyecto</p>
+            <div class="inv-price">$160,000 <span>MXN</span></div>
+            <p class="inv-sub">+ IVA · Todo incluido</p>
+            <div class="inv-split">
+              <div class="inv-si"><strong>50%</strong><span>Anticipo al arranque</span></div>
+              <div class="inv-si"><strong>50%</strong><span>Contra entrega</span></div>
+            </div>
+            <div class="inv-version-sub">
+              Cobertura estratégica principal con muestra cuantitativa exclusiva de Usuario Final en Tepic, Xalisco y Compostela como corredor de expansión.
+            </div>
           </div>
         </div>
-        <div class="inv-details">
-          <div class="detail-card reveal" data-delay="60">
-            <h4>¿Qué habilita esta inversión?</h4>
-            <ul>
-              <li>Reduce riesgo estratégico de lanzamiento.</li>
-              <li>Optimiza velocidad de absorción desde día cero.</li>
-              <li>Evita errores de mezcla de producto e inventario.</li>
-              <li>Permite decisiones comerciales con datos verificados.</li>
-            </ul>
-          </div>
-          <div class="detail-card reveal" data-delay="120">
-            <h4>¿Qué incluye?</h4>
-            <p>Market Share dual · Benchmark 8 competidores · Radiografía del Usuario Final · FODA estratégico · 1 mes Asistente IA.</p>
-          </div>
-          <div class="via-card reveal" data-delay="180">
-            <span style="font-size:1.3rem;">✈️</span>
-            <p>Todos los viáticos, traslados y gastos de investigación de campo en <strong>Tepic, Xalisco y Compostela</strong> están cubiertos al 100% dentro de esta inversión.</p>
+
+        <div class="inv-version-card integral">
+          <div class="inv-version-inner">
+            <div class="inv-version-tag tag-integral">Versión Integral Ampliada</div>
+            <p class="inv-lbl">Inversión del Proyecto</p>
+            <div class="inv-price">$220,000 <span>MXN</span></div>
+            <p class="inv-sub">+ IVA · Todo incluido</p>
+            <div class="inv-split">
+              <div class="inv-si"><strong>50%</strong><span>Anticipo al arranque</span></div>
+              <div class="inv-si"><strong>50%</strong><span>Contra entrega</span></div>
+            </div>
+            <div class="inv-version-sub">
+              Mayor profundidad territorial, mayor robustez de muestra cuantitativa de Usuario Final y mejor lectura comparativa del corredor de expansión.
+            </div>
           </div>
         </div>
+
+      </div><!-- /inv-versions -->
+
+      <div class="inv-diff-note reveal" data-delay="80">
+        <p>La diferencia entre ambas versiones responde a <strong>profundidad de muestra</strong>, cobertura territorial y nivel de precisión requerido para la decisión.</p>
+      </div>
+
+      <div class="inv-details">
+
+        <div class="reveal" data-delay="60">
+          <div class="incluye-split">
+            <div class="incluye-block">
+              <h4>¿Qué incluye la Versión Base?</h4>
+              <ul>
+                <li>Market Share dual</li>
+                <li>Benchmark de 8 competidores</li>
+                <li>Radiografía del Usuario Final</li>
+                <li>Diseño de muestra segmentado por zona</li>
+                <li>700 encuestas cuantitativas exclusivas a Usuario Final</li>
+                <li>FODA estratégico</li>
+                <li>1 mes de Asistente IA</li>
+              </ul>
+            </div>
+            <div class="incluye-block" style="border-color:rgba(204,0,102,0.25);background:var(--off-white);">
+              <h4>¿Qué incluye la Versión Integral Ampliada?</h4>
+              <ul>
+                <li>Todo lo de la Versión Base</li>
+                <li>Mayor profundidad territorial por zona</li>
+                <li>1,150 encuestas cuantitativas exclusivas a Usuario Final</li>
+                <li>Mayor robustez de lectura por zona</li>
+                <li>Ampliación puntual de muestra si la señal lo requiere</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="detail-card reveal" data-delay="100">
+          <h4>¿Qué habilita esta inversión?</h4>
+          <ul>
+            <li>Reduce riesgo estratégico de lanzamiento.</li>
+            <li>Optimiza velocidad de absorción desde día cero.</li>
+            <li>Evita errores de mezcla de producto e inventario.</li>
+            <li>Permite decisiones comerciales con datos verificados.</li>
+          </ul>
+        </div>
+
+        <div class="via-card reveal" data-delay="160">
+          <span style="font-size:1.3rem;">✈️</span>
+          <p>Todos los viáticos, traslados y gastos de investigación de campo en <strong>Tepic, Xalisco y Compostela</strong> están cubiertos al 100% dentro de esta inversión.<br>La versión integral amplía la profundidad territorial de la muestra conforme al alcance validado.</p>
+        </div>
+
       </div>
 
       <div class="cierre reveal">
