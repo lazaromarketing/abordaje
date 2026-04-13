@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Panel de Operaciones | Lázaro</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-body: #F7F9FA;
+            --bg-surface: #FFFFFF;
+            --border: #EAEAEA;
+            --text-main: #111827;
+            --text-muted: #6B7280;
+            
+            /* Estados */
+            --status-aprobado-bg: #DEF7EC;
+            --status-aprobado-text: #03543F;
+            --status-pendiente-bg: #FEF08A;
+            --status-pendiente-text: #713F12;
+            --status-revision-bg: #E1EFFE;
+            --status-revision-text: #1E429F;
+            
+            --font-main: 'Inter', sans-serif;
+            --radius: 8px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding-bottom: 60px;
+        }
+
+        .header {
+            background: var(--bg-surface);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-title { font-size: 16px; font-weight: 600; letter-spacing: -0.02em; }
+        .header-subtitle { font-size: 13px; color: var(--text-muted); }
+
+        .container { max-width: 1000px; margin: 0 auto; padding: 24px 20px; }
+
+        /* Tarjetas de Métricas */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        @media (min-width: 600px) {
+            .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+        }
+        .stat-card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+        }
+        .stat-value { font-size: 24px; font-weight: 700; letter-spacing: -0.05em; margin-top: 4px; }
+        .stat-label { font-size: 11px; color: var(--text-muted); text-transform: uppercase; font-weight: 600; letter-spacing: 0.5px; }
+
+        /* Filtros */
+        .filters {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        @media (min-width: 600px) {
+            .filters { flex-direction: row; align-items: center; }
+        }
+        .filter-input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: var(--font-main);
+            font-size: 14px;
+            background: var(--bg-surface);
+            color: var(--text-main);
+            outline: none;
+            -webkit-appearance: none;
+        }
+        .filter-input:focus { border-color: var(--text-main); }
+
+        /* Grid de Contenido */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+        @media (min-width: 768px) {
+            .content-grid { grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); }
+        }
+
+        /* Tarjeta de Pieza */
+        .card {
+            background: var(--bg-surface);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .card-header {
+            padding: 16px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+        
+        .card-body { padding: 16px; flex-grow: 1; }
+        .card-title { font-size: 15px; font-weight: 600; margin-bottom: 16px; }
+        
+        .info-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 13px;
+        }
+        .info-label { color: var(--text-muted); }
+        .info-value { font-weight: 500; }
+
+        .card-footer {
+            padding: 12px 16px;
+            background: #F9FAFB;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Etiquetas y Badges */
+        .pill {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .pill.status-aprobado { background: var(--status-aprobado-bg); color: var(--status-aprobado-text); }
+        .pill.status-pendiente { background: var(--status-pendiente-bg); color: var(--status-pendiente-text); }
+        .pill.status-revision { background: var(--status-revision-bg); color: var(--status-revision-text); }
+
+        .type-tag {
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            background: #F3F4F6;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+
+        /* Botón de Drive */
+        .btn {
+            display: block;
+            width: 100%;
+            text-align: center;
+            background: var(--bg-surface);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 10px 16px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .btn:active { background: #F3F4F6; }
+        
+        .empty-state {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            grid-column: 1 / -1;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header-title">LÁZARO · Infraestructura</div>
+        <div class="header-subtitle">Control de Contenidos - La Higuera</div>
+    </header>
+
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Piezas</div>
+                <div class="stat-value" id="stat-total">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Pendientes</div>
+                <div class="stat-value" id="stat-pendientes" style="color: var(--status-pendiente-text);">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Aprobadas</div>
+                <div class="stat-value" id="stat-aprobadas" style="color: var(--status-aprobado-text);">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Reels</div>
+                <div class="stat-value" id="stat-reels">0</div>
+            </div>
+        </div>
+
+        <div class="filters">
+            <input type="text" id="search-input" class="filter-input" placeholder="Buscar pieza por título..." style="flex-grow: 1;">
+            <select id="filter-type" class="filter-input" style="width: auto; min-width: 130px;">
+                <option value="all">Formato: Todos</option>
+                <option value="Reel">Reels</option>
+                <option value="Post">Posts</option>
+                <option value="Carrusel">Carruseles</option>
+            </select>
+            <select id="filter-status" class="filter-input" style="width: auto; min-width: 130px;">
+                <option value="all">Estado: Todos</option>
+                <option value="pendiente">Pendientes</option>
+                <option value="aprobado">Aprobados</option>
+                <option value="revision">En Revisión</option>
+            </select>
+        </div>
+
+        <div class="content-grid" id="grid-container">
+            </div>
+    </div>
+
+    <script src="data/contenido.js"></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            // Verifica que el archivo de datos haya cargado correctamente.
+            // NOTA: Asegúrate de que en data/contenido.js tu array se llame "contenidoBase" o ajusta el nombre aquí.
+            if (typeof contenidoBase === 'undefined') {
+                document.getElementById('grid-container').innerHTML = `
+                    <div class="empty-state">
+                        <strong>Error de conexión:</strong> No se pudo leer el archivo <code>data/contenido.js</code>.<br>
+                        Asegúrate de que la variable dentro del archivo se llame <code>contenidoBase</code>.
+                    </div>`;
+                return;
+            }
+
+            // Clona y ordena cronológicamente
+            let contenido = [...contenidoBase].sort((a, b) => new Date(a.fecha) - new Date(b.fecha));
+
+            const grid = document.getElementById('grid-container');
+            const searchInput = document.getElementById('search-input');
+            const typeFilter = document.getElementById('filter-type');
+            const statusFilter = document.getElementById('filter-status');
+
+            // Formateador de fechas
+            const formatDate = (dateStr) => {
+                if(!dateStr) return 'Sin fecha';
+                const options = { day: 'numeric', month: 'short', year: 'numeric' };
+                const date = new Date(dateStr);
+                date.setMinutes(date.getMinutes() + date.getTimezoneOffset());
+                return date.toLocaleDateString('es-MX', options);
+            };
+
+            // Renderizar la interfaz
+            const renderDashboard = (data) => {
+                grid.innerHTML = '';
+                
+                if(data.length === 0) {
+                    grid.innerHTML = `<div class="empty-state">No hay piezas que coincidan con esta búsqueda.</div>`;
+                    updateStats(data);
+                    return;
+                }
+
+                data.forEach(item => {
+                    // Normalizar estado para la clase CSS (quitar acentos, minusculas)
+                    const normalizedStatus = item.estado.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    const statusClass = `status-${normalizedStatus}`;
+                    
+                    const card = document.createElement('div');
+                    card.className = 'card';
+                    card.innerHTML = `
+                        <div class="card-header">
+                            <div>
+                                <span class="type-tag">${item.tipo || 'General'}</span>
+                                <div style="font-size: 12px; color: var(--text-muted); font-weight: 500;">📅 ${formatDate(item.fecha)}</div>
+                            </div>
+                            <span class="pill ${statusClass}">${item.estado}</span>
+                        </div>
+                        <div class="card-body">
+                            <h3 class="card-title">${item.titulo}</h3>
+                            <div class="info-row">
+                                <span class="info-label">Objetivo</span>
+                                <span class="info-value">${item.objetivo || 'N/A'}</span>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <a href="${item.linkDrive || '#'}" target="_blank" class="btn">Visualizar Asset ↗</a>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                });
+
+                updateStats(data);
+            };
+
+            // Actualizar KPIs de arriba
+            const updateStats = (data) => {
+                const getCountByStatus = (statusStr) => data.filter(i => i.estado.toLowerCase().includes(statusStr)).length;
+                
+                document.getElementById('stat-total').textContent = data.length;
+                document.getElementById('stat-pendientes').textContent = getCountByStatus('pendiente');
+                document.getElementById('stat-aprobadas').textContent = getCountByStatus('aprobado');
+                document.getElementById('stat-reels').textContent = data.filter(i => (i.tipo || '').toLowerCase() === 'reel').length;
+            };
+
+            // Motor de búsqueda y filtrado
+            const applyFilters = () => {
+                const term = searchInput.value.toLowerCase();
+                const type = typeFilter.value;
+                const status = statusFilter.value;
+
+                const filtered = contenido.filter(item => {
+                    const matchSearch = item.titulo.toLowerCase().includes(term);
+                    const matchType = type === 'all' || item.tipo === type;
+                    const normalizedItemStatus = item.estado.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+                    const matchStatus = status === 'all' || normalizedItemStatus === status;
+                    
+                    return matchSearch && matchType && matchStatus;
+                });
+
+                renderDashboard(filtered);
+            };
+
+            // Listeners
+            searchInput.addEventListener('input', applyFilters);
+            typeFilter.addEventListener('change', applyFilters);
+            statusFilter.addEventListener('change', applyFilters);
+
+            // Carga inicial
+            renderDashboard(contenido);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Propuesta Estratégica · La Higuera</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #CC0066;
+            --surface: #FFFFFF;
+            --background: #F9FAFB;
+            --text-main: #111827;
+            --text-body: #4B5563;
+            --text-muted: #6B7280;
+            --border: #E5E7EB;
+            --font-sans: 'Rubik', system-ui, sans-serif;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: var(--font-sans);
+            background: var(--background);
+            color: var(--text-main);
+            line-height: 1.6;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header { margin-bottom: 40px; }
+        .brand { font-size: 22px; font-weight: 700; letter-spacing: -0.05em; }
+        .brand span { font-weight: 400; color: var(--text-muted); font-size: 16px; }
+        
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 32px 24px;
+            margin-bottom: 24px;
+        }
+
+        h1 { font-size: 26px; font-weight: 700; margin-bottom: 16px; letter-spacing: -0.02em; }
+        h2 { font-size: 19px; font-weight: 600; margin-bottom: 16px; border-bottom: 2px solid var(--border); padding-bottom: 8px; }
+        h3 { font-size: 17px; font-weight: 600; margin-bottom: 8px; }
+        p { margin-bottom: 16px; color: var(--text-body); }
+
+        .highlight-box {
+            background: #FFF5F9;
+            border-left: 4px solid var(--primary);
+            padding: 20px;
+            border-radius: 0 8px 8px 0;
+            margin-bottom: 24px;
+        }
+
+        ul { list-style: none; margin-bottom: 16px; }
+        li { position: relative; padding-left: 24px; margin-bottom: 12px; color: var(--text-body); font-size: 15px; }
+        li::before { content: "•"; position: absolute; left: 8px; color: var(--primary); font-weight: bold; }
+
+        .pricing-card { border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+        .pricing-card.featured { border: 2px solid var(--primary); background: #FFFBFD; }
+        .price-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+        .price-amount { font-size: 22px; font-weight: 700; color: var(--primary); }
+
+        .clarification-box {
+            background: var(--background);
+            padding: 16px;
+            border-radius: 8px;
+            font-size: 14px;
+            border-left: 3px solid var(--text-muted);
+            margin-top: 24px;
+            color: var(--text-body);
+        }
+
+        .btn-group { display: flex; flex-direction: column; gap: 12px; margin-top: 32px; }
+        .btn {
+            display: inline-flex;
+            justify-content: center;
+            padding: 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 16px;
+        }
+        .btn-primary { background: var(--text-main); color: white; }
+        .btn-outline { background: transparent; color: var(--text-main); border: 1px solid var(--border); }
+        
+        .addon { border-top: 2px dashed var(--border); padding-top: 32px; margin-top: 48px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="brand">LÁZARO <span>MARKETING</span></div>
+            <p style="font-size: 13px; color: var(--text-muted);">Propuesta de Infraestructura y Adquisición · Abril 2026</p>
+        </header>
+
+        <section class="card">
+            <h1>Estrategia de Crecimiento</h1>
+            <p>La Higuera tiene un producto sólido y validado por sus clientes. El objetivo es activar la demanda en días hábiles y capturar el segmento que hoy no los tiene en su radar mediante campañas de adquisición dirigidas.</p>
+        </section>
+
+        <section class="highlight-box">
+            <h3 style="color: var(--primary);">Beneficios de Arranque</h3>
+            <p style="font-size: 14px;">Al formalizar la colaboración, absorberemos la instalación de los siguientes activos base para acelerar la estrategia:</p>
+            <ul style="margin: 0;">
+                <li>Estructuración de hasta 3 paquetes comerciales (ej. cumpleaños).</li>
+                <li>Sesión fotográfica inicial (1 visita) para renovar imagen de platillos clave.</li>
+                <li>Configuración técnica de WhatsApp Business y Google Perfil de Empresa.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Diagnóstico</h2>
+            <h3>Puntos Fuertes</h3>
+            <ul>
+                <li>Alta retención (4.6★ en Google).</li>
+                <li>Infraestructura superior (estacionamiento y amplitud).</li>
+            </ul>
+            <h3 style="margin-top: 20px;">Focos de Mejora</h3>
+            <ul>
+                <li>Optimización de ocupación de lunes a viernes.</li>
+                <li>Visibilidad digital local frente a la competencia.</li>
+            </ul>
+        </section>
+
+        <section class="card">
+            <h2>Inversión Mensual</h2>
+            <div class="pricing-card">
+                <div class="price-header">
+                    <strong>Plan 3 Meses</strong>
+                    <span class="price-amount">$9,750 <small style="font-size: 12px; font-weight: 400; color: var(--text-muted);">/mes</small></span>
+                </div>
+                <p style="font-size: 14px;">Honorarios por gestión de contenidos, pauta publicitaria y SEO local.</p>
+            </div>
+
+            <div class="pricing-card featured">
+                <div class="price-header">
+                    <strong>Plan 6 Meses</strong>
+                    <span class="price-amount">$8,750 <small style="font-size: 12px; font-weight: 400; color: var(--text-muted);">/mes</small></span>
+                </div>
+                <p style="font-size: 14px;">Consolidación de marca y sistema de reseñas. Permite pagos quincenales de $4,375 MXN.</p>
+            </div>
+
+            <div class="clarification-box">
+                <strong style="color: var(--text-main);">Sobre la Pauta Publicitaria (Anuncios):</strong><br>
+                Los planes listados arriba cubren nuestros <strong>honorarios</strong> por la creación, gestión y optimización de las campañas.<br><br>
+                El <strong>presupuesto publicitario</strong> se maneja de forma independiente. Sugerimos destinar $2,000 MXN mensuales que se pagan directamente a las plataformas (Facebook/Instagram) desde su tarjeta, asegurando que usted tenga control y transparencia total sobre esa inversión.
+            </div>
+            
+            <p style="font-size: 12px; color: var(--text-muted); margin-top: 16px;">*Nuestros honorarios no incluyen IVA. Emitimos factura por cada pago.</p>
+        </section>
+
+        <section class="card">
+            <h2>Siguientes Pasos</h2>
+            <p>Si la estrategia es correcta, agendamos una breve llamada para definir fecha de inicio y accesos.</p>
+            <div class="btn-group">
+                <a href="https://wa.me/523114831656?text=Hola,%20revisé%20la%20propuesta.%20Agendemos%20llamada." class="btn btn-primary" target="_blank">Solicitar Llamada</a>
+                <a href="tel:+523114831656" class="btn btn-outline">311 483 1656</a>
+            </div>
+        </section>
+
+        <section class="addon">
+            <h2 style="border: none; color: var(--text-muted); font-size: 15px;">MÓDULO ADICIONAL: WEB</h2>
+            <div style="display: grid; gap: 12px;">
+                <div style="padding: 16px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px;">
+                    <strong>Menú Digital Base: $5,000 MXN</strong><br>Desarrollo único con integración a WhatsApp.
+                </div>
+                <div style="padding: 16px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px;">
+                    <strong>Sistema Administrable: $15,000 MXN</strong><br>Panel de control para cambios de precios y fotos.
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
