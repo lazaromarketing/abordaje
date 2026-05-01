@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lázaro Marketing // Protocolo 360° — Dr. Jorge Parra</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+  :root {
+    /* Quiet Luxury Palette */
+    --gold: #C5A059;
+    --gold-dim: #8a6e3a;
+    --gold-glow: rgba(197,160,89,0.15);
+    --bg: #050505;
+    --bg-subtle: rgba(14,14,14,0.95);
+    --bg-glass: rgba(20,20,20,0.8);
+    --text-primary: #EBEBEB;
+    --text-secondary: #9CA3AF;
+    --text-muted: #6B7280;
+    --border: rgba(255,255,255,0.08);
+    --border-strong: rgba(197,160,89,0.3);
+    --green-ok: #39FF8A;
+    --green-bg: rgba(57,255,138,0.05);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* Subtle grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(197,160,89,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(197,160,89,0.02) 1px, transparent 1px);
+    background-size: 80px 80px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  h1, h2, h3, .playfair { font-family: 'Playfair Display', serif; }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes pulse-dot {
+    0%, 100% { opacity: 1; box-shadow: 0 0 8px rgba(197,160,89,0.5); }
+    50% { opacity: 0.5; box-shadow: 0 0 2px rgba(197,160,89,0.2); }
+  }
+  @keyframes shimmer {
+    0% { background-position: -200% center; }
+    100% { background-position: 200% center; }
+  }
+
+  .fade-up { animation: fadeUp 0.65s cubic-bezier(0.16,1,0.3,1) forwards; opacity: 0; }
+  .fade-in { animation: fadeIn 0.5s ease forwards; opacity: 0; }
+  .d1 { animation-delay: 0.08s; }
+  .d2 { animation-delay: 0.18s; }
+  .d3 { animation-delay: 0.28s; }
+  .d4 { animation-delay: 0.38s; }
+  .d5 { animation-delay: 0.48s; }
+
+  /* Layout */
+  .container { max-width: 960px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+
+  /* Header */
+  .top-bar {
+    background: rgba(5,5,5,0.9);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.875rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .top-bar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .brand {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--gold);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .brand-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    flex-shrink: 0;
+    animation: pulse-dot 2.5s ease infinite;
+  }
+
+  .status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: var(--green-bg);
+    border: 1px solid rgba(57,255,138,0.2);
+    border-radius: 2px;
+    padding: 0.25rem 0.75rem;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--green-ok);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .status-dot-green {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green-ok);
+    box-shadow: 0 0 8px rgba(57,255,138,0.5);
+  }
+
+  .doc-ref {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    font-weight: 400;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  /* Hero */
+  .hero {
+    padding: 5rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .hero-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--gold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    margin-bottom: 1.75rem;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 30px;
+    height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-title {
+    font-size: clamp(2.5rem, 7vw, 4.5rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title .accent {
+    background: linear-gradient(90deg, var(--gold) 0%, #e8c876 40%, var(--gold) 60%, #9a7a3a 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s linear infinite;
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: var(--text-secondary);
+    max-width: 600px;
+    line-height: 1.7;
+    border-left: 1px solid var(--gold-dim);
+    padding-left: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero-meta {
+    display: flex;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    overflow: hidden;
+    width: fit-content;
+  }
+
+  .hero-meta-item {
+    padding: 1rem 1.5rem;
+    background: var(--bg-subtle);
+  }
+
+  .hero-meta-label {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.3rem;
+  }
+
+  .hero-meta-value {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  /* Sections */
+  section { padding: 5rem 0; }
+
+  .section-eyebrow {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.6rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+  }
+
+  .section-desc {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    max-width: 560px;
+    line-height: 1.8;
+    margin-bottom: 3rem;
+  }
+
+  /* Gap section */
+  .compare-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+  @media (max-width: 640px) { .compare-wrap { grid-template-columns: 1fr; } }
+
+  .compare-card { padding: 2rem; }
+  .compare-card.old { background: var(--bg-subtle); }
+  .compare-card.new {
+    background: rgba(12,12,10,0.98);
+    border-left: 1px solid var(--gold);
+  }
+
+  .compare-header {
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.875rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .compare-header.old { color: var(--text-muted); }
+  .compare-header.new { color: var(--gold); }
+
+  .compare-item {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    font-size: 0.875rem;
+    align-items: flex-start;
+  }
+
+  .ci-icon { margin-top: 2px; font-size: 0.7rem; }
+  .ci-icon.x { color: #555; }
+  .ci-icon.check { color: var(--gold); }
+
+  /* Pillars */
+  .pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+  }
+
+  .pillar {
+    background: var(--bg-subtle);
+    padding: 2rem;
+    transition: background 0.3s;
+    position: relative;
+  }
+  .pillar:hover { background: rgba(16,15,12,0.98); }
+
+  .pillar-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 800;
+    color: rgba(197,160,89,0.1);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .pillar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+  }
+
+  .pillar-body {
+    font-size: 0.865rem;
+    color: var(--text-secondary);
+    line-height: 1.75;
+  }
+
+  .pillar-result {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border);
+    font-size: 0.75rem;
+    color: var(--gold);
+    letter-spacing: 0.05em;
+  }
+
+  /* Plazas */
+  .plazas-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media (max-width: 600px) { .plazas-grid { grid-template-columns: 1fr; } }
+
+  .plaza {
+    border-radius: 2px;
+    padding: 2rem;
+    border: 1px solid var(--border);
+    background: var(--bg-subtle);
+    position: relative;
+  }
+
+  .plaza.premium {
+    border-color: var(--border-strong);
+    background: rgba(14,12,8,0.98);
+  }
+
+  .plaza-badge {
+    position: absolute;
+    top: 1.25rem;
+    right: 1.25rem;
+    font-size: 0.55rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--border-strong);
+    padding: 0.2rem 0.5rem;
+  }
+
+  .plaza-city {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.2rem;
+  }
+
+  .plaza-tag {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1.75rem;
+  }
+
+  .plaza-kv { margin-bottom: 1rem; }
+  .plaza-kv-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 0.2rem;
+  }
+  .plaza-kv-value { font-size: 0.875rem; color: var(--text-secondary); }
+
+  .plaza-bar-wrap { margin-top: 1.5rem; }
+  .plaza-bar-label {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.4rem;
+  }
+  .plaza-bar-bg {
+    height: 2px;
+    background: var(--border);
+  }
+  .plaza-bar-fill {
+    height: 100%;
+    background: var(--gold);
+    transition: width 1.4s cubic-bezier(0.16,1,0.3,1);
+  }
+
+  /* ——— HORIZONTES (Tabs) ——— */
+  .horizons-tabs {
+    display: flex;
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    width: fit-content;
+    margin-bottom: 2rem;
+  }
+
+  .h-tab {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    border: none;
+    background: var(--bg-subtle);
+    color: var(--text-muted);
+    transition: all 0.2s ease;
+  }
+
+  .h-tab.active {
+    background: rgba(14,12,8,0.98);
+    color: var(--gold);
+  }
+
+  .h-panel { display: none; }
+  .h-panel.active {
+    display: block;
+    animation: fadeUp 0.35s ease forwards;
+  }
+
+  .horizon-card {
+    border-radius: 2px;
+    border: 1px solid var(--border);
+    background: var(--bg-subtle);
+  }
+
+  .horizon-card.phase2 { border-color: var(--border-strong); }
+
+  .horizon-header {
+    padding: 2rem 2.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .horizon-card.phase2 .horizon-header {
+    background: rgba(14,12,8,0.98);
+  }
+
+  .horizon-phase-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.4rem;
+  }
+
+  .horizon-card.phase2 .horizon-phase-label { color: var(--gold); }
+
+  .horizon-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .horizon-subtitle { font-size: 0.875rem; color: var(--text-secondary); }
+
+  .horizon-body {
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 640px) {
+    .horizon-body { grid-template-columns: 1fr; gap: 1.75rem; padding: 1.5rem; }
+    .horizon-header { padding: 1.5rem; }
+  }
+
+  .inv-breakdown-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .inv-line {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .inv-line:last-of-type { border-bottom: none; }
+
+  .inv-line-name { font-size: 0.875rem; color: var(--text-secondary); }
+  .inv-line-name span { font-size: 0.65rem; color: var(--text-muted); display: block; margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.1em; }
+
+  .inv-line-amount {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .inv-total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-top: 1.25rem;
+    padding: 1rem;
+    background: var(--bg);
+    border: 1px solid var(--border);
+  }
+
+  .horizon-card.phase2 .inv-total-row {
+    border-color: var(--border-strong);
+    background: rgba(14,12,8,0.98);
+  }
+
+  .inv-total-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+  }
+
+  .horizon-card.phase2 .inv-total-label { color: var(--gold); }
+
+  .inv-total-amount {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .horizon-card.phase2 .inv-total-amount { color: var(--gold); }
+
+  .deliverables-label {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 1rem;
+  }
+
+  .deliverable-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.875rem;
+  }
+
+  .del-check {
+    color: var(--gold);
+    font-size: 0.75rem;
+    margin-top: 2px;
+  }
+
+  .del-text {
+    font-size: 0.875rem;
+    color: var(--text-secondary);
+  }
+  .del-text strong { color: var(--text-primary); font-weight: 500; }
+
+  /* ROI */
+  .roi-strip {
+    background: rgba(12,10,6,0.98);
+    border: 1px solid var(--border-strong);
+    padding: 2.5rem;
+    position: relative;
+  }
+  .roi-strip::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+
+  .roi-big {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3rem, 8vw, 5rem);
+    font-weight: 800;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .roi-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1px;
+    margin-top: 2rem;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .roi-kpi {
+    padding: 1.5rem;
+    background: var(--bg-subtle);
+    text-align: center;
+  }
+
+  .roi-kpi-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  .roi-kpi-label {
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  /* CTA Closing Section (ALEX DEY METHOD) */
+  .closing-section {
+    padding: 5rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .closing-card {
+    border: 1px solid var(--border-strong);
+    background: rgba(12,10,6,0.98);
+    padding: 3rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .closing-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--gold);
+  }
+
+  .closing-steps-label {
+    font-size: 0.65rem;
+    color: var(--gold);
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-bottom: 1rem;
+  }
+
+  .closing-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+  }
+
+  .closing-text {
+    font-size: 1.05rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    max-width: 700px;
+    margin: 0 auto 2.5rem;
+  }
+  .closing-text strong { color: var(--text-primary); font-weight: 500; }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gold);
+    color: #000;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 1rem 2.5rem;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+  .cta-btn:hover { background: #e8c876; }
+
+  .trust-line {
+    margin-top: 1.5rem;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+  }
+
+  /* Footer */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 3rem 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-copy {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    max-width: 300px;
+  }
+
+  .footer-enc {
+    text-align: right;
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    line-height: 1.8;
+    letter-spacing: 0.05em;
+  }
+
+  @media (max-width: 600px) {
+    .footer-enc { text-align: left; }
+    .closing-card { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<header class="top-bar">
+  <div class="container">
+    <div class="top-bar-inner fade-in">
+      <div class="brand">
+        <div class="brand-dot"></div>
+        Somoslázaro
+      </div>
+      <div style="display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;">
+        <span class="doc-ref">REF: SLZ-2026-JPB-001</span>
+        <div class="status-pill">
+          <div class="status-dot-green"></div>
+          Strategic Expansion
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-eyebrow fade-in d1">Propuesta Estratégica Confidencial</div>
+    <h1 class="hero-title fade-up d2">
+      Protocolo de<br>
+      <span class="accent">Transformación 360°</span>
+    </h1>
+    <p class="hero-subtitle fade-up d3">
+      Construiremos el dominio digital del mercado bariátrico en Nayarit y Jalisco — desde la captación local en Tepic hasta los pacientes High-Ticket en Puerto Vallarta.
+    </p>
+    <div class="hero-meta fade-up d4">
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Mercado</div>
+        <div class="hero-meta-value">Nayarit + Jalisco</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Segmentos</div>
+        <div class="hero-meta-value">Local + Expat</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Horizonte</div>
+        <div class="hero-meta-value">3 – 6 Meses</div>
+      </div>
+      <div class="hero-meta-item">
+        <div class="hero-meta-label">Preparado para</div>
+        <div class="hero-meta-value" style="color:var(--gold);">Dr. Jorge Parra</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow fade-up">01 — Diagnóstico</div>
+    <h2 class="section-title fade-up d1">La Brecha que Define la Oportunidad</h2>
+    <p class="section-desc fade-up d2">
+      La mayoría de las agencias venden anuncios y reportan impresiones. Somoslázaro construye infraestructura de captación trazable desde el primer clic hasta la cirugía.
+    </p>
+    <div class="compare-wrap fade-up d3">
+      <div class="compare-card old">
+        <div class="compare-header old">Modelo de Agencia Tradicional</div>
+        <div class="compare-item">
+          <div class="ci-icon x">✕</div>
+          <div class="del-text">Venden impresiones. El ROI es ambiguo y difícil de conectar al ingreso real de la clínica.</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-icon x">✕</div>
+          <div class="del-text">El mismo mensaje genérico para el cirujano bariatra y para el odontólogo.</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-icon x">✕</div>
+          <div class="del-text">No atacan los miedos reales del paciente: el abandono postoperatorio.</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-icon x">✕</div>
+          <div class="del-text">Sin sistema. El crecimiento depende de "hacer ruido", no de activos.</div>
+        </div>
+      </div>
+      <div class="compare-card new">
+        <div class="compare-header new">Arquitectura Lázaro</div>
+        <div class="compare-item">
+          <div class="ci-icon check">✓</div>
+          <div class="del-text"><strong style="color:var(--gold)">Infraestructura Trazable:</strong> Cada lead es rastreado hasta la cirugía realizada.</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-icon check">✓</div>
+          <div class="del-text"><strong style="color:var(--gold)">Autoridad Técnica:</strong> Fellowship Barcelona + Bipartición Intestinal como diferenciadores.</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-icon check">✓</div>
+          <div class="del-text"><strong style="color:var(--gold)">Cierre Psicológico:</strong> Atacamos el miedo a la soledad usando el Sistema 360 como garantía.</div>
+        </div>
+        <div class="compare-item">
+          <div class="ci-icon check">✓</div>
+          <div class="del-text"><strong style="color:var(--gold)">Activos Permanentes:</strong> El SEO y los testimonios acumulan valor compuesto mes a mes.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow fade-up">02 — Arquitectura Estratégica</div>
+    <h2 class="section-title fade-up d1">Los 3 Pilares del Protocolo</h2>
+    <p class="section-desc fade-up d2">
+      Cada pilar ocupa un hueco que la competencia local dejó vacío. Juntos construyen una posición de dominio.
+    </p>
+    <div class="pillars-grid">
+      <div class="pillar fade-up d1">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Autoridad Europea.<br>Fellowship Barcelona.</div>
+        <p class="pillar-body">La formación en el Hospital Sant Pau es un activo de primer nivel. Haremos de esta credencial el argumento central para el turismo médico internacional, eliminando instantáneamente la objeción de calidad.</p>
+        <div class="pillar-result">→ Elimina la objeción de riesgo en el extranjero.</div>
+      </div>
+      <div class="pillar fade-up d2">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Vanguardia Técnica.<br>Bipartición Intestinal.</div>
+        <p class="pillar-body">La competencia solo habla de manga gástrica. Posicionaremos al Dr. Parra como el único especialista en soluciones complejas, capturando pacientes que han fallado en otras intervenciones locales.</p>
+        <div class="pillar-result">→ Captura el mercado de revisión sin competencia.</div>
+      </div>
+      <div class="pillar fade-up d3">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">El Sistema 360.<br>Cierre de Confianza.</div>
+        <p class="pillar-body">El mayor miedo del paciente bariátrico es el abandono. Nosotros comunicaremos el sistema completo (nutriólogo y psicólogo). El lema: <em>"La cirugía es el primer paso. Caminamos el resto contigo."</em></p>
+        <div class="pillar-result">→ Convierte la consulta en una decisión emocional.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+    <div class="section-eyebrow fade-up">03 — Estrategia Territorial</div>
+    <h2 class="section-title fade-up d1">Dos Plazas. Dos Tácticas.</h2>
+    <div class="plazas-grid fade-up d2" style="margin-top: 3rem;">
+      <div class="plaza">
+        <div class="plaza-city">Tepic</div>
+        <div class="plaza-tag">Nayarit · Volumen Local</div>
+        <div class="plaza-kv">
+          <div class="plaza-kv-label">Objetivo</div>
+          <div class="plaza-kv-value">Dominar búsquedas de alta intención y ser la opción obvia para los pacientes locales.</div>
+        </div>
+        <div class="plaza-kv">
+          <div class="plaza-kv-label">Táctica</div>
+          <div class="plaza-kv-value">Google Ads: "cirugía bariátrica Tepic", "manga gástrica precio Nayarit".</div>
+        </div>
+        <div class="plaza-kv">
+          <div class="plaza-kv-label">Conversión</div>
+          <div class="plaza-kv-value">Transparencia de precios + financiamiento + prueba social local auténtica.</div>
+        </div>
+        <div class="plaza-bar-wrap">
+          <div class="plaza-bar-label">Potencial de Volumen</div>
+          <div class="plaza-bar-bg"><div class="plaza-bar-fill" style="width:75%;"></div></div>
+        </div>
+      </div>
+      <div class="plaza premium">
+        <div class="plaza-badge">High-Ticket</div>
+        <div class="plaza-city">Puerto Vallarta</div>
+        <div class="plaza-tag">Jalisco · Expat & Turismo Médico</div>
+        <div class="plaza-kv">
+          <div class="plaza-kv-label">Objetivo</div>
+          <div class="plaza-kv-value">Posicionar al Dr. Parra como el cirujano de élite en el corredor CMQ Premiere.</div>
+        </div>
+        <div class="plaza-kv">
+          <div class="plaza-kv-label">Táctica</div>
+          <div class="plaza-kv-value">Campañas bilingües segmentadas a EE.UU./Canadá: "best bariatric surgeon PV".</div>
+        </div>
+        <div class="plaza-kv">
+          <div class="plaza-kv-label">Conversión</div>
+          <div class="plaza-kv-value">Paquetes all-inclusive. El Fellowship de Barcelona como argumento central.</div>
+        </div>
+        <div class="plaza-bar-wrap">
+          <div class="plaza-bar-label">Ticket Promedio</div>
+          <div class="plaza-bar-bg"><div class="plaza-bar-fill" style="width:95%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="section-eyebrow fade-up">03.5 — El Valor Oculto</div>
+    <h2 class="section-title fade-up d1">Su Departamento de Comunicación Élite</h2>
+    <p class="section-desc fade-up d2">
+      No somos intermediarios que "suben posts". Somoslázaro opera como su equipo interno 100% dedicado. Nos encargamos de proyectar su autoridad, cuidar su imagen y salir a cazar a los pacientes correctos.
+    </p>
+    <div class="pillars-grid">
+      <div class="pillar fade-up d1">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Dirección de<br>Arte y Contenido.</div>
+        <p class="pillar-body">Nosotros le diremos exactamente qué grabar y cómo decirlo. Olvídese de pensar en ideas; le entregaremos guiones estructurados para Reels y anuncios, enfocados en los dolores de sus pacientes (miedo, abandono, precio).</p>
+      </div>
+      <div class="pillar fade-up d2">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Edición Premium<br>Quiet Luxury.</div>
+        <p class="pillar-body">Transformamos sus grabaciones de celular en piezas cinematográficas de alta confianza. Corrección de color de grado médico, tipografías elegantes y una estética que justifica el precio de una Bipartición.</p>
+      </div>
+      <div class="pillar fade-up d3">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Prospección<br>Activa.</div>
+        <p class="pillar-body">Mientras usted opera, nosotros buscamos pacientes. Filtramos a los curiosos mediante los textos y la segmentación, asegurándonos de que a su WhatsApp solo llegue gente con verdadera intención y capacidad de pago.</p>
+      </div>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="section-eyebrow fade-up">04 — Opciones de Crecimiento</div>
+    <h2 class="section-title fade-up d1">Escala de Inversión en Pauta</h2>
+    <p class="section-desc fade-up d2">
+      La infraestructura web y de Google Maps ya está lista. El siguiente paso es inyectar tráfico de alta intención de compra. Elige el nivel de agresividad con el que dominaremos las búsquedas.
+    </p>
+    
+    <div class="fade-up d2" style="margin-top: 3rem;">
+      <div class="horizons-tabs" id="horizonTabs">
+        <button class="h-tab active" data-target="phase1">OPCIÓN A: Aceleración Local (Tepic)</button>
+        <button class="h-tab" data-target="phase2">OPCIÓN B: Dominio Total (Tepic + PV)</button>
+      </div>
+
+      <!-- OPCIÓN A -->
+      <div class="h-panel active" id="phase1">
+        <div class="horizon-card">
+          <div class="horizon-header">
+            <div class="horizon-phase-label">Enfoque: Flujo de Caja Rápido</div>
+            <div class="horizon-title">Sprint de Aceleración (Mercado Local)</div>
+            <div class="horizon-subtitle">Ideal para saturar la demanda en Tepic y asegurar valoraciones constantes para Manga Gástrica.</div>
+          </div>
+          <div class="horizon-body">
+            <div>
+              <div class="inv-breakdown-label">Desglose de Inversión Mensual</div>
+              <div class="inv-line">
+                <div class="inv-line-name">Fee Agencia: Somos Lázaro<span>Estrategia, diseño y gestión diaria de campañas</span></div>
+                <div class="inv-line-amount">$12,500 MXN</div>
+              </div>
+              <div class="inv-line">
+                <div class="inv-line-name">Pauta Sugerida (Google & Meta)<span>Inversión directa a las plataformas para Tepic</span></div>
+                <div class="inv-line-amount">$15,000 MXN</div>
+              </div>
+              <div class="inv-total-row">
+                <div class="inv-total-label">Total Mensual Estimado</div>
+                <div class="inv-total-amount">$27,500 MXN</div>
+              </div>
+            </div>
+            <div>
+              <div class="deliverables-label">¿Qué incluye el Fee de Agencia?</div>
+              <div class="deliverable-item">
+                <div class="del-check">✦</div>
+                <div class="del-text"><strong>Google Ads (Search):</strong> Creación y optimización diaria de campañas para interceptar búsquedas como "cirugía bariátrica Tepic".</div>
+              </div>
+              <div class="deliverable-item">
+                <div class="del-check">✦</div>
+                <div class="del-text"><strong>Meta Ads (Retargeting):</strong> Anuncios en Instagram para perseguir a los interesados con contenido de su equipo 360°.</div>
+              </div>
+              <div class="deliverable-item">
+                <div class="del-check">✦</div>
+                <div class="del-text"><strong>Optimización de Conversión:</strong> Monitoreo de clics hacia su WhatsApp para asegurar leads reales, no solo "likes".</div>
+              </div>
+              <div class="deliverable-item">
+                <div class="del-check">✦</div>
+                <div class="del-text"><strong>Reporte Ejecutivo:</strong> Análisis de rendimiento mensual con el cálculo exacto de Retorno de Inversión (ROI).</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OPCIÓN B -->
+      <div class="h-panel" id="phase2">
+        <div class="horizon-card phase2">
+          <div class="horizon-header">
+            <div class="horizon-phase-label">Enfoque: High-Ticket y Turismo Médico</div>
+            <div class="horizon-title">Dominio de la Bahía (Tepic + Vallarta)</div>
+            <div class="horizon-subtitle">Estrategia dual. Captación local en Tepic + Campañas en inglés para Expats en Puerto Vallarta (Bipartición y Casos Complejos).</div>
+          </div>
+          <div class="horizon-body">
+            <div>
+              <div class="inv-breakdown-label">Desglose de Inversión Mensual</div>
+              <div class="inv-line">
+                <div class="inv-line-name">Fee Agencia: Somos Lázaro<span>Gestión estratégica dual (Mercado Nacional + Extranjero)</span></div>
+                <div class="inv-line-amount">$12,500 MXN</div>
+              </div>
+              <div class="inv-line">
+                <div class="inv-line-name">Pauta Combinada (Agresiva)<span>Google Ads Vallarta es de mayor costo por clic (Competencia en Dólares)</span></div>
+                <div class="inv-line-amount">$25,000+ MXN</div>
+              </div>
+              <div class="inv-total-row">
+                <div class="inv-total-label">Total Mensual Estimado</div>
+                <div class="inv-total-amount">$37,500+ MXN</div>
+              </div>
+            </div>
+            <div>
+              <div class="deliverables-label">¿Qué incluye el Fee de Agencia?</div>
+              <div class="deliverable-item">
+                <div class="del-check">✦</div>
+                <div class="del-text"><strong>Todo lo incluido en la Opción A.</strong></div>
+              </div>
+              <div class="deliverable-item">
+                <div class="del-check">✦</div>
+                <div class="del-text"><strong>Campañas Bilingües en Google Ads:</strong> Estructura paralela enfocada en búsquedas High-Ticket desde Canadá y EE. UU. hacia PV.</div>
+              </div>
+              <div class="deliverable-item">
+                <div class="del-check">✦</div>
+                <div class="del-text"><strong>Estrategia de Exclusividad (CMQ):</strong> Anuncios diseñados específicamente para resaltar el Fellowship en Barcelona como diferenciador ante clínicas de turismo médico.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<section>
+  <div class="container">
+   <section>
+    <section>
+  <div class="container">
+    <div class="section-eyebrow fade-up">04.5 — Patrimonio Digital</div>
+    <h2 class="section-title fade-up d1">Usted no "renta" publicidad, construye activos propios.</h2>
+    <p class="section-desc fade-up d2">
+      Muchas agencias secuestran el trabajo cuando termina el contrato. En Somoslázaro pensamos distinto: ya sea que trabajemos juntos 3 o 6 meses, todo el ecosistema que construyamos le pertenece a usted para siempre.
+    </p>
+    <div class="pillars-grid">
+      <div class="pillar fade-up d1">
+        <div class="pillar-num" style="font-size: 2rem; color: var(--gold);">✦</div>
+        <div class="pillar-title">Contenido Atemporal<br>(Evergreen).</div>
+        <p class="pillar-body">Diseñamos videos, textos y materiales gráficos basados en la psicología del paciente, no en tendencias pasajeras. Es contenido "inmortal" que le seguirá generando confianza y ventas durante los próximos 5 años sin caducar.</p>
+      </div>
+      <div class="pillar fade-up d2">
+        <div class="pillar-num" style="font-size: 2rem; color: var(--gold);">✦</div>
+        <div class="pillar-title">Ventas vs.<br>Influencer.</div>
+        <p class="pillar-body">A menos que su objetivo sea dar conferencias, no buscamos volverlo un "influencer" esclavo de subir contenido diario a sus redes. Diseñamos un sistema publicitario que vende por usted 24/7, para que su única preocupación sea el quirófano.</p>
+      </div>
+      <div class="pillar fade-up d3">
+        <div class="pillar-num" style="font-size: 2rem; color: var(--gold);">✦</div>
+        <div class="pillar-title">Propiedad Total<br>de la Data.</div>
+        <p class="pillar-body">Las estructuras de las campañas, los públicos segmentados que encontremos, las palabras clave ganadoras y las configuraciones de inteligencia artificial se quedan en sus cuentas. Usted es dueño absoluto de su máquina de prospección.</p>
+      </div>
+    </div>
+  </div>
+</section>
+  <div class="container">
+    <div class="section-eyebrow fade-up">05 — Lógica de Retorno (ROI)</div>
+    <h2 class="section-title fade-up d1">Matemática Pura: Riesgo Cero.</h2>
+    <p class="section-desc fade-up d2">
+      No vea esto como un gasto mensual, véalo como una máquina expendedora. Las matemáticas de su sector hacen que la inversión sea ridículamente rentable.
+    </p>
+    
+    <div class="roi-strip fade-up d2" style="margin-top: 3rem;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;">
+        <div>
+          <div style="font-size:0.65rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.4rem;">El Escenario Real</div>
+          <div class="playfair" style="font-size:clamp(1.5rem,3vw,2rem);font-weight:800;color:var(--text-primary);line-height:1.2;margin-bottom:1rem;">Con UN paciente al mes,<br>la agencia es gratis.</div>
+          <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.75;">
+            El costo de la <strong>Opción A</strong> (Fee + Anuncios) es de $27,500 MXN. Si nuestras campañas generan una sola Manga Gástrica ($84,000 MXN), la inversión publicitaria y nuestros honorarios se pagan solos, y <strong>a usted le quedan $56,500 MXN de ganancia libre.</strong>
+          </p>
+        </div>
+        <div>
+          <div style="font-size:0.65rem;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:0.4rem;">Del segundo paciente en adelante...</div>
+          <div class="roi-big" style="font-size:clamp(2.5rem,6vw,3.5rem);">100% Utilidad</div>
+          <p style="font-size:0.875rem;color:var(--text-secondary);line-height:1.75;margin-top:1rem;">
+            A partir de la segunda cirugía agendada en el mes (sea Manga, Bypass o Bipartición), todo el ingreso entra directo a sus utilidades, sin costos adicionales de agencia. Ese es el poder de escalar digitalmente.
+          </p>
+        </div>
+      </div>
+
+      <div class="roi-grid" style="margin-top: 3rem;">
+        <div class="roi-kpi">
+          <span class="roi-kpi-val" style="color:var(--gold);">$84,000</span>
+          <span class="roi-kpi-label">Ingreso Promedio 1 Manga</span>
+        </div>
+        <div class="roi-kpi">
+          <span class="roi-kpi-val">- $27,500</span>
+          <span class="roi-kpi-label">Inversión Mensual Total (Opción A)</span>
+        </div>
+        <div class="roi-kpi">
+          <span class="roi-kpi-val" style="color:var(--green-ok);">+ $56,500</span>
+          <span class="roi-kpi-label">Ganancia Neta (Incluso pagando marketing)</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closing-section">
+  <div class="container">
+    <div class="closing-card fade-up">
+      <div class="closing-steps-label">Siguientes Pasos</div>
+      <h2 class="closing-title">Configuración de Infraestructura</h2>
+      <p class="closing-text">
+        <strong>Dr. Parra,</strong> la infraestructura está diseñada y el mercado en Nayarit tiene un vacío que vamos a ocupar. Para activar el Protocolo de Transformación 360 y apartar la capacidad técnica de la firma este mes, <strong>¿prefiere realizar la activación del retainer mediante transferencia bancaria o enlace seguro de tarjeta de crédito?</strong>
+      </p>
+      <a href="mailto:hola@somoslazaro.marketing?subject=Activación Protocolo 360 - Dr. Jorge Parra" class="cta-btn">
+        Seleccionar Método de Activación
+      </a>
+      <div class="trust-line">
+        Capacidad disponible este mes · Vigencia 30 días · Exclusivo Dr. Jorge Parra
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner fade-in">
+      <div>
+        <div style="font-size:1rem;font-family:'Inter';font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Somoslázaro</div>
+        <div class="footer-copy">Arquitectura de Sistemas y Blindaje Digital para Industrias de Alto Valor.</div>
+      </div>
+      <div class="footer-enc">
+        Infraestructura: Next.js & Vercel Edge Networks<br>
+        Campañas: Google Ads API · Meta Business Suite<br>
+        <span style="color:var(--gold);opacity:0.8;display:block;margin-top:0.5rem;">
+          REF: SLZ-2026-JPB-001 · Documento Confidencial
+        </span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Tabs
+  const tabs = document.querySelectorAll('.h-tab');
+  const panels = document.querySelectorAll('.h-panel');
+
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      panels.forEach(p => p.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById(tab.dataset.target).classList.add('active');
+    });
+  });
+
+  // Scroll animations
+  const animEls = document.querySelectorAll('.fade-up, .fade-in');
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.animationPlayState = 'running';
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+  animEls.forEach(el => {
+    el.style.animationPlayState = 'paused';
+    obs.observe(el);
+  });
+
+  // Bar animations
+  const bars = document.querySelectorAll('.plaza-bar-fill');
+  const barObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        const w = e.target.style.width;
+        e.target.style.width = '0';
+        requestAnimationFrame(() => {
+          setTimeout(() => { e.target.style.width = w; }, 100);
+        });
+        barObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.6 });
+
+  bars.forEach(b => barObs.observe(b));
+</script>
+</body>
+</html>
