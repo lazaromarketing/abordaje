@@ -319,7 +319,7 @@
   .foot-brand .sq{width:8px; height:8px; background:var(--orange);}
   .foot-note{font-size:12px; color:var(--ink-faint);}
 
-  .reveal{opacity:0; transform:translateY(14px); transition:opacity .7s ease, transform .7s ease;}
+  .reveal{opacity:0; transform:translateY(22px) scale(.985); transition:opacity .85s cubic-bezier(.16,1,.3,1), transform .85s cubic-bezier(.16,1,.3,1);}
   .reveal.in{opacity:1; transform:none;}
   /* ===================== PILLARS ===================== */
   .pillars4{display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--line); border:1px solid var(--line);}
@@ -361,10 +361,72 @@
   .scenes .scene:nth-child(5){transition-delay:.28s;}
   .scenes .scene:nth-child(6){transition-delay:.35s;}
 
-  /* ===================== SCROLL SNAP — una seccion a la vez ===================== */
-  html{scroll-snap-type:y proximity;}
-  header.hero, section.block, section.closing, footer{scroll-snap-align:start; scroll-snap-stop:normal;}
+  /* ===================== SCROLL SNAP — una seccion a la vez, pantalla completa ===================== */
+  html{scroll-snap-type:y mandatory;}
+  header.hero, section.block, section.closing{
+    min-height:100svh; display:flex; flex-direction:column; justify-content:center;
+    scroll-snap-align:start; scroll-snap-stop:always;
+  }
+  footer{scroll-snap-align:start; scroll-snap-stop:normal;}
   @media (prefers-reduced-motion: reduce){ html{scroll-snap-type:none;} }
+  @media (max-width:640px){
+    header.hero, section.block, section.closing{min-height:auto; padding-top:104px; padding-bottom:56px;}
+  }
+
+  /* ===================== FLOATING WHATSAPP ===================== */
+  .fab-whatsapp{
+    position:fixed; right:22px; bottom:22px; z-index:90;
+    width:58px; height:58px; border-radius:50%;
+    background:#25D366; display:flex; align-items:center; justify-content:center;
+    box-shadow:0 10px 28px -6px rgba(0,0,0,.35);
+    text-decoration:none; transition:transform .22s cubic-bezier(.2,.9,.3,1.3), box-shadow .22s ease;
+  }
+  .fab-whatsapp:hover{transform:scale(1.08); box-shadow:0 14px 34px -6px rgba(0,0,0,.45);}
+  .fab-whatsapp svg{width:29px; height:29px; fill:#fff;}
+  .fab-whatsapp::before{
+    content:""; position:absolute; inset:0; border-radius:50%;
+    background:#25D366; opacity:.55; animation:fabPulse 2.4s ease-out infinite;
+  }
+  @keyframes fabPulse{
+    0%{transform:scale(1); opacity:.55;}
+    100%{transform:scale(1.9); opacity:0;}
+  }
+  @media (prefers-reduced-motion: reduce){ .fab-whatsapp::before{animation:none;} }
+  @media (max-width:640px){ .fab-whatsapp{right:16px; bottom:16px; width:52px; height:52px;} .fab-whatsapp svg{width:26px; height:26px;} }
+
+  /* ===================== HERO CTA + BOTONES VISIBLES ===================== */
+  .hero-cta{margin-top:34px; display:flex; flex-wrap:wrap; align-items:center; gap:16px;}
+  .btn-cta{
+    display:inline-flex; align-items:center; gap:8px; padding:14px 26px;
+    background:var(--cyan); color:#04202B; font-family:"IBM Plex Mono",monospace;
+    font-size:13px; font-weight:700; letter-spacing:.04em; text-transform:uppercase;
+    text-decoration:none; border-radius:2px; transition:transform .18s ease, background .18s ease;
+  }
+  .btn-cta:hover{transform:translateY(-2px); background:#0DA8E6;}
+  .btn-next{
+    display:inline-flex; align-items:center; gap:8px; padding:14px 20px;
+    border:1px solid rgba(255,255,255,.35); color:#EAF3F6; font-family:"IBM Plex Mono",monospace;
+    font-size:13px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    text-decoration:none; border-radius:2px; transition:all .18s ease;
+  }
+  .btn-next:hover{border-color:#fff; background:rgba(255,255,255,.08);}
+  .btn-next svg{width:16px; height:16px; fill:currentColor;}
+
+  /* ===================== NAV "SIGUIENTE" FLOTANTE ===================== */
+  .fab-next{
+    position:fixed; left:22px; bottom:22px; z-index:90;
+    display:flex; align-items:center; gap:8px; padding:12px 18px;
+    background:var(--bg-raised); color:var(--ink); border:1px solid var(--line);
+    font-family:"IBM Plex Mono",monospace; font-size:12.5px; font-weight:600; letter-spacing:.04em; text-transform:uppercase;
+    text-decoration:none; border-radius:30px; box-shadow:0 10px 28px -8px rgba(11,18,22,.35);
+    transition:transform .2s ease, box-shadow .2s ease, opacity .3s ease;
+  }
+  .fab-next:hover{transform:translateY(-2px); box-shadow:0 14px 32px -8px rgba(11,18,22,.45);}
+  .fab-next svg{width:14px; height:14px; fill:var(--cyan); animation:nextBob 1.6s ease-in-out infinite;}
+  .fab-next.hide{opacity:0; pointer-events:none; transform:translateY(8px);}
+  @keyframes nextBob{0%,100%{transform:translateY(0);} 50%{transform:translateY(3px);}}
+  @media (prefers-reduced-motion: reduce){ .fab-next svg{animation:none;} }
+  @media (max-width:640px){ .fab-next{left:16px; bottom:16px; padding:10px 14px; font-size:11.5px;} }
 </style>
 
 </head>
@@ -398,6 +460,9 @@
       <div><div class="k">Hora</div><div class="v">10:00 h</div></div>
       <div><div class="k">Con</div><div class="v">Dirección LATAM &amp; Gerencia Nacional de Ventas</div></div>
       <div><div class="k">Objetivo</div><div class="v">Dimensionar el potencial del grupo como aliado de distribución</div></div>
+    </div>
+    <div class="hero-cta">
+      <a href="#concepto" class="btn-cta">Ver el video propuesto →</a>
     </div>
   </div>
 </header>
@@ -580,7 +645,7 @@
       </div>
       <div class="roadmap">
         <div class="rm-step reveal"><div class="rm-time">0–5 min</div><div class="rm-body"><div class="rm-title">Apertura y bienvenida</div><div class="rm-desc">Presentación de los asistentes y objetivo de la sesión de ambos lados.</div></div></div>
-        <div class="rm-step reveal"><div class="rm-time">5–7 min</div><div class="rm-body"><div class="rm-title">Video institucional</div><div class="rm-desc">La pregunta y la trayectoria — concepto y guion en <a href="#concepto">la sección de más abajo</a>.</div></div></div>
+        <div class="rm-step reveal"><div class="rm-time">5–7 min</div><div class="rm-body"><div class="rm-title">Video institucional</div><div class="rm-desc">La pregunta y la trayectoria — concepto y guion completo abajo. <a href="#concepto" class="btn-cta" style="margin-top:10px; padding:9px 18px; font-size:11.5px;">Ver el video propuesto →</a></div></div></div>
         <div class="rm-step reveal"><div class="rm-time">7–15 min</div><div class="rm-body"><div class="rm-title">Por qué nosotros</div><div class="rm-desc">Diferenciadores en vivo, reforzando lo mostrado en el video — sección 02.</div></div></div>
         <div class="rm-step reveal"><div class="rm-time">15–22 min</div><div class="rm-body"><div class="rm-title">Lo que sabemos de Shineray</div><div class="rm-desc">Mostrar que se hizo la tarea, con su propio deck como referencia — sección 03.</div></div></div>
         <div class="rm-step reveal"><div class="rm-time">22–30 min</div><div class="rm-body"><div class="rm-title">Dónde encajamos</div><div class="rm-desc">Esquema de distribuidores y margen — sección 04.</div></div></div>
@@ -794,6 +859,51 @@
     }, {threshold:.3});
     mIo.observe(marginScale);
   }
+})();
+</script>
+
+<a class="fab-whatsapp" href="https://wa.me/5213316057671?text=Aceptamos%20la%20propuesta" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp — Aceptamos la propuesta">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12.001 2C6.478 2 2 6.477 2 12c0 1.892.526 3.66 1.44 5.167L2 22l4.966-1.408A9.94 9.94 0 0 0 12.001 22C17.524 22 22 17.523 22 12S17.524 2 12.001 2zm0 18.2a8.17 8.17 0 0 1-4.404-1.28l-.316-.19-3.06.868.836-3.04-.207-.322A8.15 8.15 0 0 1 3.8 12c0-4.529 3.672-8.2 8.201-8.2 4.528 0 8.2 3.671 8.2 8.2 0 4.528-3.672 8.2-8.2 8.2z"/></svg>
+</a>
+
+<a class="fab-next" id="fabNext" href="#" aria-label="Ir a la siguiente sección">
+  <span>Siguiente</span>
+  <svg viewBox="0 0 24 24"><path d="M12 16.5 4.5 9l1.4-1.4L12 13.7l6.1-6.1L19.5 9z"/></svg>
+</a>
+
+<script>
+(function(){
+  var snapSections = Array.prototype.slice.call(document.querySelectorAll('header.hero, section.block, section.closing'));
+  var fabNext = document.getElementById('fabNext');
+  if(!snapSections.length || !fabNext) return;
+
+  function currentIndex(){
+    var y = window.scrollY + window.innerHeight * .3;
+    var idx = 0;
+    for(var i=0;i<snapSections.length;i++){
+      if(snapSections[i].offsetTop <= y) idx = i; else break;
+    }
+    return idx;
+  }
+
+  function update(){
+    var idx = currentIndex();
+    var next = snapSections[idx+1];
+    if(next){
+      fabNext.classList.remove('hide');
+      fabNext.href = '#' + (next.id || '');
+      fabNext.onclick = function(e){
+        e.preventDefault();
+        next.scrollIntoView({behavior:'smooth'});
+      };
+    } else {
+      fabNext.classList.add('hide');
+    }
+  }
+
+  document.addEventListener('scroll', update, {passive:true});
+  window.addEventListener('resize', update);
+  update();
 })();
 </script>
 
